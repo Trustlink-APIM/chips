@@ -1,0 +1,1805 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CHIPS for business - Masterpass API",
+    "version": "1.0",
+    "description": "*No matter what business you are in, you can use CHIPS to improve your efficiency and lower your costs.*\n\n| Specifications | Version | Date |\n| --- | --- | --- |\n| Publisher | 1.0 | 2020-02-11 |\n\n## Why use CHIPS™?\n* Your money is safe – CHIPS™ uses a regulated vehicle to protect the money in your CHIPS™ acccount\n* No monthly fees and no minimum balance required\n* No hidden fees – for each payment the fee is presented to you for your authorisation\n* No money is ever taken out of your account without your authorisation – e.g. charges, penalties or debit orders\n* QR codes created in CHIPS™ can be scanned by users of other mobile payment solutions, including any bank’s Masterpass app, VodaPay, Nedbank Money, FNB Scan-to-Pay, Zapper app and CHIPS™ Money Manager and instaPay apps\n* QR codes created by Zapper, SnapScan, CHIPS™ and banks, can be paid with your CHIPS™ apps\n\nAlso see : \n* https://chips.co.za/payment-network/index.php/businesses\n* http://chips.co.za\n\n## Getting Started \n1. Subscribe to the Payment Network API on the Trustlink API Marketplace.\n1. Register at https://merchant.chips.co.za/\n2. Register an authorized Device in the miBusiness Portal\n\n---\n## Environments\n---\n### Storefront - Mockup\n* No CHIPS™ sign up required.\n* No Trustlink Marketplace account required\n\n#### Headers\nYou can supply any value for the following header fields:\n* MarketplaceAPIKey\n* apikey\n* apisecret\n\nThe storefront will generate a token 0000012345. \n\n---\n### Sandbox - CHIPS™ Demo Environment\n* CHIPS™ Demo merchant [account](https://tar.int.tlsag.net/mb/app) required. \n* Trustlink Marketplace [account](/component/apiportal/registration) required.\n* Access to the Payment QR APIs required\n \n#### Headers\n* MarketplaceAPIKey - API Key generated in the associated Trustlink Marketplace Application section. \n* apikey - miBusiness: Administration > Device > payNow > <registered device> > API key \n\n---\n### Production\n* CHIPs merchant [account](https://merchant.chips.co.za/) required. \n* Trustlink Marketplace [account](/component/apiportal/registration) required.\n* Access to the Payment QR APIs required\n\n#### Headers\n* MarketplaceAPIKey - API Key generated in the associated Trustlink Marketplace Application section. \n* apikey - miBusiness: Administration > Device > payNow > <registered device> > API key \n\n---\n# Terms and Conditions\n---\nBy using these APIs you agree to the following terms and conditions\n1. Trustlink Marketplace Confedential App Terms and Conditions\n2. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n3. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)",
+    "contact": {
+      "name": "API Sales",
+      "url": "https://marketplace.trustlinkhosting.com"
+    },
+    "termsOfService": " https://marketplace.trustlinkhosting.com",
+    "license": {
+      "name": " Apache 2.0 License",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "x-apim-build": {
+    "prod": {
+      "sandbox": {
+        "_target": "api-manager/prod/sandbox-chips-payments-masterpass/chipsmerchantdateway.json",
+        "host": "tar.qa.tlsag.net"
+      },
+      "apim": {
+        "_target": "api-manager/prod/apim-chips-payments-masterpass/chipsmerchantdateway.json",
+        "host": "tar.tlsag.net"
+      }
+    },
+    "qa": {
+      "sandbox": {
+        "_target": "api-manager/qa/sandbox-chips-payments-masterpass/chipsmerchantdateway.json",
+        "host": "tar.qa.tlsag.net"
+      },
+      "apim": {
+        "_target": "api-manager/qa/apim-chips-payments-masterpass/chipsmerchantdateway.json",
+        "host": "tar.qa.tlsag.net"
+      }
+    }
+  },
+  "basePath": "/",
+  "paths": {
+    "/tokens": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "allowEmptyValue": true,
+            "description": "Token request identifier",
+            "in": "query",
+            "name": "tokenRequestId",
+            "type": "string"
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "Token identifier",
+            "in": "query",
+            "name": "tokenId",
+            "type": "string"
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "Payee reference number",
+            "in": "query",
+            "name": "payeeRefInfo",
+            "type": "string"
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "Status",
+            "enum": [
+              "COMPLETED",
+              "EXPIRED",
+              "FAILED",
+              "PENDING",
+              "REJECTED",
+              "REVERSED"
+            ],
+            "in": "query",
+            "name": "status",
+            "type": "string"
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "Created from date and time (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+            "format": "date-time",
+            "in": "query",
+            "name": "createdFrom",
+            "type": "string"
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "Created until date and time (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+            "format": "date-time",
+            "in": "query",
+            "name": "createdUntil",
+            "type": "string"
+          },
+          {
+            "default": 0,
+            "description": "Page number requested",
+            "format": "int32",
+            "in": "query",
+            "name": "page",
+            "type": "integer"
+          },
+          {
+            "default": 200,
+            "description": "Number of entries to include per page",
+            "format": "int32",
+            "in": "query",
+            "name": "size",
+            "type": "integer"
+          },
+          {
+            "default": "ASC",
+            "description": "Sort oder",
+            "enum": [
+              "ASC",
+              "DESC"
+            ],
+            "in": "query",
+            "name": "order",
+            "type": "string"
+          },
+          {
+            "default": "lastModified",
+            "description": "Sort field",
+            "in": "query",
+            "name": "orderBy",
+            "type": "string"
+          },
+          {
+            "type": "string",
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {
+              "properties": {
+                "pageNumber": {
+                  "description": "Current page number",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "pageSize": {
+                  "description": "Number of entries per page",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "totalElements": {
+                  "description": "Total number of entries",
+                  "format": "int64",
+                  "type": "integer"
+                },
+                "totalPages": {
+                  "description": "Total number of pages",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "values": {
+                  "description": "Page entries",
+                  "items": {
+                    "description": "Page entries",
+                    "properties": {
+                      "amount": {
+                        "description": "Amount",
+                        "exclusiveMinimum": false,
+                        "minimum": 0,
+                        "type": "number",
+                        "x-nullable": true
+                      },
+                      "created": {
+                        "description": "Date and time created (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "description": {
+                        "description": "Description",
+                        "maxLength": 60,
+                        "minLength": 0,
+                        "type": "string"
+                      },
+                      "dueDate": {
+                        "description": "Due date (ISO8601 yyyy-mm-dd)",
+                        "format": "date",
+                        "type": "string"
+                      },
+                      "expiryTime": {
+                        "description": "Expiry date and time (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                        "format": "date-time",
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "lastModified": {
+                        "description": "Date and time last modified (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "payeeCategory1": {
+                        "description": "Payee category 1",
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "payeeCategory2": {
+                        "description": "Payee category 2",
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "payeeCategory3": {
+                        "description": "Payee category 3",
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "payeeRefInfo": {
+                        "description": "Payee reference",
+                        "maxLength": 36,
+                        "minLength": 0,
+                        "type": "string"
+                      },
+                      "requestId": {
+                        "description": "Request identifier. Recommended UUID (ISO/IEC 9834-8:201)",
+                        "maxLength": 36,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "requestTip": {
+                        "description": "Request tip",
+                        "type": "boolean",
+                        "x-nullable": true
+                      },
+                      "siteName": {
+                        "description": "Site name",
+                        "maxLength": 100,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "siteRefInfo": {
+                        "description": "Site reference",
+                        "maxLength": 36,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "status": {
+                        "description": "Status",
+                        "enum": [
+                          "COMPLETED",
+                          "EXPIRED",
+                          "FAILED",
+                          "PENDING",
+                          "REJECTED",
+                          "REVERSED"
+                        ],
+                        "type": "string"
+                      },
+                      "tokenId": {
+                        "description": "Token identifier",
+                        "maxLength": 10,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "useOnce": {
+                        "description": "Use once",
+                        "type": "boolean",
+                        "x-nullable": true
+                      },
+                      "uuid": {
+                        "description": "UUID (ISO/IEC 9834-8:201)",
+                        "maxLength": 36,
+                        "minLength": 36,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "created",
+                      "description",
+                      "dueDate",
+                      "lastModified",
+                      "payeeRefInfo",
+                      "status",
+                      "uuid"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "tags": [
+          "Masterpass",
+          "Payments",
+          "Chips"
+        ],
+        "operationId": "chips_find_mastepass_token_by_criteria",
+        "summary": "Get one or more payment requests",
+        "description": "Find masterpass token by criteria"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "description": "Amount to generate the QR code for.",
+                  "exclusiveMinimum": false,
+                  "minimum": 0,
+                  "type": "number",
+                  "x-nullable": true
+                },
+                "description": {
+                  "description": "Description",
+                  "maxLength": 60,
+                  "minLength": 0,
+                  "type": "string"
+                },
+                "dueDate": {
+                  "description": "Due date (ISO8601 yyyy-mm-dd)",
+                  "format": "date",
+                  "type": "string"
+                },
+                "expiryTime": {
+                  "description": "Expiry date and time (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                  "format": "date-time",
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "payeeCategory1": {
+                  "description": "Payee category 1",
+                  "maxLength": 50,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "payeeCategory2": {
+                  "description": "Payee category 2",
+                  "maxLength": 50,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "payeeCategory3": {
+                  "description": "Payee category 3",
+                  "maxLength": 50,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "payeeRefInfo": {
+                  "description": "Payee reference",
+                  "maxLength": 36,
+                  "minLength": 0,
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Request identifier. Recommended UUID (ISO/IEC 9834-8:201)",
+                  "maxLength": 36,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "requestTip": {
+                  "description": "Request tip",
+                  "type": "boolean",
+                  "x-nullable": true
+                },
+                "requestTokenImage": {
+                  "description": "Request token",
+                  "type": "boolean",
+                  "x-nullable": true
+                },
+                "siteName": {
+                  "description": "Site name",
+                  "maxLength": 100,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "siteRefInfo": {
+                  "description": "Site reference",
+                  "maxLength": 36,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "tokenImageSize": {
+                  "default": "SMALL",
+                  "description": "Token image size",
+                  "enum": [
+                    "SMALL",
+                    "MEDIUM",
+                    "LARGE"
+                  ],
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "useOnce": {
+                  "description": "Use once",
+                  "type": "boolean",
+                  "x-nullable": true
+                }
+              },
+              "required": [
+                "description",
+                "payeeRefInfo"
+              ]
+            }
+          },
+          {
+            "type": "string",
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {
+              "properties": {
+                "amount": {
+                  "description": "Amount",
+                  "exclusiveMinimum": false,
+                  "minimum": 0,
+                  "type": "number",
+                  "x-nullable": true
+                },
+                "created": {
+                  "description": "Date and time created (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "Description",
+                  "maxLength": 60,
+                  "minLength": 0,
+                  "type": "string"
+                },
+                "dueDate": {
+                  "description": "Due date (ISO8601 yyyy-mm-dd)",
+                  "format": "date",
+                  "type": "string"
+                },
+                "expiryTime": {
+                  "description": "Expiry date and time (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                  "format": "date-time",
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "lastModified": {
+                  "description": "Date and time last modified (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "payeeCategory1": {
+                  "description": "Payee category 1",
+                  "maxLength": 50,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "payeeCategory2": {
+                  "description": "Payee category 2",
+                  "maxLength": 50,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "payeeCategory3": {
+                  "description": "Payee category 3",
+                  "maxLength": 50,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "payeeRefInfo": {
+                  "description": "Payee reference",
+                  "maxLength": 36,
+                  "minLength": 0,
+                  "type": "string"
+                },
+                "requestId": {
+                  "description": "Request identifier. Recommended UUID (ISO/IEC 9834-8:201)",
+                  "maxLength": 36,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "requestTip": {
+                  "description": "Request tip",
+                  "type": "boolean",
+                  "x-nullable": true
+                },
+                "siteName": {
+                  "description": "Site name",
+                  "maxLength": 100,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "siteRefInfo": {
+                  "description": "Site reference",
+                  "maxLength": 36,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "status": {
+                  "description": "Status",
+                  "enum": [
+                    "COMPLETED",
+                    "EXPIRED",
+                    "FAILED",
+                    "PENDING",
+                    "REJECTED",
+                    "REVERSED"
+                  ],
+                  "type": "string"
+                },
+                "tokenId": {
+                  "description": "Token identifier",
+                  "maxLength": 10,
+                  "minLength": 0,
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "tokenImage": {
+                  "description": "Base64 encoded token image",
+                  "type": "string",
+                  "x-nullable": true
+                },
+                "useOnce": {
+                  "description": "Use once",
+                  "type": "boolean",
+                  "x-nullable": true
+                },
+                "uuid": {
+                  "description": "UUID (ISO/IEC 9834-8:201)",
+                  "maxLength": 36,
+                  "minLength": 36,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "created",
+                "description",
+                "lastModified",
+                "payeeRefInfo",
+                "status",
+                "uuid"
+              ],
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "tags": [
+          "Masterpass",
+          "Chips",
+          "Payments"
+        ],
+        "operationId": "chips_create_masterpass_token",
+        "summary": "Create a payment request",
+        "description": "Create masterpass token"
+      },
+      "parameters": []
+    },
+    "/transactions": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "tokenRequestId",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "tokenId",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "systemRefInfo",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "txRefInfo",
+            "type": "string"
+          },
+          {
+            "format": "date-time",
+            "in": "query",
+            "name": "createdFrom",
+            "type": "string"
+          },
+          {
+            "format": "date-time",
+            "in": "query",
+            "name": "createdUntil",
+            "type": "string"
+          },
+          {
+            "enum": [
+              "CANCELLED",
+              "FINALISED",
+              "PENDING"
+            ],
+            "in": "query",
+            "name": "status",
+            "type": "string"
+          },
+          {
+            "default": 0,
+            "description": "Page number requested",
+            "format": "int32",
+            "in": "query",
+            "name": "page",
+            "type": "integer"
+          },
+          {
+            "default": 200,
+            "description": "Number of entries to include per page",
+            "format": "int32",
+            "in": "query",
+            "name": "size",
+            "type": "integer"
+          },
+          {
+            "default": "ASC",
+            "description": "Sort oder",
+            "enum": [
+              "ASC",
+              "DESC"
+            ],
+            "in": "query",
+            "name": "order",
+            "type": "string"
+          },
+          {
+            "default": "lastModified",
+            "description": "Sort field",
+            "in": "query",
+            "name": "orderBy",
+            "type": "string"
+          },
+          {
+            "type": "string",
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {
+              "properties": {
+                "pageNumber": {
+                  "description": "Current page number",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "pageSize": {
+                  "description": "Number of entries per page",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "totalElements": {
+                  "description": "Total number of entries",
+                  "format": "int64",
+                  "type": "integer"
+                },
+                "totalPages": {
+                  "description": "Total number of pages",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "values": {
+                  "description": "Page entries",
+                  "items": {
+                    "description": "Page entries",
+                    "properties": {
+                      "amount": {
+                        "description": "Amount",
+                        "exclusiveMinimum": true,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "category1": {
+                        "description": "Category 1",
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "category2": {
+                        "description": "Category 2",
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "category3": {
+                        "description": "Category 3",
+                        "maxLength": 50,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "created": {
+                        "description": "Date and time created (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "description": {
+                        "description": "Description",
+                        "maxLength": 60,
+                        "minLength": 0,
+                        "type": "string"
+                      },
+                      "fees": {
+                        "description": "Fees attracted by the transaction",
+                        "properties": {
+                          "externalAmount": {
+                            "description": "External fee amount",
+                            "exclusiveMinimum": false,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "internalAmount": {
+                            "description": "Internal fee amount",
+                            "exclusiveMinimum": false,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "totalAmount": {
+                            "description": "Total fee amount",
+                            "exclusiveMinimum": false,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "vatAmount": {
+                            "description": "VAT amount on total fee",
+                            "exclusiveMinimum": false,
+                            "minimum": 0,
+                            "type": "number"
+                          }
+                        },
+                        "type": "object",
+                        "x-nullable": true
+                      },
+                      "gratuityAmount": {
+                        "description": "Gratuity amount",
+                        "exclusiveMinimum": false,
+                        "minimum": 0,
+                        "type": "number",
+                        "x-nullable": true
+                      },
+                      "lastModified": {
+                        "description": "Date and time last modified (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "message": {
+                        "description": "Message",
+                        "maxLength": 120,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "movementAmount": {
+                        "description": "Movement amount",
+                        "exclusiveMinimum": false,
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "systemRefInfo": {
+                        "description": "System reference",
+                        "maxLength": 36,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "tokenId": {
+                        "description": "Token identifier",
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "tokenRequestId": {
+                        "description": "Token request identifier",
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "transactionStatus": {
+                        "description": "Transaction status",
+                        "enum": [
+                          "CANCELLED",
+                          "FINALISED",
+                          "PENDING"
+                        ],
+                        "type": "string"
+                      },
+                      "txRefInfo": {
+                        "description": "Transaction reference",
+                        "maxLength": 36,
+                        "minLength": 0,
+                        "type": "string",
+                        "x-nullable": true
+                      },
+                      "uuid": {
+                        "description": "UUID (ISO/IEC 9834-8:201)",
+                        "maxLength": 36,
+                        "minLength": 36,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "amount",
+                      "created",
+                      "description",
+                      "lastModified",
+                      "movementAmount",
+                      "transactionStatus",
+                      "uuid"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "operationId": "chips_find_transactions_by_criteria",
+        "summary": "Get one or more transactions",
+        "description": "Find transactions by criteria",
+        "tags": [
+          "Chips",
+          "Masterpass",
+          "Payments"
+        ]
+      },
+      "parameters": []
+    }
+  },
+  "definitions": {
+    "FeeData": {
+      "description": "Fees attracted by the transaction",
+      "properties": {
+        "externalAmount": {
+          "description": "External fee amount",
+          "exclusiveMinimum": false,
+          "minimum": 0,
+          "type": "number"
+        },
+        "internalAmount": {
+          "description": "Internal fee amount",
+          "exclusiveMinimum": false,
+          "minimum": 0,
+          "type": "number"
+        },
+        "totalAmount": {
+          "description": "Total fee amount",
+          "exclusiveMinimum": false,
+          "minimum": 0,
+          "type": "number"
+        },
+        "vatAmount": {
+          "description": "VAT amount on total fee",
+          "exclusiveMinimum": false,
+          "minimum": 0,
+          "type": "number"
+        }
+      },
+      "type": "object",
+      "x-nullable": true
+    },
+    "PageResponsePaymentData": {
+      "properties": {
+        "pageNumber": {
+          "description": "Current page number",
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "description": "Number of entries per page",
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalElements": {
+          "description": "Total number of entries",
+          "format": "int64",
+          "type": "integer"
+        },
+        "totalPages": {
+          "description": "Total number of pages",
+          "format": "int32",
+          "type": "integer"
+        },
+        "values": {
+          "description": "Page entries",
+          "items": {
+            "description": "Page entries",
+            "properties": {
+              "amount": {
+                "description": "Amount",
+                "exclusiveMinimum": false,
+                "minimum": 0,
+                "type": "number",
+                "x-nullable": true
+              },
+              "created": {
+                "description": "Date and time created (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                "format": "date-time",
+                "type": "string"
+              },
+              "description": {
+                "description": "Description",
+                "maxLength": 60,
+                "minLength": 0,
+                "type": "string"
+              },
+              "dueDate": {
+                "description": "Due date (ISO8601 yyyy-mm-dd)",
+                "format": "date",
+                "type": "string"
+              },
+              "expiryTime": {
+                "description": "Expiry date and time (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                "format": "date-time",
+                "type": "string",
+                "x-nullable": true
+              },
+              "lastModified": {
+                "description": "Date and time last modified (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                "format": "date-time",
+                "type": "string"
+              },
+              "payeeCategory1": {
+                "description": "Payee category 1",
+                "maxLength": 50,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "payeeCategory2": {
+                "description": "Payee category 2",
+                "maxLength": 50,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "payeeCategory3": {
+                "description": "Payee category 3",
+                "maxLength": 50,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "payeeRefInfo": {
+                "description": "Payee reference",
+                "maxLength": 36,
+                "minLength": 0,
+                "type": "string"
+              },
+              "requestId": {
+                "description": "Request identifier. Recommended UUID (ISO/IEC 9834-8:201)",
+                "maxLength": 36,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "requestTip": {
+                "description": "Request tip",
+                "type": "boolean",
+                "x-nullable": true
+              },
+              "siteName": {
+                "description": "Site name",
+                "maxLength": 100,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "siteRefInfo": {
+                "description": "Site reference",
+                "maxLength": 36,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "status": {
+                "description": "Status",
+                "enum": [
+                  "COMPLETED",
+                  "EXPIRED",
+                  "FAILED",
+                  "PENDING",
+                  "REJECTED",
+                  "REVERSED"
+                ],
+                "type": "string"
+              },
+              "tokenId": {
+                "description": "Token identifier",
+                "maxLength": 10,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "useOnce": {
+                "description": "Use once",
+                "type": "boolean",
+                "x-nullable": true
+              },
+              "uuid": {
+                "description": "UUID (ISO/IEC 9834-8:201)",
+                "maxLength": 36,
+                "minLength": 36,
+                "type": "string"
+              }
+            },
+            "required": [
+              "created",
+              "description",
+              "dueDate",
+              "lastModified",
+              "payeeRefInfo",
+              "status",
+              "uuid"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "PageResponseTransactionData": {
+      "properties": {
+        "pageNumber": {
+          "description": "Current page number",
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "description": "Number of entries per page",
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalElements": {
+          "description": "Total number of entries",
+          "format": "int64",
+          "type": "integer"
+        },
+        "totalPages": {
+          "description": "Total number of pages",
+          "format": "int32",
+          "type": "integer"
+        },
+        "values": {
+          "description": "Page entries",
+          "items": {
+            "description": "Page entries",
+            "properties": {
+              "amount": {
+                "description": "Amount",
+                "exclusiveMinimum": true,
+                "minimum": 0,
+                "type": "number"
+              },
+              "category1": {
+                "description": "Category 1",
+                "maxLength": 50,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "category2": {
+                "description": "Category 2",
+                "maxLength": 50,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "category3": {
+                "description": "Category 3",
+                "maxLength": 50,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "created": {
+                "description": "Date and time created (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                "format": "date-time",
+                "type": "string"
+              },
+              "description": {
+                "description": "Description",
+                "maxLength": 60,
+                "minLength": 0,
+                "type": "string"
+              },
+              "fees": {
+                "description": "Fees attracted by the transaction",
+                "properties": {
+                  "externalAmount": {
+                    "description": "External fee amount",
+                    "exclusiveMinimum": false,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "internalAmount": {
+                    "description": "Internal fee amount",
+                    "exclusiveMinimum": false,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "totalAmount": {
+                    "description": "Total fee amount",
+                    "exclusiveMinimum": false,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "vatAmount": {
+                    "description": "VAT amount on total fee",
+                    "exclusiveMinimum": false,
+                    "minimum": 0,
+                    "type": "number"
+                  }
+                },
+                "type": "object",
+                "x-nullable": true
+              },
+              "gratuityAmount": {
+                "description": "Gratuity amount",
+                "exclusiveMinimum": false,
+                "minimum": 0,
+                "type": "number",
+                "x-nullable": true
+              },
+              "lastModified": {
+                "description": "Date and time last modified (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                "format": "date-time",
+                "type": "string"
+              },
+              "message": {
+                "description": "Message",
+                "maxLength": 120,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "movementAmount": {
+                "description": "Movement amount",
+                "exclusiveMinimum": false,
+                "minimum": 0,
+                "type": "number"
+              },
+              "systemRefInfo": {
+                "description": "System reference",
+                "maxLength": 36,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "tokenId": {
+                "description": "Token identifier",
+                "type": "string",
+                "x-nullable": true
+              },
+              "tokenRequestId": {
+                "description": "Token request identifier",
+                "type": "string",
+                "x-nullable": true
+              },
+              "transactionStatus": {
+                "description": "Transaction status",
+                "enum": [
+                  "CANCELLED",
+                  "FINALISED",
+                  "PENDING"
+                ],
+                "type": "string"
+              },
+              "txRefInfo": {
+                "description": "Transaction reference",
+                "maxLength": 36,
+                "minLength": 0,
+                "type": "string",
+                "x-nullable": true
+              },
+              "uuid": {
+                "description": "UUID (ISO/IEC 9834-8:201)",
+                "maxLength": 36,
+                "minLength": 36,
+                "type": "string"
+              }
+            },
+            "required": [
+              "amount",
+              "created",
+              "description",
+              "lastModified",
+              "movementAmount",
+              "transactionStatus",
+              "uuid"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "PaymentData": {
+      "description": "Page entries",
+      "properties": {
+        "amount": {
+          "description": "Amount",
+          "exclusiveMinimum": false,
+          "minimum": 0,
+          "type": "number",
+          "x-nullable": true
+        },
+        "created": {
+          "description": "Date and time created (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+          "format": "date-time",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description",
+          "maxLength": 60,
+          "minLength": 0,
+          "type": "string"
+        },
+        "dueDate": {
+          "description": "Due date (ISO8601 yyyy-mm-dd)",
+          "format": "date",
+          "type": "string"
+        },
+        "expiryTime": {
+          "description": "Expiry date and time (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "lastModified": {
+          "description": "Date and time last modified (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+          "format": "date-time",
+          "type": "string"
+        },
+        "payeeCategory1": {
+          "description": "Payee category 1",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "payeeCategory2": {
+          "description": "Payee category 2",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "payeeCategory3": {
+          "description": "Payee category 3",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "payeeRefInfo": {
+          "description": "Payee reference",
+          "maxLength": 36,
+          "minLength": 0,
+          "type": "string"
+        },
+        "requestId": {
+          "description": "Request identifier. Recommended UUID (ISO/IEC 9834-8:201)",
+          "maxLength": 36,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "requestTip": {
+          "description": "Request tip",
+          "type": "boolean",
+          "x-nullable": true
+        },
+        "siteName": {
+          "description": "Site name",
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "siteRefInfo": {
+          "description": "Site reference",
+          "maxLength": 36,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "status": {
+          "description": "Status",
+          "enum": [
+            "COMPLETED",
+            "EXPIRED",
+            "FAILED",
+            "PENDING",
+            "REJECTED",
+            "REVERSED"
+          ],
+          "type": "string"
+        },
+        "tokenId": {
+          "description": "Token identifier",
+          "maxLength": 10,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "useOnce": {
+          "description": "Use once",
+          "type": "boolean",
+          "x-nullable": true
+        },
+        "uuid": {
+          "description": "UUID (ISO/IEC 9834-8:201)",
+          "maxLength": 36,
+          "minLength": 36,
+          "type": "string"
+        }
+      },
+      "required": [
+        "created",
+        "description",
+        "dueDate",
+        "lastModified",
+        "payeeRefInfo",
+        "status",
+        "uuid"
+      ],
+      "type": "object"
+    },
+    "TokenData": {
+      "properties": {
+        "amount": {
+          "description": "Amount",
+          "exclusiveMinimum": false,
+          "minimum": 0,
+          "type": "number",
+          "x-nullable": true
+        },
+        "created": {
+          "description": "Date and time created (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+          "format": "date-time",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description",
+          "maxLength": 60,
+          "minLength": 0,
+          "type": "string"
+        },
+        "dueDate": {
+          "description": "Due date (ISO8601 yyyy-mm-dd)",
+          "format": "date",
+          "type": "string"
+        },
+        "expiryTime": {
+          "description": "Expiry date and time (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "lastModified": {
+          "description": "Date and time last modified (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+          "format": "date-time",
+          "type": "string"
+        },
+        "payeeCategory1": {
+          "description": "Payee category 1",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "payeeCategory2": {
+          "description": "Payee category 2",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "payeeCategory3": {
+          "description": "Payee category 3",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "payeeRefInfo": {
+          "description": "Payee reference",
+          "maxLength": 36,
+          "minLength": 0,
+          "type": "string"
+        },
+        "requestId": {
+          "description": "Request identifier. Recommended UUID (ISO/IEC 9834-8:201)",
+          "maxLength": 36,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "requestTip": {
+          "description": "Request tip",
+          "type": "boolean",
+          "x-nullable": true
+        },
+        "siteName": {
+          "description": "Site name",
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "siteRefInfo": {
+          "description": "Site reference",
+          "maxLength": 36,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "status": {
+          "description": "Status",
+          "enum": [
+            "COMPLETED",
+            "EXPIRED",
+            "FAILED",
+            "PENDING",
+            "REJECTED",
+            "REVERSED"
+          ],
+          "type": "string"
+        },
+        "tokenId": {
+          "description": "Token identifier",
+          "maxLength": 10,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "tokenImage": {
+          "description": "Base64 encoded token image",
+          "type": "string",
+          "x-nullable": true
+        },
+        "useOnce": {
+          "description": "Use once",
+          "type": "boolean",
+          "x-nullable": true
+        },
+        "uuid": {
+          "description": "UUID (ISO/IEC 9834-8:201)",
+          "maxLength": 36,
+          "minLength": 36,
+          "type": "string"
+        }
+      },
+      "required": [
+        "created",
+        "description",
+        "lastModified",
+        "payeeRefInfo",
+        "status",
+        "uuid"
+      ],
+      "type": "object"
+    },
+    "TokenIinput": {
+      "properties": {
+        "amount": {
+          "description": "Amount",
+          "exclusiveMinimum": false,
+          "minimum": 0,
+          "type": "number",
+          "x-nullable": true
+        },
+        "description": {
+          "description": "Description",
+          "maxLength": 60,
+          "minLength": 0,
+          "type": "string"
+        },
+        "dueDate": {
+          "description": "Due date (ISO8601 yyyy-mm-dd)",
+          "format": "date",
+          "type": "string"
+        },
+        "expiryTime": {
+          "description": "Expiry date and time (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "payeeCategory1": {
+          "description": "Payee category 1",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "payeeCategory2": {
+          "description": "Payee category 2",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "payeeCategory3": {
+          "description": "Payee category 3",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "payeeRefInfo": {
+          "description": "Payee reference",
+          "maxLength": 36,
+          "minLength": 0,
+          "type": "string"
+        },
+        "requestId": {
+          "description": "Request identifier. Recommended UUID (ISO/IEC 9834-8:201)",
+          "maxLength": 36,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "requestTip": {
+          "description": "Request tip",
+          "type": "boolean",
+          "x-nullable": true
+        },
+        "requestTokenImage": {
+          "description": "Request token",
+          "type": "boolean",
+          "x-nullable": true
+        },
+        "siteName": {
+          "description": "Site name",
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "siteRefInfo": {
+          "description": "Site reference",
+          "maxLength": 36,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "tokenImageSize": {
+          "default": "SMALL",
+          "description": "Token image size",
+          "enum": [
+            "SMALL",
+            "MEDIUM",
+            "LARGE"
+          ],
+          "type": "string",
+          "x-nullable": true
+        },
+        "useOnce": {
+          "description": "Use once",
+          "type": "boolean",
+          "x-nullable": true
+        }
+      },
+      "required": [
+        "description",
+        "payeeRefInfo"
+      ],
+      "type": "object"
+    },
+    "TransactionData": {
+      "description": "Page entries",
+      "properties": {
+        "amount": {
+          "description": "Amount",
+          "exclusiveMinimum": true,
+          "minimum": 0,
+          "type": "number"
+        },
+        "category1": {
+          "description": "Category 1",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "category2": {
+          "description": "Category 2",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "category3": {
+          "description": "Category 3",
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "created": {
+          "description": "Date and time created (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+          "format": "date-time",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description",
+          "maxLength": 60,
+          "minLength": 0,
+          "type": "string"
+        },
+        "fees": {
+          "description": "Fees attracted by the transaction",
+          "properties": {
+            "externalAmount": {
+              "description": "External fee amount",
+              "exclusiveMinimum": false,
+              "minimum": 0,
+              "type": "number"
+            },
+            "internalAmount": {
+              "description": "Internal fee amount",
+              "exclusiveMinimum": false,
+              "minimum": 0,
+              "type": "number"
+            },
+            "totalAmount": {
+              "description": "Total fee amount",
+              "exclusiveMinimum": false,
+              "minimum": 0,
+              "type": "number"
+            },
+            "vatAmount": {
+              "description": "VAT amount on total fee",
+              "exclusiveMinimum": false,
+              "minimum": 0,
+              "type": "number"
+            }
+          },
+          "type": "object",
+          "x-nullable": true
+        },
+        "gratuityAmount": {
+          "description": "Gratuity amount",
+          "exclusiveMinimum": false,
+          "minimum": 0,
+          "type": "number",
+          "x-nullable": true
+        },
+        "lastModified": {
+          "description": "Date and time last modified (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+          "format": "date-time",
+          "type": "string"
+        },
+        "message": {
+          "description": "Message",
+          "maxLength": 120,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "movementAmount": {
+          "description": "Movement amount",
+          "exclusiveMinimum": false,
+          "minimum": 0,
+          "type": "number"
+        },
+        "systemRefInfo": {
+          "description": "System reference",
+          "maxLength": 36,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "tokenId": {
+          "description": "Token identifier",
+          "type": "string",
+          "x-nullable": true
+        },
+        "tokenRequestId": {
+          "description": "Token request identifier",
+          "type": "string",
+          "x-nullable": true
+        },
+        "transactionStatus": {
+          "description": "Transaction status",
+          "enum": [
+            "CANCELLED",
+            "FINALISED",
+            "PENDING"
+          ],
+          "type": "string"
+        },
+        "txRefInfo": {
+          "description": "Transaction reference",
+          "maxLength": 36,
+          "minLength": 0,
+          "type": "string",
+          "x-nullable": true
+        },
+        "uuid": {
+          "description": "UUID (ISO/IEC 9834-8:201)",
+          "maxLength": 36,
+          "minLength": 36,
+          "type": "string"
+        }
+      },
+      "required": [
+        "amount",
+        "created",
+        "description",
+        "lastModified",
+        "movementAmount",
+        "transactionStatus",
+        "uuid"
+      ],
+      "type": "object"
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    },
+    "bearerAuth": {
+      "name": "Authorization",
+      "type": "apiKey",
+      "in": "header"
+    }
+  },
+  "x-components": {},
+  "host": "tar.tlsag.net",
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ]
+}
