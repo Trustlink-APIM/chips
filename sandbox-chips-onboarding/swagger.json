@@ -1,0 +1,390 @@
+{
+  "swagger" : "2.0",
+  "host" : "apim.trustlinkhosting.com:8065",
+  "basePath" : "/sandbox/chips/onboarding",
+  "schemes" : [ "https" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/mobile/{mobileNumber}" : {
+      "get" : {
+        "description" : "Get a mobile number from the system. For On-boarding the purpose is to check if the mobile number is already registered.",
+        "operationId" : "chips-onboarding-mobile-get",
+        "summary" : "Mobile On-boarding",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "Mobile number to check. Must be in international format.",
+          "required" : true,
+          "in" : "path",
+          "name" : "mobileNumber",
+          "type" : "string"
+        }, {
+          "description" : "The routing key parameter.",
+          "required" : true,
+          "in" : "query",
+          "name" : "version",
+          "type" : "string",
+          "enum" : [ "1.0" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "properties" : {
+                "displayname" : {
+                  "type" : "string"
+                },
+                "guardian" : {
+                  "type" : "boolean"
+                },
+                "uuid" : {
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            }
+          },
+          "400" : {
+            "description" : "Validation Error",
+            "schema" : {
+              "$ref" : "#/definitions/Validation-Error"
+            }
+          },
+          "204" : {
+            "description" : "Mobile number was not found",
+            "schema" : {
+              "properties" : { },
+              "type" : "object"
+            }
+          }
+        }
+      }
+    },
+    "/mobile/otp/request" : {
+      "get" : {
+        "description" : "Request an OTP for a mobile number.",
+        "operationId" : "chips-onboarding-mobile-otp-request",
+        "summary" : "Request OTP",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "Mobile number to send the OTP to. Must be in international format i.e. +27821231234",
+          "required" : true,
+          "in" : "query",
+          "name" : "mobileNumber",
+          "type" : "string"
+        }, {
+          "description" : "Indicator if the OTP must be sent via SMS or USSD",
+          "required" : true,
+          "in" : "query",
+          "name" : "notificationType",
+          "type" : "string"
+        }, {
+          "description" : "The routing key parameter.",
+          "required" : true,
+          "in" : "query",
+          "name" : "version",
+          "type" : "string",
+          "enum" : [ "1.0" ]
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Validation Error",
+            "schema" : {
+              "$ref" : "#/definitions/Validation-Error"
+            }
+          },
+          "204" : {
+            "description" : "OTP Generated and sent."
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "properties" : { },
+              "type" : "object"
+            }
+          }
+        }
+      }
+    },
+    "/mobile/otp/verify" : {
+      "get" : {
+        "description" : "Verify the OTP sent to mobile.",
+        "operationId" : "chips-onboarding-mobile-otp-verify",
+        "summary" : "Verify OTP",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "Mobile number the OTP was generated for. Must be in international format i.e. +27821231234",
+          "required" : true,
+          "in" : "query",
+          "name" : "mobileNumber",
+          "type" : "string"
+        }, {
+          "description" : "One Time Pin",
+          "required" : true,
+          "in" : "query",
+          "name" : "otp",
+          "type" : "string"
+        }, {
+          "description" : "The routing key parameter.",
+          "required" : true,
+          "in" : "query",
+          "name" : "version",
+          "type" : "string",
+          "enum" : [ "1.0" ]
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Validation Error",
+            "schema" : {
+              "$ref" : "#/definitions/Validation-Error"
+            }
+          },
+          "204" : {
+            "description" : "OTP successfully verified."
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "properties" : { },
+              "type" : "object"
+            }
+          }
+        }
+      }
+    },
+    "/person" : {
+      "post" : {
+        "description" : "Create the person in the CHIPS Network backend.",
+        "operationId" : "chips-onboarding-person-post",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "required" : false,
+          "in" : "body",
+          "name" : "body",
+          "schema" : {
+            "required" : [ "displayName", "mobileNumber", "mobileNumberToken", "photo", "identity" ],
+            "properties" : {
+              "referrerUuid" : {
+                "type" : "string"
+              },
+              "displayName" : {
+                "type" : "string"
+              },
+              "email" : {
+                "type" : "string"
+              },
+              "mobileNumber" : {
+                "type" : "string"
+              },
+              "mobileNumberToken" : {
+                "description" : "OTP sent at the start of the onboarding process.",
+                "type" : "string"
+              },
+              "photo" : {
+                "type" : "string"
+              },
+              "identity" : {
+                "description" : "Provide the identity structure that was validated in the previous step.",
+                "required" : [ "identityNumber", "firstNames", "surname", "genderType", "countryOfBirth", "dateOfBirth", "photo" ],
+                "properties" : {
+                  "identityNumber" : {
+                    "type" : "string"
+                  },
+                  "firstNames" : {
+                    "type" : "string"
+                  },
+                  "maidenName" : {
+                    "type" : "string"
+                  },
+                  "surname" : {
+                    "type" : "string"
+                  },
+                  "genderType" : {
+                    "type" : "string"
+                  },
+                  "countryOfBirth" : {
+                    "type" : "string"
+                  },
+                  "dateOfBirth" : {
+                    "description" : "Format yyyy-mm-dd",
+                    "type" : "string"
+                  },
+                  "photo" : {
+                    "description" : "Base 64 encoded photo of the ID book or card",
+                    "type" : "string"
+                  }
+                },
+                "type" : "object"
+              }
+            },
+            "type" : "object"
+          }
+        }, {
+          "description" : "The routing key parameter.",
+          "required" : true,
+          "in" : "query",
+          "name" : "version",
+          "type" : "string",
+          "enum" : [ "1.0" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Profile creatation response.",
+            "schema" : {
+              "properties" : {
+                "guardianUuid" : {
+                  "type" : "string"
+                },
+                "created" : {
+                  "type" : "string"
+                },
+                "mobileNumber" : {
+                  "type" : "string"
+                },
+                "displayName" : {
+                  "type" : "string"
+                },
+                "verificationLevel" : {
+                  "type" : "string"
+                },
+                "uuid" : {
+                  "type" : "string"
+                },
+                "createdBy" : {
+                  "type" : "string"
+                },
+                "identityNumber" : {
+                  "type" : "string"
+                },
+                "requestId" : {
+                  "type" : "string"
+                },
+                "referrerUuid" : {
+                  "type" : "string"
+                },
+                "modifiedBy" : {
+                  "type" : "string"
+                },
+                "lastModified" : {
+                  "type" : "string"
+                },
+                "email" : {
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/Validation-Error"
+            }
+          }
+        }
+      }
+    },
+    "/identity/verify" : {
+      "post" : {
+        "description" : "The individual is required to provide data for verification against home affairs. This includes taking a photo of their ID book or ID Card.",
+        "operationId" : "chips-onboarding-identity-verify-post",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "description" : "ID Verification Data",
+          "required" : false,
+          "in" : "body",
+          "name" : "body",
+          "schema" : {
+            "required" : [ "identityNumber", "firstName", "surname", "genderType", "countryOfBirth", "photo" ],
+            "properties" : {
+              "identityNumber" : {
+                "type" : "string"
+              },
+              "firstName" : {
+                "type" : "string"
+              },
+              "maidenName" : {
+                "type" : "string"
+              },
+              "surname" : {
+                "type" : "string"
+              },
+              "genderType" : {
+                "type" : "string"
+              },
+              "countryOfBirth" : {
+                "type" : "string"
+              },
+              "photo" : {
+                "description" : "Base 64 encoded photo of the ID book / card",
+                "type" : "string"
+              }
+            },
+            "type" : "object"
+          }
+        }, {
+          "description" : "The routing key parameter.",
+          "required" : true,
+          "in" : "query",
+          "name" : "version",
+          "type" : "string",
+          "enum" : [ "1.0" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Result of verification true/false",
+            "schema" : {
+              "type" : "boolean"
+            }
+          },
+          "400" : {
+            "description" : "Validation Error",
+            "schema" : {
+              "$ref" : "#/definitions/Validation-Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Validation-Error" : {
+      "title" : "Validation Error",
+      "description" : "Error description for 400 Bad Request responses",
+      "properties" : {
+        "key" : {
+          "type" : "string"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "detail" : {
+          "type" : "string"
+        }
+      },
+      "type" : "object"
+    }
+  },
+  "securityDefinitions" : {
+    "API Key" : {
+      "type" : "apiKey",
+      "description" : "API Key",
+      "name" : "marketplaceKeyId",
+      "in" : "header"
+    }
+  },
+  "security" : [ {
+    "API Key" : [ ]
+  } ],
+  "info" : {
+    "title" : "[Sandbox] CHIPS Onboarding",
+    "description" : "The CHIPS payment platform enables registered users/merchants to create a payment request token that can be paid with various MasterPass enabled payment applications available on the South African payments landscape.\n\nThird parties can build their own wallet with the CHIPS&reg; Value Store as the backend. The third party application will need to on-board their users into the CHIPS&reg; Payment Network.\n\nAPI Steps for on-boarding an individual into the CHIPS network:\n1. Check that the mobile number for the user does not exist already.\n1. Send an OTP to the mobile via SMS or USSD.\n1. Verify the OTP.\n1. The individual now needs to provide data to validate against home affairs. This include a photo of their ID book or card.\n1. Now the person can be created in the system.",
+    "version" : "1.0",
+    "x-summary" : "APIs to verify and add people to the CHIPS Network"
+  }
+}
