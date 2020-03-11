@@ -407,12 +407,13 @@
         }
       },
       "post" : {
-        "description" : "Generate a CHIPS MasterPass token.\n\nFor more details see\n* [Stopligth Documentation](https://stoplight.io/p/docs/gh/trustlink-apim/chips/reference/chipsmerchantgateway.json/paths/~1tokens/post)\n* [MasterPass Token Display Documentation](https://marketplace.trustlinkhosting.com)",
+        "description" : "Generate a CHIPS MasterPass token.\n\n\n\nView in\n* [Stoplight](https://stoplight.io/p/docs/gh/trustlink-apim/chips/sandbox-chips-payments-masterpass/swagger.json/paths/~1tokens/post)\n\nFor more details see\n* [MasterPass Token Display Documentation](https://marketplace.trustlinkhosting.com)",
         "operationId" : "chips_create_masterpass_token",
         "summary" : "Create a payment request",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
+          "description" : "",
           "required" : true,
           "in" : "body",
           "name" : "body",
@@ -420,11 +421,11 @@
             "required" : [ "description", "payeeRefInfo" ],
             "properties" : {
               "amount" : {
-                "description" : "Amount to generate the QR code for.",
+                "description" : "Amount to generate the QR code for. The amount will be displayed to the scanner of the QR code in order for them to confirm.\nIf omitted, the QR scanner can populate their own amount.",
                 "type" : "number"
               },
               "description" : {
-                "description" : "Description",
+                "description" : "Description for the transaction. This will be displayed to the scanner of the QR code.",
                 "type" : "string"
               },
               "dueDate" : {
@@ -433,7 +434,7 @@
                 "type" : "string"
               },
               "expiryTime" : {
-                "description" : "Expiry date and time (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                "description" : "Expiry date and time (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ). After this time scanning the QR will result in an invalid QR response.",
                 "format" : "date-time",
                 "type" : "string"
               },
@@ -487,7 +488,7 @@
             "type" : "object"
           }
         }, {
-          "description" : "Basic token",
+          "description" : "Merchant UUID and Device API Key Authentication.",
           "required" : false,
           "in" : "header",
           "name" : "Authorization",
@@ -1182,7 +1183,7 @@
   } ],
   "info" : {
     "title" : "[Sandbox] CHIPS Masterpass Gateway",
-    "description" : "The CHIPS payment platform enables registered users/merchants to create a payment request token that can be paid with various MasterPass enabled payment applications available on the South African payments landscape.\n\n# Prerequisites\nSubscribe to the CHIPS Payment Network APIs on the [Trustlink API Marketplace](https://marketplace.trustlinkhosting.com/component/apiportal/registration)\n\n# Environments\n\n---\n## **Sandbox**\n*CHIPS&reg; test environment*\n \n**Steps to getting started:**\n1. Register a company (test merchant) on the [miBusiness test web application](https://tar.qa.tlsag.net/mb/app)\n    1. You will have to fill is an online form to create the business on the test environment.\n1. Add a device in the miBusiness portal inder the *'Connect device -> Manage payment devices'* menu option.\n    1. You will have to specify the test URI for the webhook where confirmations of payment will be delivered.\n    1. An API key and Hash key for the test environment will automatically be created. \n\n---\n## **Production**\n*CHIPS&reg; test environment* \n\n**Steps to getting started:**\n1. Register your business on the [CHIPS&reg; merchant on-boarding portal](https://merchant.chips.co.za)\n    1. You will receive your live miBusiness credentials via email.\n1. Add a device in the miBusiness portal inder the *'Connect device -> Manage payment devices'* menu option.\n    1. You will have to specify the live URI for the webhook where confirmations of payment will be delivered.\n    1. An API key and Hash key for the test environment will automatically be created. |\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. Trustlink Marketplace Confedential App Terms and Conditions\n2. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n3. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)",
+    "description" : "The CHIPS payment platform enables registered users/merchants to create a payment request token that can be paid with various MasterPass enabled payment applications available on the South African payments landscape.\n\n# Prerequisites\nSubscribe to the CHIPS Payment Network APIs on the [Trustlink API Marketplace](https://marketplace.trustlinkhosting.com/component/apiportal/registration)\n\n# Environments\n---\n## **Sandbox**\n*CHIPS&reg; test environment* \n \n**Steps to getting started:**\n1. Register a company (test merchant) on the [miBusiness test web application](https://tar.qa.tlsag.net/mb/app)\n    1. You will have to fill is an online form to create the business on the test environment.\n1. Add a device in the miBusiness portal inder the *'Connect device -> Manage payment devices'* menu option.\n    1. You will have to specify the test URI for the webhook where confirmations of payment will be delivered.\n    1. An API key and Hash key for the test environment will automatically be created. \n\n---\n## **Production**\n*CHIPS&reg; test environment* \n\n**Steps to getting started:**\n1. Register your business on the [CHIPS&reg; merchant on-boarding portal](https://merchant.chips.co.za)\n    1. You will receive your live miBusiness credentials via email.\n1. Add a device in the miBusiness portal inder the *'Connect device -> Manage payment devices'* menu option.\n    1. You will have to specify the live URI for the webhook where confirmations of payment will be delivered.\n    1. An API key and Hash key for the test environment will automatically be created. |\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. Trustlink Marketplace Confedential App Terms and Conditions\n2. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n3. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)",
     "version" : "1.0",
     "x-summary" : "Allows CHIPS merchants to embedded Masterpass QR codes at paypoints."
   }
