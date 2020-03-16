@@ -1,9 +1,5 @@
 # API Marketplace Data Type
 
-## Index
-* Phone numbers
-
-
 ## Phone numbers
 Phone numbers can occur in a number of formats and in different parts of an API call. 
 For APIs in the Marketplace the format defaults to international format i.e. +\<countryCode\>\<number\>. For example a South African number would look like this +27821231234.
