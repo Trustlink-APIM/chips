@@ -13,9 +13,9 @@
             "url": "https://marketplace.trustlinkhosting.com",
             "email": "apisales@trustlink.co.za"
         },
-        "description": "The CHIPS payment platform enables registered users/merchants to create a payment request token that can be paid with various MasterPass enabled payment applications available on the South African payments landscape.\n\nThird parties can build their own wallet with the CHIPS&reg; Value Store as the backend. The third party application will need to on-board their users into the CHIPS&reg; Payment Network.\n\n# Overview\n![CHIPS Onboarding Sequence Diagram](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/Onboarding-SequenceDiagram.png)\n\nFor more info on CHIPS&reg; and the Trustlink API Marplace se see:\n* [CHIPS home page](https://chips.co.za)\n* [CHIPS for businesses](https://www.chips.co.za/payment-network/index.php/businesses)\n\n\n# Getting Started\n* Register on the [Trustlink API Marketplace](https://marketplace.trustlinkhosting.com/component/apiportal/registration)\n* Send an email requesting access to the CHIPS Point of Sale: Token Based Payment API to apisales@trustlink.co.za\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n1. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)\n\n"
+        "description": "The CHIPS payment platform enables registered users/merchants to create a payment request token that can be paid with various MasterPass enabled payment applications available on the South African payments landscape.\n\nThird parties can build their own wallet with the CHIPS&reg; Value Store as the backend. The third party application will need to on-board their users into the CHIPS&reg; Payment Network.\n\n# Overview\n![CHIPS Onboarding Sequence Diagram](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/Onboarding-SequenceDiagram.png)\n\n[![Test It](https://marketplace.trustlinkhosting.com/images/Trustlink/TestIt.png)](https://stoplight.io/p/docs/gh/trustlink-apim/chips/docs/2-CHIPS-for-Individuals/01-CHIPS-Onboarding.md)\n\n\n* [Business details](https://marketplace.trustlinkhosting.com/api-documentation/api-publishers/chips-open-banking-platform/chips-user-onboarding)\n* [Technical guides](https://stoplight.io/p/docs/gh/trustlink-apim/chips)\n\n\n\nFor more info on CHIPS&reg;:\n* [CHIPS home page](https://chips.co.za)\n* [CHIPS for business](https://www.chips.co.za/payment-network/index.php/businesses)\n\n\n# Getting Started\n* Register on the [Trustlink API Marketplace](https://marketplace.trustlinkhosting.com/component/apiportal/registration)\n* Send an email requesting access to the CHIPS Point of Sale: Token Based Payment API to apisales@trustlink.co.za\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n1. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)\n\n"
     },
-    "host": "apim.trustlinkhosting.com:8065",
+    "host": "marketplace-qa.trustlinkhosting.com:8165",
     "schemes": [
         "https"
     ],
@@ -446,6 +446,10 @@
                             }
                         }
                     },
+                    "429": {
+                        "description": "Too Many Requests",
+                        "schema": {}
+                    },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
@@ -549,7 +553,7 @@
                     }
                 },
                 "operationId": "chips-register-status-get",
-                "description": "Check registration status based on mobile number. If the number exists, the user is already onboarded.\n\n\n## Examples\n\n<!--\ntype: tab\ntitle: Mobile Not Found\n-->\n\n### The request\n\n\n```json http\n{\n  \"method\": \"get\",\n  \"url\": \"https://apim.trustlinkhosting.com:8065/sandbox/chips/onboarding/mobile/+27829999999\",\n  \"query\": {\n    \"version\": \"1.0\"\n  },\n  \"headers\": {\n    \"marketplaceKeyId\": \"<add>\"\n  }\n}\n```\n\n\n\n<!--\ntype: tab\ntitle: Mobile Found\n-->\n\n### The request\n```json http\n{\n  \"method\": \"get\",\n  \"url\": \"https://apim.trustlinkhosting.com:8065/sandbox/chips/onboarding/mobile/+27821231234\",\n  \"query\": {\n    \"version\": \"1.0\"\n  },\n  \"headers\": {\n    \"marketplaceKeyId\": \"<add>\"\n  }\n}\n```\n\n\n<!-- type: tab-end -->\n\n## Tech Stuff\n",
+                "description": "Check registration status based on mobile number. If the number exists, the user is already onboarded.\n\n**Mockups**\nThe following mobileNumbers will have the following mock responses for Storefront and Sandbox APIs. \n\n<!-- title: Mock ups -->\n| mobileNumber | registered | uuid | maskedName | \n|---|---|---|---|\n| +27851231234 | true | dfc4b21d-c87e-41e1-a775-fb5ba3ab85a2 | T... A.....t |\n| +27853453456 | true | 176194f5-118d-41fa-bd65-e04b78b8a49a | G....e M.......d |\n| +27856786789 | false |  |  |\n| +27851112233 | false |  |  |\n\n## Examples\n\n<!--\ntype: tab\ntitle: Mobile Not Found\n-->\n\n### The request\n\n\n```json http\n{\n  \"method\": \"get\",\n  \"url\": \"https://apim.trustlinkhosting.com:8065/sandbox/chips/onboarding/mobile/+27829999999\",\n  \"query\": {\n    \"version\": \"1.0\"\n  },\n  \"headers\": {\n    \"marketplaceKeyId\": \"<add>\"\n  }\n}\n```\n\n\n\n<!--\ntype: tab\ntitle: Mobile Found\n-->\n\n### The request\n```json http\n{\n  \"method\": \"get\",\n  \"url\": \"https://apim.trustlinkhosting.com:8065/sandbox/chips/onboarding/mobile/+27821231234\",\n  \"query\": {\n    \"version\": \"1.0\"\n  },\n  \"headers\": {\n    \"marketplaceKeyId\": \"<add>\"\n  }\n}\n```\n\n\n<!-- type: tab-end -->\n\n## Tech Stuff\n",
                 "parameters": [
                     {
                         "type": "string",
@@ -870,6 +874,10 @@
                             }
                         }
                     },
+                    "429": {
+                        "description": "Too Many Requests",
+                        "schema": {}
+                    },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
@@ -972,7 +980,7 @@
                         }
                     }
                 },
-                "description": "Request an OTP for a mobile number. The number will receive an SMS:\n\n> OTP: xxxxx\n> \n> Your CHIPS generated verification code\n\n**Note on sandbox testing**\n> The OTP send to the phone does incur costs. For testing to the sandbox, the number of calls to the endpoint is rate limited.\n",
+                "description": "Request an OTP for a mobile number. The number will receive an SMS:\n\n```\nOTP: xxxxx\nYour CHIPS generated verification code\n```\n\n> **Sandbox testing**\n>\n> The OTP sent to the phone does incur costs. For testing to the sandbox, the number of calls to the endpoint is rate limited.\n> You can test with mobileNumbers starting with '+2785' to trigger a mockup success response.\n\n> **Storefront testing**\n> \n> All requests to the storefront OTP will return a mockup success response",
                 "parameters": [
                     {
                         "type": "string",
