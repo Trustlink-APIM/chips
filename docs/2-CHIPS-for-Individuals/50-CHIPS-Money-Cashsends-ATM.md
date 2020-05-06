@@ -35,13 +35,5 @@ Fees depend on the amount that will be sent in the ATM voucher.
 >
 > The 'totalAmount' returned by GET /cashsends/atm/fees will be deducted from the CHIPS&reg; account in addition to the ammount specified for the withdrawal
 
-### Request the ATM Voucher
-
-
-
-
-## Getting started
-* [Sign up](https://marketplace.trustlinkhosting.com/component/apiportal/registration) for a Trustlink API Marketplace account.
-* Send an email to apisales@trustlink.co.za with the API endpoints your are interested in.
 
 
