@@ -25,7 +25,7 @@ The CHIPS&reg; Money API allow the following transactions
 * Account balance. 
 * Cash in at supported stores.
 * Cash out at supported stores.
-* Cash out for account holder or contact at supported ATMs.
+* Cash out for account holder or contact at supported ATMs. [Try it!][stoplight-chips-money-cashsends-atm]
 * CHIPS&reg; money payments to other CHIPS&reg; users
 * Payments at any merchant with Masterpass, Zapper or SnapScan capable point-of-sale. 
 
@@ -40,3 +40,4 @@ Using CHIPS as a merchant allows you to build a number of payment options into s
 
 
 
+[stoplight-chips-money-cashsends-atm]: https://stoplight.io/p/docs/gh/trustlink-apim/chips/docs/CHIPS%20for%20Individuals/50-CHIPS-Money-Cashsends-ATM.md
