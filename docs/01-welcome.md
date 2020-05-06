@@ -13,7 +13,7 @@ type: tab
 title: Onboarding API
 -->
 
-The CHIPS&reg; Onboarding APIs allows users to be registered for CHIPS&reg; accounts.
+The CHIPS&reg; Onboarding APIs allows users to be registered for CHIPS&reg; accounts. [Try it!][stoplight-chips-onboarding]
 
 
 <!--
@@ -40,4 +40,5 @@ Using CHIPS as a merchant allows you to build a number of payment options into s
 
 
 [Trustlink API Marketplace]: (https://marketplace.trustlinkhosting.com)
-[stoplight-chips-money-cashsends-atm]: ./CHIPS-for-Individuals/50-CHIPS-Money-Cashsends-ATM.md
+[stoplight-chips-onboarding]: ./2-CHIPS-for-Individuals/01-CHIPS-Onboarding.md
+[stoplight-chips-money-cashsends-atm]: ./2-CHIPS-for-Individuals/50-CHIPS-Money-Cashsends-ATM.md
