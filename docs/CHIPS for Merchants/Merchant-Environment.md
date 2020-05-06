@@ -15,7 +15,7 @@ title: Sandbox
 
 ## Steps to getting started
 
-1.  Register a company (test merchant) on the [miBusiness test web application](https://tar.qa.tlsag.net/mb/app)
+1.  Register a company (test merchant) on the [miBusiness test web application](https://tar.sandbox.tlsag.net/mb/app)
     1. You will have to fill is an online form to create the business on the test environment.
 
 <!--
