@@ -23,7 +23,8 @@ Fees depend on the amount that will be sent in the ATM voucher.
   "method": "get",
   "url": "https://apim.trustlinkhosting.com:8065/sandbox/chips/money/cashsends/atm/fees",
   "query": {
-    "amount": "300"
+    "amount": "300",
+    "version: "1.0"
   },
   "headers": {
     "Authorization": "DEMO MjE3MDJhZWYtYTkwMi00YmU0LTgxNTUtNjk3OTljNWY0MjczOmIyNzAyNmZhLTlkYWUtNDcwOS05MzQxLTFiYWFjOGJlMzc3NA==",
@@ -33,7 +34,7 @@ Fees depend on the amount that will be sent in the ATM voucher.
 ```
 > **Note on Fees**
 >
-> The 'totalAmount' returned by GET /cashsends/atm/fees will be deducted from the CHIPS&reg; account in addition to the ammount specified for the withdrawal
+> The 'totalAmount' returned by GET /cashsends/atm/fees will be deducted from the CHIPS&reg; account in addition to the amount specified for the withdrawal
 
 
 

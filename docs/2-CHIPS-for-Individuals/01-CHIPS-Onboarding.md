@@ -22,23 +22,105 @@ type: tab
 title: Mobile number not registered
 -->
 
-# Content!
-
-Sweet, beautiful content, ready to blow your readers' minds.
+```json http
+{
+  "method": "get",
+  "url": "https://apim.trustlinkhosting.com:8065/sandbox/chips/register/status",
+  "query": {
+    "mobileNumber": "+27852223333",
+    "version": "1.0"
+  },
+  "headers": {
+    "marketplaceKeyId": "cc8d4f9b-bda5-4025-9b95-a0896242edb1"
+  }
+}
+```
 
 <!--
 type: tab
 title: Mobile number already registered 
 -->
 
-# More Content!
+Testing with a mobile number that is register to George MacDonald.
 
-With more mind-blowing material. Really. Just amazing, grade-A stuff.
+```json http
+{
+  "method": "get",
+  "url": "https://apim.trustlinkhosting.com:8065/sandbox/chips/register/status",
+  "query": {
+    "mobileNumber": "+27853453456",
+    "version": "1.0"
+  },
+  "headers": {
+    "marketplaceKeyId": "cc8d4f9b-bda5-4025-9b95-a0896242edb1"
+  }
+}
+```
 
 <!-- type: tab-end -->
+[Full API documentation](https://stoplight.io/p/docs/gh/trustlink-apim/chips/reference/sandbox-chips-register/swagger.json/paths/~1status/get)
 
+## Confirm the user's mobile number with OTP
 
+### Request an OTP for the mobile number
+```json http
+{
+  "method": "get",
+  "url": "https://apim.trustlinkhosting.com:8065/sandbox/chips/register/mobile/otp",
+  "query": {
+    "mobileNumber": "+27852223334",
+    "version": "1.0"
+  },
+  "headers": {
+    "marketplaceKeyId": "cc8d4f9b-bda5-4025-9b95-a0896242edb1"
+  }
+}
+```
 
+<!--
+type: tab
+title: Successful OTP verification
+-->
+```json http
+{
+  "method": "post",
+  "url": "https://apim.trustlinkhosting.com:8065/sandbox/chips/register/mobile/otp",
+  "query": {
+    "version": "1.0"
+  },
+  "headers": {
+    "marketplaceKeyId": "cc8d4f9b-bda5-4025-9b95-a0896242edb1",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "mobileNumber": "+27852223334",
+    "otp": "45361"
+  }
+}
+```
+<!--
+type: tab
+title: Failed OTP verification
+-->
+```json http
+{
+  "method": "post",
+  "url": "https://apim.trustlinkhosting.com:8065/sandbox/chips/register/mobile/otp",
+  "query": {
+    "version": "1.0"
+  },
+  "headers": {
+    "marketplaceKeyId": "cc8d4f9b-bda5-4025-9b95-a0896242edb1",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "mobileNumber": "+27852223334",
+    "otp": "45678"
+  }
+}
+```
+<!-- type: tab-end -->
+[Full API documentation](https://stoplight.io/p/docs/gh/trustlink-apim/chips/reference/sandbox-chips-register/swagger.json/paths/~1mobile~1otp/post)
 
 
 

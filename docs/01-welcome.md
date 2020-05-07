@@ -3,10 +3,10 @@ tags: [CHIPS]
 ---
 
 # Welcome to CHIPS&reg; API
-The CHIPS&reg; API catalog on the [Trustlink API Marketplace] gives you access to the CHIPS&reg; Payment Platform. The APIs and tools on the platform allow development of applications for Business and Individuals.
+The CHIPS&reg; API catalog on the [Trustlink API Marketplace] gives you access to the CHIPS&reg; Payment Platform. The APIs and tools on the platform allow development of applications for Business and Individuals to join the digital money space.
 
 ## Individuals API
-The CHIPS Money API as base gives you the capability to build applications for individuals that will benefit from transaction costs vs traditional bank and allow current cash only people to join in the digital cash space
+The CHIPS Money API, as base, gives you the capability to build applications for individuals that will benefit from transaction costs vs traditional banks and allow current cash only people to join in the digital cash space.
 
 <!--
 type: tab
@@ -39,6 +39,6 @@ Using CHIPS as a merchant allows you to build a number of payment options into s
 
 
 
-[Trustlink API Marketplace]: (https://marketplace.trustlinkhosting.com)
+[Trustlink API Marketplace]: https://marketplace.trustlinkhosting.com
 [stoplight-chips-onboarding]: ./2-CHIPS-for-Individuals/01-CHIPS-Onboarding.md
 [stoplight-chips-money-cashsends-atm]: ./2-CHIPS-for-Individuals/50-CHIPS-Money-Cashsends-ATM.md
