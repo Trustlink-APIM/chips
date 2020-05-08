@@ -15,7 +15,7 @@ You can start to test with the Storefront APIs below (See [How it works](../06-h
 
 # Flow
 ## User sign up 
-Once the user indicates that they want to sign up for a CHIPS&reg; profile and account a check is done to see is the mobile number has been registered before or not.
+Once the user indicates that they want to sign up for a CHIPS&reg; profile and account, a check is done to see if the mobile number has been registered before or not.
 
 <!--
 type: tab
