@@ -1724,7 +1724,7 @@
                     }
                 },
                 "operationId": "chips-get-account",
-                "description": "Get account details including balance.\n\n**Testing on Storefront and Sandbox**\n\nThe following uuid will have the following mocked responses for [Storefront][How to call a storefront API] and Sandbox APIs. \n\n| uuid | status |availableBalanceAmount |  \n|---|:---:|---:|\n| 0cd75155-6e60-4471-b0b1-4563ab36676c | 200 | 345.05 |\n| fbb9f3a7-402f-432d-8293-d3c0f63d3c4d | 200 | 1234.56 |\n| 87d2e18b-fc62-4400-bb0c-24342218b1b9 | 404 |  |\n| 3b814435-02cb-43da-9869-1c90f8e9aa4e | 404 | |\n\n\n[How to call a storefront API]: ../../docs/06-how-it-works.md?srn=gh/trustlink-apim/chips/docs/06-how-it-works.md#storefront-apis",
+                "description": "Get account details including balance.\n\n**Testing on Storefront and Sandbox**\n\nThe following uuid will have the following mocked responses for [Storefront][How to call a storefront API] and Sandbox APIs. \n\n| uuid | status |availableBalanceAmount |  \n|---|:---:|---:|\n| 0cd75155-6e60-4471-b0b1-4563ab36676c | 200 | 345.05 |\n| fbb9f3a7-402f-432d-8293-d3c0f63d3c4d | 200 | 1234.56 |\n| 87d2e18b-fc62-4400-bb0c-24342218b1b9 | 404 |  |\n| 3b814435-02cb-43da-9869-1c90f8e9aa4e | 404 | |\n\n\n[How to call a storefront API]: https://stoplight.io/p/docs/gh/trustlink-apim/chips/docs/06-how-it-works.md?srn=gh/trustlink-apim/chips/docs/06-how-it-works.md#storefront-apis",
                 "parameters": [
                     {
                         "type": "string",
