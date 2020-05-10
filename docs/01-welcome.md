@@ -40,6 +40,6 @@ Using CHIPS as a merchant allows you to build several payment options into your 
 
 
 [Trustlink API Marketplace]: https://marketplace.trustlinkhosting.com
-[chips-account-details-flow]: https://marketplace.trustlinkhosting.com/chips-account-details-flow
-[chips-register-flow]: https://marketplace.trustlinkhosting.com/chips-register-flow
-[chips-money-cashsends-atm-flow]: https://marketplace.trustlinkhosting.com/chips-money-cashsends-atm-flow
+[chips-account-details-flow]: ./docs/2-CHIPS-for-Individuals/20-CHIPS-Money-Account.md
+[chips-register-flow]: ./docs/2-CHIPS-for-Individuals/01-CHIPS-Onboarding.md
+[chips-money-cashsends-atm-flow]: ./docs/2-CHIPS-for-Individuals/50-CHIPS-Money-Cashsends-ATM.md
