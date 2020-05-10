@@ -1,1253 +1,1786 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "title": "CHIPS Money API",
-    "version": "1.0",
-    "license": {
-      "name": " Apache 2.0 License",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    },
-    "termsOfService": " https://marketplace.trustlinkhosting.com",
-    "contact": {
-      "name": "API Sales",
-      "url": "https://marketplace.trustlinkhosting.com",
-      "email": "apisales@trustlink.co.za"
-    },
-    "description": "The CHIPS Money API utilizes the CHIPS Payment Network that allows creation of user ecosystem via and App in order for users to convert cash to CHIPS at supported ATMs and Store, make CHIPS user to CHIPS user Payments, Scan to pay and code to pay at supported stores and convert CHIPS to cash at supported ATMs and stores.\n\n# Overview\n\n\n\nSee more info on the business processes and technical processes below\n* [API example flow]\n\n\nFor more info on CHIPS&reg; and the Trustlink API Marplace se see:\n* [CHIPS home page](https://chips.co.za)\n\n\n# Getting Started\n* Register on the [Trustlink API Marketplace](https://marketplace.trustlinkhosting.com/component/apiportal/registration)\n* Send an email requesting access to the CHIPS Money API to apisales@trustlink.co.za\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n1. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)\n1. Trustlink API Marketplace Usage and Authorization Terms and Conditions\n\n"
-  },
-  "host": "apim.trustlinkhosting.com:8065",
-  "schemes": [
-    "https"
-  ],
-  "produces": [
-    "application/json"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "paths": {
-    "/cashsends/atm": {
-      "post": {
-        "summary": "SMS ATM Cash Voucher",
-        "operationId": "chips-post-cashsend-atm",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "title": "CHIPS Cash Send 200 Success",
-              "type": "object",
-              "x-tags": [
-                "Cash Send"
-              ],
-              "description": "",
-              "properties": {
-                "uuid": {
-                  "description": "UUID (ISO/IEC 9834-8:201)",
-                  "maxLength": 36,
-                  "minLength": 36,
-                  "type": "string"
-                },
-                "transaction": {
-                  "description": "Cash send transactions",
-                  "type": "array",
-                  "items": {
-                    "description": "Cash send transactions",
-                    "type": "object",
-                    "properties": {
-                      "transactionType": {
-                        "description": "Transaction type",
-                        "enum": [
-                          "COMMISSION",
-                          "FEE",
-                          "FUNDING",
-                          "INTEREST",
-                          "LIQUIDITY",
-                          "PAYMENT",
-                          "PAY_IN",
-                          "PAY_OUT",
-                          "REVERSAL"
-                        ],
-                        "type": "string"
-                      },
-                      "uuid": {
-                        "description": "Transaction UUID (ISO/IEC 9834-8:201)",
-                        "maxLength": 36,
-                        "minLength": 36,
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "transactionType",
-                      "uuid"
-                    ]
-                  }
-                },
-                "status": {
-                  "description": "Status",
-                  "enum": [
-                    "CANCELLED",
-                    "FINALISED",
-                    "PENDING",
-                    "REVERSED"
-                  ],
-                  "type": "string"
-                },
-                "requestId": {
-                  "description": "External request identifier. Recommended UUID (ISO/IEC 9834-8:201)",
-                  "maxLength": 36,
-                  "minLength": 0,
-                  "type": "string",
-                  "x-nullable": true
-                },
-                "provider": {
-                  "description": "Cash send provider",
-                  "enum": [
-                    "FNB",
-                    "NEDBANK"
-                  ],
-                  "type": "string"
-                },
-                "payerRefInfo": {
-                  "description": "External reference to be displayed on the payers transaction history",
-                  "maxLength": 36,
-                  "minLength": 0,
-                  "type": "string"
-                },
-                "payerAccountUuid": {
-                  "description": "Payer account UUID (ISO/IEC 9834-8:201)",
-                  "maxLength": 36,
-                  "minLength": 36,
-                  "type": "string"
-                },
-                "modifiedBy": {
-                  "description": "Member UUID (ISO/IEC 9834-8:201)",
-                  "type": "string",
-                  "x-nullable": true
-                },
-                "mobileNumber": {
-                  "description": "Mobile number of the recipient",
-                  "maxLength": 15,
-                  "minLength": 0,
-                  "pattern": "^((\\+[1-9]?[0-9])|0)?[7-9][0-9]{9}$",
-                  "type": "string"
-                },
-                "lastModified": {
-                  "description": "Date and time last modified (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
-                  "format": "date-time",
-                  "type": "string"
-                },
-                "createdBy": {
-                  "description": "Member UUID (ISO/IEC 9834-8:201)",
-                  "type": "string",
-                  "x-nullable": true
-                },
-                "created": {
-                  "description": "Date and time created (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
-                  "format": "date-time",
-                  "type": "string"
-                },
-                "amount": {
-                  "description": "Amount",
-                  "exclusiveMinimum": true,
-                  "minimum": 0,
-                  "type": "number"
-                }
-              },
-              "required": [
-                "uuid",
-                "status",
-                "provider",
-                "payerAccountUuid",
-                "lastModified",
-                "created",
-                "amount"
-              ]
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "title": "CHIPS Error",
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string"
-                },
-                "code": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "apimStatus": {
-                  "type": "object",
-                  "title": "Status",
-                  "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
-                  "x-examples": {
-                    "Success": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "200",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Lookup failure": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "404",
-                        "providerMsg": "Not Found",
-                        "userMsg": "Item requested was not found",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Authorization Error": {
-                      "apimStatus": {
-                        "marketplaceCode": 401,
-                        "marketplaceMsg": "Unauthorized",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    }
-                  },
-                  "x-tags": [
-                    "API Marketplace Core"
-                  ],
-                  "properties": {
-                    "marketplaceCode": {
-                      "type": "integer",
-                      "example": 450,
-                      "description": "Indicates status on the marketplace layer. ",
-                      "title": "Markerplace layer status code"
-                    },
-                    "marketplaceMsg": {
-                      "type": "string",
-                      "title": "Human readable message to provide more details on the *marketplaceCode*.",
-                      "default": "Success",
-                      "example": "An API subscription application for the requested URI was not found.",
-                      "description": "Human readable description providing details about the error. On success the value will be 'Success'"
-                    },
-                    "providerCode": {
-                      "type": "string",
-                      "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
-                      "example": "ERRDB04"
-                    },
-                    "providerMsg": {
-                      "type": "string",
-                      "example": "Table not found",
-                      "description": "Error message passed by provider"
-                    },
-                    "userMsg": {
-                      "type": "string",
-                      "example": "Your cart was not found.",
-                      "description": "User friendly message"
-                    },
-                    "statusCode": {
-                      "type": "integer",
-                      "description": "Same as the http status code",
-                      "example": 200
-                    },
-                    "marketplaceId": {
-                      "type": "string",
-                      "description": "Marketplace request id for support and tracing queries.",
-                      "example": "Id-ae65955ee8063fdc870e1758"
-                    },
-                    "marketplaceMocked": {
-                      "type": "boolean",
-                      "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
-                    }
-                  },
-                  "required": [
-                    "statusCode",
-                    "marketplaceId"
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "title": "CHIPS Error",
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string"
-                },
-                "code": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "apimStatus": {
-                  "type": "object",
-                  "title": "Status",
-                  "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
-                  "x-examples": {
-                    "Success": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "200",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Lookup failure": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "404",
-                        "providerMsg": "Not Found",
-                        "userMsg": "Item requested was not found",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Authorization Error": {
-                      "apimStatus": {
-                        "marketplaceCode": 401,
-                        "marketplaceMsg": "Unauthorized",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    }
-                  },
-                  "x-tags": [
-                    "API Marketplace Core"
-                  ],
-                  "properties": {
-                    "marketplaceCode": {
-                      "type": "integer",
-                      "example": 450,
-                      "description": "Indicates status on the marketplace layer. ",
-                      "title": "Markerplace layer status code"
-                    },
-                    "marketplaceMsg": {
-                      "type": "string",
-                      "title": "Human readable message to provide more details on the *marketplaceCode*.",
-                      "default": "Success",
-                      "example": "An API subscription application for the requested URI was not found.",
-                      "description": "Human readable description providing details about the error. On success the value will be 'Success'"
-                    },
-                    "providerCode": {
-                      "type": "string",
-                      "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
-                      "example": "ERRDB04"
-                    },
-                    "providerMsg": {
-                      "type": "string",
-                      "example": "Table not found",
-                      "description": "Error message passed by provider"
-                    },
-                    "userMsg": {
-                      "type": "string",
-                      "example": "Your cart was not found.",
-                      "description": "User friendly message"
-                    },
-                    "statusCode": {
-                      "type": "integer",
-                      "description": "Same as the http status code",
-                      "example": 200
-                    },
-                    "marketplaceId": {
-                      "type": "string",
-                      "description": "Marketplace request id for support and tracing queries.",
-                      "example": "Id-ae65955ee8063fdc870e1758"
-                    },
-                    "marketplaceMocked": {
-                      "type": "boolean",
-                      "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
-                    }
-                  },
-                  "required": [
-                    "statusCode",
-                    "marketplaceId"
-                  ]
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "title": "CHIPS Error",
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string"
-                },
-                "code": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "apimStatus": {
-                  "type": "object",
-                  "title": "Status",
-                  "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
-                  "x-examples": {
-                    "Success": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "200",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Lookup failure": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "404",
-                        "providerMsg": "Not Found",
-                        "userMsg": "Item requested was not found",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Authorization Error": {
-                      "apimStatus": {
-                        "marketplaceCode": 401,
-                        "marketplaceMsg": "Unauthorized",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    }
-                  },
-                  "x-tags": [
-                    "API Marketplace Core"
-                  ],
-                  "properties": {
-                    "marketplaceCode": {
-                      "type": "integer",
-                      "example": 450,
-                      "description": "Indicates status on the marketplace layer. ",
-                      "title": "Markerplace layer status code"
-                    },
-                    "marketplaceMsg": {
-                      "type": "string",
-                      "title": "Human readable message to provide more details on the *marketplaceCode*.",
-                      "default": "Success",
-                      "example": "An API subscription application for the requested URI was not found.",
-                      "description": "Human readable description providing details about the error. On success the value will be 'Success'"
-                    },
-                    "providerCode": {
-                      "type": "string",
-                      "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
-                      "example": "ERRDB04"
-                    },
-                    "providerMsg": {
-                      "type": "string",
-                      "example": "Table not found",
-                      "description": "Error message passed by provider"
-                    },
-                    "userMsg": {
-                      "type": "string",
-                      "example": "Your cart was not found.",
-                      "description": "User friendly message"
-                    },
-                    "statusCode": {
-                      "type": "integer",
-                      "description": "Same as the http status code",
-                      "example": 200
-                    },
-                    "marketplaceId": {
-                      "type": "string",
-                      "description": "Marketplace request id for support and tracing queries.",
-                      "example": "Id-ae65955ee8063fdc870e1758"
-                    },
-                    "marketplaceMocked": {
-                      "type": "boolean",
-                      "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
-                    }
-                  },
-                  "required": [
-                    "statusCode",
-                    "marketplaceId"
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "title": "CHIPS Error",
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string"
-                },
-                "code": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "apimStatus": {
-                  "type": "object",
-                  "title": "Status",
-                  "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
-                  "x-examples": {
-                    "Success": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "200",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Lookup failure": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "404",
-                        "providerMsg": "Not Found",
-                        "userMsg": "Item requested was not found",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Authorization Error": {
-                      "apimStatus": {
-                        "marketplaceCode": 401,
-                        "marketplaceMsg": "Unauthorized",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    }
-                  },
-                  "x-tags": [
-                    "API Marketplace Core"
-                  ],
-                  "properties": {
-                    "marketplaceCode": {
-                      "type": "integer",
-                      "example": 450,
-                      "description": "Indicates status on the marketplace layer. ",
-                      "title": "Markerplace layer status code"
-                    },
-                    "marketplaceMsg": {
-                      "type": "string",
-                      "title": "Human readable message to provide more details on the *marketplaceCode*.",
-                      "default": "Success",
-                      "example": "An API subscription application for the requested URI was not found.",
-                      "description": "Human readable description providing details about the error. On success the value will be 'Success'"
-                    },
-                    "providerCode": {
-                      "type": "string",
-                      "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
-                      "example": "ERRDB04"
-                    },
-                    "providerMsg": {
-                      "type": "string",
-                      "example": "Table not found",
-                      "description": "Error message passed by provider"
-                    },
-                    "userMsg": {
-                      "type": "string",
-                      "example": "Your cart was not found.",
-                      "description": "User friendly message"
-                    },
-                    "statusCode": {
-                      "type": "integer",
-                      "description": "Same as the http status code",
-                      "example": 200
-                    },
-                    "marketplaceId": {
-                      "type": "string",
-                      "description": "Marketplace request id for support and tracing queries.",
-                      "example": "Id-ae65955ee8063fdc870e1758"
-                    },
-                    "marketplaceMocked": {
-                      "type": "boolean",
-                      "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
-                    }
-                  },
-                  "required": [
-                    "statusCode",
-                    "marketplaceId"
-                  ]
-                }
-              }
-            }
-          }
+    "swagger": "2.0",
+    "info": {
+        "title": "CHIPS Money API",
+        "version": "1.0",
+        "license": {
+            "name": " Apache 2.0 License",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         },
-        "description": "Send an SMS cash voucher that can be withdrawn at a Nedbank ATM.",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "title": "CHIPS Cash Send Request",
-              "type": "object",
-              "description": "Payload to initiate a cash send that will result in an ATM withdrawal",
-              "x-tags": [
-                "Cash Send"
-              ],
-              "properties": {
-                "requestId": {
-                  "type": "string",
-                  "description": "External request identifier.\nRecommended UUID (ISO/IEC 9834-8:2014)",
-                  "example": "7a7ef7ff-b599-40ba-9ede-68d542da53f4",
-                  "minLength": 0,
-                  "maxLength": 36
-                },
-                "payerRefInfo": {
-                  "type": "string",
-                  "description": "External reference to be displayed on the payers transaction history",
-                  "example": "atm-cashsend-00001",
-                  "minLength": 0,
-                  "maxLength": 36
-                },
-                "payerAccountUuid": {
-                  "type": "string",
-                  "description": "Payer account UUID (ISO/IEC 9834-8:201)",
-                  "example": "582952d0-df77-4e1b-9d47-7fce0033dde0",
-                  "minLength": 36,
-                  "maxLength": 36
-                },
-                "mobileNumber": {
-                  "type": "string",
-                  "description": "Mobile number of the recipient",
-                  "example": "+27821231234",
-                  "minLength": 0,
-                  "maxLength": 15,
-                  "pattern": "^((\\+[1-9]?[0-9])|0)?[7-9][0-9]{9}$"
-                },
-                "amount": {
-                  "type": "number",
-                  "description": "Amount that with bewithdrawn. Must be a multiple of R \n10",
-                  "example": 250,
-                  "minimum": 10,
-                  "multipleOf": 10,
-                  "exclusiveMinimum": true
-                },
-                "description": {
-                  "type": "string",
-                  "description": "Description for the transaction.",
-                  "example": "ATM Payment",
-                  "maxLength": 60
-                }
-              },
-              "required": [
-                "payerAccountUuid",
-                "mobileNumber",
-                "amount",
-                "description"
-              ]
-            }
-          },
-          {
-            "type": "string",
-            "in": "header",
-            "name": "Authorization",
-            "description": "See CHIPS Authorization Methods"
-          },
-          {
-            "type": "string",
-            "description": "Marketplace API Key",
-            "name": "marketplaceKeyId",
-            "in": "header",
-            "required": true
-          },
-          {
-            "type": "string",
-            "in": "query",
-            "name": "version",
-            "required": true,
-            "description": "Version of the API.",
-            "pattern": "^[0-9\\.]*"
-          }
-        ],
-        "tags": [
-          "Cash Send"
-        ]
-      },
-      "parameters": []
-    },
-    "/cashsends/atm/fees": {
-      "get": {
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "description": "Amount on which fees should be calculated",
-            "in": "query",
-            "name": "amount",
-            "required": true,
-            "type": "number"
-          },
-          {
-            "type": "string",
-            "in": "header",
-            "name": "Authorization",
-            "description": "See CHIPS Authorization Methods"
-          },
-          {
-            "type": "string",
-            "description": "Marketplace API Key",
-            "name": "marketplaceKeyId",
-            "in": "header",
-            "required": true
-          },
-          {
-            "type": "string",
-            "in": "query",
-            "name": "version",
-            "description": "Version of the API.",
-            "required": true,
-            "pattern": "^[0-9\\.]*"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "description": "Fees attracted by the transaction",
-              "type": "object",
-              "properties": {
-                "externalAmount": {
-                  "description": "External fee amount",
-                  "exclusiveMinimum": false,
-                  "minimum": 0,
-                  "type": "number"
-                },
-                "internalAmount": {
-                  "description": "Internal fee amount",
-                  "exclusiveMinimum": false,
-                  "minimum": 0,
-                  "type": "number"
-                },
-                "totalAmount": {
-                  "description": "Total fee amount",
-                  "exclusiveMinimum": false,
-                  "minimum": 0,
-                  "type": "number"
-                },
-                "vatAmount": {
-                  "description": "VAT amount on total fee",
-                  "exclusiveMinimum": false,
-                  "minimum": 0,
-                  "type": "number"
-                },
-                "apimStatus": {
-                  "type": "object",
-                  "title": "Status",
-                  "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
-                  "x-examples": {
-                    "Success": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "200",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Lookup failure": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "404",
-                        "providerMsg": "Not Found",
-                        "userMsg": "Item requested was not found",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Authorization Error": {
-                      "apimStatus": {
-                        "marketplaceCode": 401,
-                        "marketplaceMsg": "Unauthorized",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    }
-                  },
-                  "x-tags": [
-                    "API Marketplace Core"
-                  ],
-                  "properties": {
-                    "marketplaceCode": {
-                      "type": "integer",
-                      "example": 450,
-                      "description": "Indicates status on the marketplace layer. ",
-                      "title": "Markerplace layer status code"
-                    },
-                    "marketplaceMsg": {
-                      "type": "string",
-                      "title": "Human readable message to provide more details on the *marketplaceCode*.",
-                      "default": "Success",
-                      "example": "An API subscription application for the requested URI was not found.",
-                      "description": "Human readable description providing details about the error. On success the value will be 'Success'"
-                    },
-                    "providerCode": {
-                      "type": "string",
-                      "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
-                      "example": "ERRDB04"
-                    },
-                    "providerMsg": {
-                      "type": "string",
-                      "example": "Table not found",
-                      "description": "Error message passed by provider"
-                    },
-                    "userMsg": {
-                      "type": "string",
-                      "example": "Your cart was not found.",
-                      "description": "User friendly message"
-                    },
-                    "statusCode": {
-                      "type": "integer",
-                      "description": "Same as the http status code",
-                      "example": 200
-                    },
-                    "marketplaceId": {
-                      "type": "string",
-                      "description": "Marketplace request id for support and tracing queries.",
-                      "example": "Id-ae65955ee8063fdc870e1758"
-                    },
-                    "marketplaceMocked": {
-                      "type": "boolean",
-                      "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
-                    }
-                  },
-                  "required": [
-                    "statusCode",
-                    "marketplaceId"
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "title": "CHIPS Error",
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string"
-                },
-                "code": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "apimStatus": {
-                  "type": "object",
-                  "title": "Status",
-                  "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
-                  "x-examples": {
-                    "Success": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "200",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Lookup failure": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "404",
-                        "providerMsg": "Not Found",
-                        "userMsg": "Item requested was not found",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Authorization Error": {
-                      "apimStatus": {
-                        "marketplaceCode": 401,
-                        "marketplaceMsg": "Unauthorized",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    }
-                  },
-                  "x-tags": [
-                    "API Marketplace Core"
-                  ],
-                  "properties": {
-                    "marketplaceCode": {
-                      "type": "integer",
-                      "example": 450,
-                      "description": "Indicates status on the marketplace layer. ",
-                      "title": "Markerplace layer status code"
-                    },
-                    "marketplaceMsg": {
-                      "type": "string",
-                      "title": "Human readable message to provide more details on the *marketplaceCode*.",
-                      "default": "Success",
-                      "example": "An API subscription application for the requested URI was not found.",
-                      "description": "Human readable description providing details about the error. On success the value will be 'Success'"
-                    },
-                    "providerCode": {
-                      "type": "string",
-                      "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
-                      "example": "ERRDB04"
-                    },
-                    "providerMsg": {
-                      "type": "string",
-                      "example": "Table not found",
-                      "description": "Error message passed by provider"
-                    },
-                    "userMsg": {
-                      "type": "string",
-                      "example": "Your cart was not found.",
-                      "description": "User friendly message"
-                    },
-                    "statusCode": {
-                      "type": "integer",
-                      "description": "Same as the http status code",
-                      "example": 200
-                    },
-                    "marketplaceId": {
-                      "type": "string",
-                      "description": "Marketplace request id for support and tracing queries.",
-                      "example": "Id-ae65955ee8063fdc870e1758"
-                    },
-                    "marketplaceMocked": {
-                      "type": "boolean",
-                      "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
-                    }
-                  },
-                  "required": [
-                    "statusCode",
-                    "marketplaceId"
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "title": "CHIPS Error",
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string"
-                },
-                "code": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "apimStatus": {
-                  "type": "object",
-                  "title": "Status",
-                  "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
-                  "x-examples": {
-                    "Success": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "200",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Lookup failure": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "404",
-                        "providerMsg": "Not Found",
-                        "userMsg": "Item requested was not found",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Authorization Error": {
-                      "apimStatus": {
-                        "marketplaceCode": 401,
-                        "marketplaceMsg": "Unauthorized",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    }
-                  },
-                  "x-tags": [
-                    "API Marketplace Core"
-                  ],
-                  "properties": {
-                    "marketplaceCode": {
-                      "type": "integer",
-                      "example": 450,
-                      "description": "Indicates status on the marketplace layer. ",
-                      "title": "Markerplace layer status code"
-                    },
-                    "marketplaceMsg": {
-                      "type": "string",
-                      "title": "Human readable message to provide more details on the *marketplaceCode*.",
-                      "default": "Success",
-                      "example": "An API subscription application for the requested URI was not found.",
-                      "description": "Human readable description providing details about the error. On success the value will be 'Success'"
-                    },
-                    "providerCode": {
-                      "type": "string",
-                      "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
-                      "example": "ERRDB04"
-                    },
-                    "providerMsg": {
-                      "type": "string",
-                      "example": "Table not found",
-                      "description": "Error message passed by provider"
-                    },
-                    "userMsg": {
-                      "type": "string",
-                      "example": "Your cart was not found.",
-                      "description": "User friendly message"
-                    },
-                    "statusCode": {
-                      "type": "integer",
-                      "description": "Same as the http status code",
-                      "example": 200
-                    },
-                    "marketplaceId": {
-                      "type": "string",
-                      "description": "Marketplace request id for support and tracing queries.",
-                      "example": "Id-ae65955ee8063fdc870e1758"
-                    },
-                    "marketplaceMocked": {
-                      "type": "boolean",
-                      "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
-                    }
-                  },
-                  "required": [
-                    "statusCode",
-                    "marketplaceId"
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "title": "CHIPS Error",
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string"
-                },
-                "code": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "apimStatus": {
-                  "type": "object",
-                  "title": "Status",
-                  "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
-                  "x-examples": {
-                    "Success": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "200",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Lookup failure": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "404",
-                        "providerMsg": "Not Found",
-                        "userMsg": "Item requested was not found",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Authorization Error": {
-                      "apimStatus": {
-                        "marketplaceCode": 401,
-                        "marketplaceMsg": "Unauthorized",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    }
-                  },
-                  "x-tags": [
-                    "API Marketplace Core"
-                  ],
-                  "properties": {
-                    "marketplaceCode": {
-                      "type": "integer",
-                      "example": 450,
-                      "description": "Indicates status on the marketplace layer. ",
-                      "title": "Markerplace layer status code"
-                    },
-                    "marketplaceMsg": {
-                      "type": "string",
-                      "title": "Human readable message to provide more details on the *marketplaceCode*.",
-                      "default": "Success",
-                      "example": "An API subscription application for the requested URI was not found.",
-                      "description": "Human readable description providing details about the error. On success the value will be 'Success'"
-                    },
-                    "providerCode": {
-                      "type": "string",
-                      "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
-                      "example": "ERRDB04"
-                    },
-                    "providerMsg": {
-                      "type": "string",
-                      "example": "Table not found",
-                      "description": "Error message passed by provider"
-                    },
-                    "userMsg": {
-                      "type": "string",
-                      "example": "Your cart was not found.",
-                      "description": "User friendly message"
-                    },
-                    "statusCode": {
-                      "type": "integer",
-                      "description": "Same as the http status code",
-                      "example": 200
-                    },
-                    "marketplaceId": {
-                      "type": "string",
-                      "description": "Marketplace request id for support and tracing queries.",
-                      "example": "Id-ae65955ee8063fdc870e1758"
-                    },
-                    "marketplaceMocked": {
-                      "type": "boolean",
-                      "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
-                    }
-                  },
-                  "required": [
-                    "statusCode",
-                    "marketplaceId"
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "title": "CHIPS Error",
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string"
-                },
-                "code": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "apimStatus": {
-                  "type": "object",
-                  "title": "Status",
-                  "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
-                  "x-examples": {
-                    "Success": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "200",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Lookup failure": {
-                      "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "404",
-                        "providerMsg": "Not Found",
-                        "userMsg": "Item requested was not found",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    },
-                    "Authorization Error": {
-                      "apimStatus": {
-                        "marketplaceCode": 401,
-                        "marketplaceMsg": "Unauthorized",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                      }
-                    }
-                  },
-                  "x-tags": [
-                    "API Marketplace Core"
-                  ],
-                  "properties": {
-                    "marketplaceCode": {
-                      "type": "integer",
-                      "example": 450,
-                      "description": "Indicates status on the marketplace layer. ",
-                      "title": "Markerplace layer status code"
-                    },
-                    "marketplaceMsg": {
-                      "type": "string",
-                      "title": "Human readable message to provide more details on the *marketplaceCode*.",
-                      "default": "Success",
-                      "example": "An API subscription application for the requested URI was not found.",
-                      "description": "Human readable description providing details about the error. On success the value will be 'Success'"
-                    },
-                    "providerCode": {
-                      "type": "string",
-                      "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
-                      "example": "ERRDB04"
-                    },
-                    "providerMsg": {
-                      "type": "string",
-                      "example": "Table not found",
-                      "description": "Error message passed by provider"
-                    },
-                    "userMsg": {
-                      "type": "string",
-                      "example": "Your cart was not found.",
-                      "description": "User friendly message"
-                    },
-                    "statusCode": {
-                      "type": "integer",
-                      "description": "Same as the http status code",
-                      "example": 200
-                    },
-                    "marketplaceId": {
-                      "type": "string",
-                      "description": "Marketplace request id for support and tracing queries.",
-                      "example": "Id-ae65955ee8063fdc870e1758"
-                    },
-                    "marketplaceMocked": {
-                      "type": "boolean",
-                      "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
-                    }
-                  },
-                  "required": [
-                    "statusCode",
-                    "marketplaceId"
-                  ]
-                }
-              }
-            }
-          }
+        "termsOfService": " https://marketplace.trustlinkhosting.com",
+        "contact": {
+            "name": "API Sales",
+            "url": "https://marketplace.trustlinkhosting.com",
+            "email": "apisales@trustlink.co.za"
         },
-        "tags": [
-          "Cash Send"
-        ],
-        "operationId": "chips_get_cash_send_atm_fees",
-        "summary": "Calculate cash send fees",
-        "description": "Calculate the fees the sender will have to pay to send money for withdrawal at the ATM."
-      },
-      "parameters": []
-    }
-  },
-  "definitions": {},
-  "basePath": "/sandbox/chips/money",
-  "tags": [
-    {
-      "name": "Cash Send"
-    }
-  ],
-  "securityDefinitions": {
-    "Marketplace API Key": {
-      "type": "apiKey",
-      "description": "API Key",
-      "name": "marketplaceKeyId"
+        "description": "The CHIPS Money API utilizes the CHIPS Payment Network that allows creation of user ecosystem via and App in order for users to convert cash to CHIPS at supported ATMs and Store, make CHIPS user to CHIPS user Payments, Scan to pay and code to pay at supported stores and convert CHIPS to cash at supported ATMs and stores.\n\n# Features\n| | |\n|---|---|\n|![Account Details Icon](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AccountDetails.png) |![ATM Withdrawal Icon](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/ATMWithdrawal.png) |\n\nClick on feature to test API.\n\n\nFor more info on CHIPS&reg; and the Trustlink API Marplace se see:\n* [CHIPS home page](https://chips.co.za)\n\n\n# Getting Started\n* Register on the [Trustlink API Marketplace](https://marketplace.trustlinkhosting.com/component/apiportal/registration)\n* Send an email requesting access to the CHIPS Money API to apisales@trustlink.co.za\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n1. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)\n1. Trustlink API Marketplace Usage and Authorization Terms and Conditions\n\n[Account Details Icon] "
     },
-    "in": "header"
-  },
-  "security": [
-    {
-      "Marketplace API Key": []
-    }
-  ],
-  "buildtarget": "stoplight"
+    "host": "apim.trustlinkhosting.com:8065",
+    "schemes": [
+        "https"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "paths": {
+        "/cashsends/atm": {
+            "post": {
+                "summary": "SMS ATM Cash Voucher",
+                "operationId": "chips-post-cashsend-atm",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "title": "CHIPS Cash Send 200 Success",
+                            "type": "object",
+                            "x-tags": [
+                                "Cash Send"
+                            ],
+                            "description": "",
+                            "properties": {
+                                "uuid": {
+                                    "description": "UUID (ISO/IEC 9834-8:201)",
+                                    "maxLength": 36,
+                                    "minLength": 36,
+                                    "type": "string"
+                                },
+                                "transaction": {
+                                    "description": "Cash send transactions",
+                                    "type": "array",
+                                    "items": {
+                                        "description": "Cash send transactions",
+                                        "type": "object",
+                                        "properties": {
+                                            "transactionType": {
+                                                "description": "Transaction type",
+                                                "enum": [
+                                                    "COMMISSION",
+                                                    "FEE",
+                                                    "FUNDING",
+                                                    "INTEREST",
+                                                    "LIQUIDITY",
+                                                    "PAYMENT",
+                                                    "PAY_IN",
+                                                    "PAY_OUT",
+                                                    "REVERSAL"
+                                                ],
+                                                "type": "string"
+                                            },
+                                            "uuid": {
+                                                "description": "Transaction UUID (ISO/IEC 9834-8:201)",
+                                                "maxLength": 36,
+                                                "minLength": 36,
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "transactionType",
+                                            "uuid"
+                                        ]
+                                    }
+                                },
+                                "status": {
+                                    "description": "Status",
+                                    "enum": [
+                                        "CANCELLED",
+                                        "FINALISED",
+                                        "PENDING",
+                                        "REVERSED"
+                                    ],
+                                    "type": "string"
+                                },
+                                "requestId": {
+                                    "description": "External request identifier. Recommended UUID (ISO/IEC 9834-8:201)",
+                                    "maxLength": 36,
+                                    "minLength": 0,
+                                    "type": "string",
+                                    "x-nullable": true
+                                },
+                                "provider": {
+                                    "description": "Cash send provider",
+                                    "enum": [
+                                        "FNB",
+                                        "NEDBANK"
+                                    ],
+                                    "type": "string"
+                                },
+                                "payerRefInfo": {
+                                    "description": "External reference to be displayed on the payers transaction history",
+                                    "maxLength": 36,
+                                    "minLength": 0,
+                                    "type": "string"
+                                },
+                                "payerAccountUuid": {
+                                    "description": "Payer account UUID (ISO/IEC 9834-8:201)",
+                                    "maxLength": 36,
+                                    "minLength": 36,
+                                    "type": "string"
+                                },
+                                "modifiedBy": {
+                                    "description": "Member UUID (ISO/IEC 9834-8:201)",
+                                    "type": "string",
+                                    "x-nullable": true
+                                },
+                                "mobileNumber": {
+                                    "description": "Mobile number of the recipient",
+                                    "maxLength": 15,
+                                    "minLength": 0,
+                                    "pattern": "^((\\+[1-9]?[0-9])|0)?[7-9][0-9]{9}$",
+                                    "type": "string"
+                                },
+                                "lastModified": {
+                                    "description": "Date and time last modified (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "createdBy": {
+                                    "description": "Member UUID (ISO/IEC 9834-8:201)",
+                                    "type": "string",
+                                    "x-nullable": true
+                                },
+                                "created": {
+                                    "description": "Date and time created (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "amount": {
+                                    "description": "Amount",
+                                    "exclusiveMinimum": true,
+                                    "minimum": 0,
+                                    "type": "number"
+                                }
+                            },
+                            "required": [
+                                "uuid",
+                                "status",
+                                "provider",
+                                "payerAccountUuid",
+                                "lastModified",
+                                "created",
+                                "amount"
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Too Many Requests",
+                        "schema": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Send an SMS cash voucher that can be withdrawn at a Nedbank ATM.",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "title": "CHIPS Cash Send Request",
+                            "type": "object",
+                            "description": "Payload to initiate a cash send that will result in an ATM withdrawal",
+                            "x-tags": [
+                                "Cash Send"
+                            ],
+                            "properties": {
+                                "requestId": {
+                                    "type": "string",
+                                    "description": "External request identifier.\nRecommended UUID (ISO/IEC 9834-8:2014)",
+                                    "example": "7a7ef7ff-b599-40ba-9ede-68d542da53f4",
+                                    "minLength": 0,
+                                    "maxLength": 36
+                                },
+                                "payerRefInfo": {
+                                    "type": "string",
+                                    "description": "External reference to be displayed on the payers transaction history",
+                                    "example": "atm-cashsend-00001",
+                                    "minLength": 0,
+                                    "maxLength": 36
+                                },
+                                "payerAccountUuid": {
+                                    "type": "string",
+                                    "description": "Payer account UUID (ISO/IEC 9834-8:201)",
+                                    "example": "582952d0-df77-4e1b-9d47-7fce0033dde0",
+                                    "minLength": 36,
+                                    "maxLength": 36
+                                },
+                                "mobileNumber": {
+                                    "type": "string",
+                                    "description": "Mobile number of the recipient",
+                                    "example": "+27821231234",
+                                    "minLength": 0,
+                                    "maxLength": 15,
+                                    "pattern": "^((\\+[1-9]?[0-9])|0)?[7-9][0-9]{9}$"
+                                },
+                                "amount": {
+                                    "type": "number",
+                                    "description": "Amount that with bewithdrawn. Must be a multiple of R \n10",
+                                    "example": 250,
+                                    "minimum": 10,
+                                    "multipleOf": 10,
+                                    "exclusiveMinimum": true
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "Description for the transaction.",
+                                    "example": "ATM Payment",
+                                    "maxLength": 60
+                                }
+                            },
+                            "required": [
+                                "payerAccountUuid",
+                                "mobileNumber",
+                                "amount",
+                                "description"
+                            ]
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "See CHIPS Authorization Methods",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Marketplace API Key",
+                        "name": "marketplaceKeyId",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Version of the API. (Latest version 1.0)",
+                        "name": "version",
+                        "in": "header"
+                    }
+                ],
+                "tags": [
+                    "Cash Send"
+                ]
+            },
+            "parameters": []
+        },
+        "/cashsends/atm/fees": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "description": "Amount on which fees should be calculated",
+                        "in": "query",
+                        "name": "amount",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "See CHIPS Authorization Methods"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Marketplace API Key",
+                        "name": "marketplaceKeyId",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Version of the API. (Latest version 1.0)",
+                        "name": "version",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "description": "Fees attracted by the transaction",
+                            "type": "object",
+                            "properties": {
+                                "externalAmount": {
+                                    "description": "External fee amount",
+                                    "exclusiveMinimum": false,
+                                    "minimum": 0,
+                                    "type": "number"
+                                },
+                                "internalAmount": {
+                                    "description": "Internal fee amount",
+                                    "exclusiveMinimum": false,
+                                    "minimum": 0,
+                                    "type": "number"
+                                },
+                                "totalAmount": {
+                                    "description": "Total fee amount",
+                                    "exclusiveMinimum": false,
+                                    "minimum": 0,
+                                    "type": "number"
+                                },
+                                "vatAmount": {
+                                    "description": "VAT amount on total fee",
+                                    "exclusiveMinimum": false,
+                                    "minimum": 0,
+                                    "type": "number"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Too Many Requests",
+                        "schema": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Cash Send"
+                ],
+                "operationId": "chips_get_cash_send_atm_fees",
+                "summary": "Calculate cash send fees",
+                "description": "Calculate the fees the sender will have to pay to send money for withdrawal at the ATM."
+            },
+            "parameters": []
+        },
+        "/accounts/{uuid}": {
+            "get": {
+                "summary": "Get Account Details",
+                "tags": [
+                    "Account"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "title": "Account Details",
+                                    "type": "object",
+                                    "description": "",
+                                    "x-tags": [
+                                        "Account"
+                                    ],
+                                    "properties": {
+                                        "uuid": {
+                                            "description": "UUID (ISO/IEC 9834-8:201)",
+                                            "maxLength": 36,
+                                            "minLength": 36,
+                                            "type": "string"
+                                        },
+                                        "transactionLimitAmount": {
+                                            "description": "Maximum amount per transaction",
+                                            "type": "number"
+                                        },
+                                        "requestId": {
+                                            "description": "External request identifier. Recommended UUID (ISO/IEC 9834-8:201)",
+                                            "maxLength": 36,
+                                            "minLength": 0,
+                                            "type": "string",
+                                            "x-nullable": true
+                                        },
+                                        "modifiedBy": {
+                                            "description": "Member UUID (ISO/IEC 9834-8:201)",
+                                            "type": "string",
+                                            "x-nullable": true
+                                        },
+                                        "memberUuid": {
+                                            "description": "Member UUID (ISO/IEC 9834-8:201)",
+                                            "maxLength": 36,
+                                            "minLength": 36,
+                                            "type": "string"
+                                        },
+                                        "lastModified": {
+                                            "description": "Date and time last modified (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                                            "format": "date-time",
+                                            "type": "string"
+                                        },
+                                        "dailyLimitAmount": {
+                                            "description": "Maximum amount available per day",
+                                            "exclusiveMinimum": false,
+                                            "minimum": 0,
+                                            "type": "number"
+                                        },
+                                        "createdBy": {
+                                            "description": "Member UUID (ISO/IEC 9834-8:201)",
+                                            "type": "string",
+                                            "x-nullable": true
+                                        },
+                                        "created": {
+                                            "description": "Date and time created (ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                                            "format": "date-time",
+                                            "type": "string"
+                                        },
+                                        "availableDailyAmount": {
+                                            "description": "Remaining amount available for current day",
+                                            "exclusiveMinimum": false,
+                                            "minimum": 0,
+                                            "type": "number"
+                                        },
+                                        "availableBalanceAmount": {
+                                            "description": "Available balance amount",
+                                            "exclusiveMinimum": false,
+                                            "minimum": 0,
+                                            "type": "number"
+                                        },
+                                        "autoLimitAmount": {
+                                            "description": "Automatic limit amount",
+                                            "exclusiveMinimum": false,
+                                            "minimum": 0,
+                                            "type": "number"
+                                        },
+                                        "approveLimitAmount": {
+                                            "description": "Approved limit amount",
+                                            "exclusiveMinimum": false,
+                                            "minimum": 0,
+                                            "type": "number"
+                                        }
+                                    },
+                                    "required": [
+                                        "uuid",
+                                        "memberUuid",
+                                        "lastModified",
+                                        "created"
+                                    ]
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "apimStatus": {
+                                            "type": "object",
+                                            "title": "Status",
+                                            "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                            "x-examples": {
+                                                "Success": {
+                                                    "apimStatus": {
+                                                        "marketplaceCode": 200,
+                                                        "marketplaceMsg": "Success",
+                                                        "providerCode": "200",
+                                                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                                    }
+                                                },
+                                                "Lookup failure": {
+                                                    "apimStatus": {
+                                                        "marketplaceCode": 200,
+                                                        "marketplaceMsg": "Success",
+                                                        "providerCode": "404",
+                                                        "providerMsg": "Not Found",
+                                                        "userMsg": "Item requested was not found",
+                                                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                                    }
+                                                },
+                                                "Authorization Error": {
+                                                    "apimStatus": {
+                                                        "marketplaceCode": 401,
+                                                        "marketplaceMsg": "Unauthorized",
+                                                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                                    }
+                                                }
+                                            },
+                                            "x-tags": [
+                                                "API Marketplace Core"
+                                            ],
+                                            "properties": {
+                                                "marketplaceCode": {
+                                                    "type": "integer",
+                                                    "example": 450,
+                                                    "description": "Indicates status on the marketplace layer. ",
+                                                    "title": "Markerplace layer status code"
+                                                },
+                                                "marketplaceMsg": {
+                                                    "type": "string",
+                                                    "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                                    "default": "Success",
+                                                    "example": "An API subscription application for the requested URI was not found.",
+                                                    "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                                },
+                                                "providerCode": {
+                                                    "type": "string",
+                                                    "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                                    "example": "ERRDB04"
+                                                },
+                                                "providerMsg": {
+                                                    "type": "string",
+                                                    "example": "Table not found",
+                                                    "description": "Error message passed by provider"
+                                                },
+                                                "userMsg": {
+                                                    "type": "string",
+                                                    "example": "Your cart was not found.",
+                                                    "description": "User friendly message"
+                                                },
+                                                "statusCode": {
+                                                    "type": "integer",
+                                                    "description": "Same as the http status code",
+                                                    "example": 200
+                                                },
+                                                "marketplaceId": {
+                                                    "type": "string",
+                                                    "description": "Marketplace request id for support and tracing queries.",
+                                                    "example": "Id-ae65955ee8063fdc870e1758"
+                                                },
+                                                "marketplaceMocked": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                                }
+                                            },
+                                            "required": [
+                                                "statusCode",
+                                                "marketplaceId"
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "title": "Status",
+                            "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                            "x-examples": {
+                                "Success": {
+                                    "apimStatus": {
+                                        "marketplaceCode": 200,
+                                        "marketplaceMsg": "Success",
+                                        "providerCode": "200",
+                                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                    }
+                                },
+                                "Lookup failure": {
+                                    "apimStatus": {
+                                        "marketplaceCode": 200,
+                                        "marketplaceMsg": "Success",
+                                        "providerCode": "404",
+                                        "providerMsg": "Not Found",
+                                        "userMsg": "Item requested was not found",
+                                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                    }
+                                },
+                                "Authorization Error": {
+                                    "apimStatus": {
+                                        "marketplaceCode": 401,
+                                        "marketplaceMsg": "Unauthorized",
+                                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                    }
+                                }
+                            },
+                            "x-tags": [
+                                "API Marketplace Core"
+                            ],
+                            "properties": {
+                                "marketplaceCode": {
+                                    "type": "integer",
+                                    "example": 450,
+                                    "description": "Indicates status on the marketplace layer. ",
+                                    "title": "Markerplace layer status code"
+                                },
+                                "marketplaceMsg": {
+                                    "type": "string",
+                                    "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                    "default": "Success",
+                                    "example": "An API subscription application for the requested URI was not found.",
+                                    "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                },
+                                "providerCode": {
+                                    "type": "string",
+                                    "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                    "example": "ERRDB04"
+                                },
+                                "providerMsg": {
+                                    "type": "string",
+                                    "example": "Table not found",
+                                    "description": "Error message passed by provider"
+                                },
+                                "userMsg": {
+                                    "type": "string",
+                                    "example": "Your cart was not found.",
+                                    "description": "User friendly message"
+                                },
+                                "statusCode": {
+                                    "type": "integer",
+                                    "description": "Same as the http status code",
+                                    "example": 200
+                                },
+                                "marketplaceId": {
+                                    "type": "string",
+                                    "description": "Marketplace request id for support and tracing queries.",
+                                    "example": "Id-ae65955ee8063fdc870e1758"
+                                },
+                                "marketplaceMocked": {
+                                    "type": "boolean",
+                                    "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                }
+                            },
+                            "required": [
+                                "statusCode",
+                                "marketplaceId"
+                            ]
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Too Many Requests",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "operationId": "chips-get-account",
+                "description": "Get account details including balance.\n\n**Testing on Storefront and Sandbox**\n\nThe following uuid will have the following mocked responses for Storefront and Sandbox APIs. \n\n| uuid | status |availableBalanceAmount |  \n|---|:---:|---:|\n| 0cd75155-6e60-4471-b0b1-4563ab36676c | 200 | 345.05 |\n| fbb9f3a7-402f-432d-8293-d3c0f63d3c4d | 200 | 1234.56 |\n| 87d2e18b-fc62-4400-bb0c-24342218b1b9 | 404 |  |\n| 3b814435-02cb-43da-9869-1c90f8e9aa4e | 404 | |\n\n\n",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "See CHIPS Authorization Methods",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Marketplace API Key",
+                        "name": "marketplaceKeyId",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Version of the API. (Latest version 1.0)",
+                        "name": "version",
+                        "in": "header"
+                    }
+                ]
+            },
+            "parameters": [
+                {
+                    "type": "string",
+                    "name": "uuid",
+                    "in": "path",
+                    "required": true,
+                    "description": "CHIPS User Profile UUID",
+                    "maxLength": 36,
+                    "minLength": 36,
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+                }
+            ]
+        }
+    },
+    "definitions": {},
+    "basePath": "/sandbox/chips/money",
+    "tags": [
+        {
+            "name": "Account"
+        },
+        {
+            "name": "Cash Send"
+        }
+    ],
+    "securityDefinitions": {
+        "Marketplace API Key": {
+            "type": "apiKey",
+            "description": "API Key",
+            "name": "marketplaceKeyId"
+        },
+        "in": "header"
+    },
+    "security": [
+        {
+            "Marketplace API Key": []
+        }
+    ],
+    "buildtarget": "stoplight"
 }
