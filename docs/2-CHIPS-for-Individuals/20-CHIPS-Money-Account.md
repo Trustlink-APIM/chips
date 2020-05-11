@@ -27,4 +27,4 @@ This API is normally called to retrieve the current account balance.
 }
 ```
 
-[api-get-chips-money-account-uuid]: https://marketplace.trustlinkhosting.com/api-chips-money-accounts-uuid-get
+[api-get-chips-money-account-uuid]: ../../reference/sandbox-chips-money/swagger.json/paths/~1accounts~1%7Buuid%7D/get

@@ -14,7 +14,9 @@ In order to integrate securely to the CHIPS&reg; Payment Platform via the [Trust
 You can start to test with the Storefront APIs below (See [How it works](../06-how-it-works.md)). Before [signing up](https://marketplace.trustlinkhosting.com/component/apiportal/registration) for Sandbox access on the [Trustlink API Markteplace].
 
 # Flow
-## User sign up 
+## User sign up
+[*/chips/register/status/get*](../../reference/sandbox-chips-register/swagger.json/paths/~1status/get)
+
 Once the user indicates that they want to sign up for a CHIPS&reg; profile and account, a check is done to see if the mobile number has been registered before or not.
 
 <!--
@@ -58,11 +60,13 @@ Testing with a mobile number that is register to George MacDonald.
 ```
 
 <!-- type: tab-end -->
-[Full API documentation](https://stoplight.io/p/docs/gh/trustlink-apim/chips/reference/sandbox-chips-register/swagger.json/paths/~1status/get)
+
 
 ## Confirm the user's mobile number with OTP
 
 ### Request an OTP for the mobile number
+[*POST /chips/register/mobile/otp*](../../reference/sandbox-chips-register/swagger.json/paths/~1mobile~1otp/get)
+
 ```json http
 {
   "method": "get",
@@ -76,6 +80,9 @@ Testing with a mobile number that is register to George MacDonald.
   }
 }
 ```
+
+### Verify the OTP 
+[*POST /chips/register/mobile/otp*](../../reference/sandbox-chips-register/swagger.json/paths/~1mobile~1otp/post)
 
 <!--
 type: tab
@@ -120,7 +127,7 @@ title: Failed OTP verification
 }
 ```
 <!-- type: tab-end -->
-[Full API documentation](https://stoplight.io/p/docs/gh/trustlink-apim/chips/reference/sandbox-chips-register/swagger.json/paths/~1mobile~1otp/post)
+
 
 
 
