@@ -10,4 +10,6 @@ For example
 The resulting header to be send will be
 ```
 Authorization: BSSI ZDZmZjEzMWQtMmU2NC00ZTNhLWEzNmMtMzBjM2ZlMGZkZThkOjBkNjI3YmYxLTFjNGItNGRhMS1iZmFjLWYzOTQ0MTE1MTJmMw==
-``` 
+```
+
+

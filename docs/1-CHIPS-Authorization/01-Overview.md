@@ -10,11 +10,12 @@ A number of integration methods are exists and the following needs to be taken i
 * Risk.
 
 In order to address the different scenarios, the following Authorization methods exists.
-* OAuth2 
-* Session Lapsed OAuth2
-* Basic Device Authentication 
-* Basic Subscribed Service Intermediary (BSSI)
-* BSSI / OAuth2 Hybrid 
+* Auth Token 
+* Session Lapsed Auth Token 
+* Basic Device Authentication
+* Basic External Participant System Authentication
+* [Basic Subscribed Service Intermediary (BSSI)](./20-CHIPS-Basic-Subscribed-Service-Intermediary-Authentication.md)
+* BSSI Hybrid 
 
 
 
