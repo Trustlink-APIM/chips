@@ -560,7 +560,7 @@
                         }
                     }
                 },
-                "description": "Billing information is registered and validated. A token is return which is Masterpass compatible and can be paid via CHIPS&reg; Bill Payments EFT.",
+                "description": "Billing information is registered and validated. A token is return which is Masterpass compatible and can be paid via CHIPS&reg; Bill Payments EFT.\n\n\n",
                 "parameters": [
                     {
                         "in": "body",
@@ -591,14 +591,14 @@
                                 "accountNumber": {
                                     "type": "string",
                                     "description": "Bill account number.",
-                                    "example": "123779040477",
+                                    "example": "9202100011427000227",
                                     "minLength": 0,
                                     "maxLength": 50
                                 },
                                 "productCode": {
                                     "type": "string",
                                     "description": "Bill product code.",
-                                    "example": "CoJ-Electricity",
+                                    "example": "TEL0000.00B",
                                     "minLength": 0,
                                     "maxLength": 50
                                 },
@@ -621,7 +621,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "See CHIPS Authorization Methods",
+                        "description": "CHIPS Basic External Participant Authorization",
                         "required": true
                     },
                     {
@@ -1078,7 +1078,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "See CHIPS Authorization Methods",
+                        "description": "CHIPS Basic External Participant Authorization",
                         "required": true
                     },
                     {
