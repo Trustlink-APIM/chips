@@ -3,6 +3,8 @@
 
 The CHIPS Bill Payments API utilizes the CHIPS&reg; Payment Network that allowing for bill payments via different channels like EFT, Zapper, SnapScan, Masterpass and CHIPS&reg;.
 
+Test
+
 # Overview
 
 ## Bill Payment Token
