@@ -13,9 +13,9 @@
             "url": "https://marketplace.trustlinkhosting.com",
             "email": "apisales@trustlink.co.za"
         },
-        "description": "The CHIPS Bill Payments API utilizes the CHIPS&reg; Payment Network that allowing for bill payments via different channels like EFT, Zapper, SnapScan, Masterpass and CHIPS&reg;.\n\n\n\nFor more info on CHIPS&reg; see:\n* [CHIPS home page](https://chips.co.za)\n\n# Getting Started\n* Register on the [Trustlink API Marketplace](https://marketplace.trustlinkhosting.com/component/apiportal/registration)\n* Send an email requesting access to the CHIPS Money API to apisales@trustlink.co.za\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n1. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)\n1. Trustlink API Marketplace Usage and Authorization Terms and Conditions\n\n"
+        "description": "The CHIPS Bill Payments API utilizes the CHIPS&reg; Payment Network that allowing for bill payments via different channels like EFT, Zapper, SnapScan, Masterpass and CHIPS&reg;.\n\nBill payment is initiated by requesting a CHIPS token with the bill product code, account number and amount\n\n\n\n\n\n\nFor more info on CHIPS&reg; see:\n* [CHIPS home page](https://chips.co.za)\n\n# Getting Started\n* Register on the [Trustlink API Marketplace](https://marketplace.trustlinkhosting.com/component/apiportal/registration)\n* Send an email requesting access to the CHIPS Money API to apisales@trustlink.co.za\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n1. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)\n1. Trustlink API Marketplace Usage and Authorization Terms and Conditions\n\n"
     },
-    "host": "apim.trustlinkhosting.com:8065",
+    "host": "marketplace-qa.trustlinkhosting.com:8165",
     "schemes": [
         "https"
     ],
@@ -560,7 +560,7 @@
                         }
                     }
                 },
-                "description": "Billing information is registered and validated. A token is return which is Masterpass compatible and can be paid via CHIPS&reg; Bill Payments EFT.\n\n\n",
+                "description": "Billing information is registered and validated. A token is return which is Masterpass compatible and can be paid via CHIPS&reg; Bill Payments EFT.\n\n** Testing **\n\nThe [Storefront API] \n\n\n\n \n\n\n\n[Storefront API]: ../../docs/06-how-it-works.md\n\n",
                 "parameters": [
                     {
                         "in": "body",
