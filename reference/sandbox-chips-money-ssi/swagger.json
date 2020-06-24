@@ -15,7 +15,7 @@
         },
         "description": "The CHIPS&reg; Money Subscribed Service Intermediary (SSI) plugin allows integrators matching certain criteria to completely manage their user base.\n\nAn SSI is allowed\n* to authorise money movement on behave of their users.\n* fund accounts in real-time. \n\n\n\nAlso see:\n* [CHIPS BSSI Authentication](../../docs/1-CHIPS-Authorization/20-CHIPS-Basic-Subscribed-Service-Intermediary-Authentication.md)\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n1. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)\n1. Trustlink API Marketplace Usage and Authorization Terms and Conditions\n\n"
     },
-    "host": "apim.trustlinkhosting.com:8065",
+    "host": "marketplace-qa.trustlinkhosting.com:8165",
     "schemes": [
         "https"
     ],
