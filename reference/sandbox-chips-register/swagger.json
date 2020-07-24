@@ -1487,7 +1487,7 @@
                 ]
             }
         },
-        "/person": {
+        "/persons": {
             "post": {
                 "summary": "Create a profile",
                 "operationId": "chips-register-person-post",
@@ -2091,7 +2091,8 @@
                         "required": true
                     }
                 ]
-            }
+            },
+            "parameters": []
         }
     },
     "definitions": {},
