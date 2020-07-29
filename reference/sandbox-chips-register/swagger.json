@@ -1976,22 +1976,22 @@
                                         },
                                         "mobileNumber": {
                                             "type": "string",
-                                            "example": "0871232345",
-                                            "description": "Mobile number"
+                                            "example": "+27871232345",
+                                            "description": "Mobile number in international format.",
+                                            "pattern": "^\\+[1-9][0-9]*$"
                                         },
                                         "photo": {
                                             "type": "string",
-                                            "description": "Selfie photo as base64 string with meta header. Use https://www.base64-image.de to generate examples.",
+                                            "description": "Selfie photo as base64 string with meta header.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n\nRecommended image size is 600x600\n\nUse https://www.base64-image.de to generate examples. ",
                                             "example": "data:image/png;base64,iVBORw0KG..."
                                         },
-                                        "identityNumber": {
-                                            "type": "string",
-                                            "maxLength": 13,
-                                            "example": "7005295023081",
-                                            "minLength": 13
-                                        },
                                         "referrerUuid": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "example": "3e1b841d-9cd2-4a93-89e0-da43e0cc9783",
+                                            "description": "CHIPS Account ID of the referrer. (ISO/IEC 9834-8:2014)",
+                                            "pattern": "^[0-9a-fA-F]{36}$",
+                                            "maxLength": 36,
+                                            "minLength": 0
                                         },
                                         "identity": {
                                             "title": "CHIPS Identity Object",
@@ -2042,7 +2042,7 @@
                                                 },
                                                 "photo": {
                                                     "type": "string",
-                                                    "description": "Photo of ID book or card. Encoded in base 64 with  header. Use https://www.base64-image.de to generate examples.",
+                                                    "description": "Photo of ID book or card. Encoded in base 64 with  header.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n\nRecommended image size is 600x600.\n\nUse https://www.base64-image.de to generate examples.",
                                                     "example": "data:image/png;base64,iVBORw0KG..."
                                                 }
                                             },
@@ -2059,10 +2059,8 @@
                                     },
                                     "required": [
                                         "displayName",
-                                        "email",
                                         "mobileNumber",
-                                        "photo",
-                                        "identityNumber"
+                                        "photo"
                                     ]
                                 },
                                 {
