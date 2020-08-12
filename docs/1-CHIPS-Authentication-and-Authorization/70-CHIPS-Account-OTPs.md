@@ -17,39 +17,9 @@ The OTP sent to mobile numbers does incur costs. For testing to the sandbox, the
 
 ## Mobile Number Mocked Responses
 
-You can test with mobileNumbers starting with '+2785' to trigger a mockup success response. Note that there is no OTP associated with the mocked response.
+You can test with mobileNumbers starting with '+2785' to trigger a mockup success response.  
 
-### Examples
-
-<!--
-type: tab
-title: Mobile Verification during Onboarding 
--->
-
-```json http
-{
-  "method": "get",
-  "url": "https://apim.trustlinkhosting.com:8065/sandbox/chips/register/status",
-  "query": {
-    "mobileNumber": "+27853453456",
-    "version": "1.0"
-  },
-  "headers": {
-    "marketplaceKeyId": "cc8d4f9b-bda5-4025-9b95-a0896242edb1"
-  }
-}
-```
-
-<!--
-type: tab
-title: Mobile OTP for PIN reset 
--->
-
-Coming soon!
-
-<!-- type: tab-end -->
-
-### Valid Test OTPs
+## Valid Test OTPs
 
 In order to test OTP functionality the in sandbox environment, you have the following options:
 
@@ -65,6 +35,3 @@ theme: info
 >
 > In all 3 cases the mobileNumber or email address must be associated with the CHIPS account.
 
-#### Examples
-
-Coming soon !
