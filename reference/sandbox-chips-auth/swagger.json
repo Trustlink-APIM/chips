@@ -1449,6 +1449,7 @@
                                 }
                             },
                             "required": [
+                                "packageName",
                                 "pin"
                             ]
                         }
@@ -1935,6 +1936,13 @@
                 "operationId": "chips-auth-api-login-refresh-get",
                 "description": "Refresh CHIPS Bearer Token based on previously issued refresh token.",
                 "parameters": [
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "CHIPS refresh token as 'Bearer' token",
+                        "required": true
+                    },
                     {
                         "type": "string",
                         "description": "Marketplace API Key",
