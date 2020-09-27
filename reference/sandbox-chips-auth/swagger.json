@@ -15,7 +15,7 @@
         },
         "description": "Exposes authentication of CHIPS users via direct API calls.\n\n# Features \n![Authentication](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AuthAPI/Authentication.png)\n* Authenticate a CHIPS user in order to retrieve a refresh and bearer auth token. \n* Request a new bearer token with the refresh token as authorization. \n\n\n![OTP PIN Reset](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AuthAPI/OTPPINSet.png)\n* Send an OTP to a mobile number.\n* Reset the CHIPS user PIN.  \n"
     },
-    "host": "marketplace-qa.trustlinkhosting.com:8165",
+    "host": "apim.trustlinkhosting.com:8065",
     "schemes": [
         "https"
     ],
@@ -467,7 +467,7 @@
                         }
                     }
                 },
-                "description": "Request an OTP to be sent to the mobile number or email that is associated with the account. \n\n\n<!--\ntype: tab\ntitle: Mobile OTP\n-->\n\n\n\nThe number will receive an SMS:\n\n```\nOTP: xxxxx\nYour CHIPS generated verification code\n```\n#stoplight\n<!--\ntype: tab\ntitle: Email OTP\n-->\n#/stoplight\n\n#apim\n# Email OTP\n#/apim\nThe following will be sent to the email address.\n![OTP Email](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AuthAPI/CHIPS-EMailOTP.png)\n\n#stoplight\n<!-- type: tab-end -->\n#/stoplight\n\nThe OTP can then be used with [POST /chips/auth/api/pin][api-chips-auth-api-pin-post] to reset the CHIPS&reg; account PIN code.\n\n\n#stoplight\n\n[api-chips-auth-api-pin-post]: swagger.json/paths/~1pin\n\n#/stoplight\n\n",
+                "description": "Request an OTP to be sent to the mobile number or email that is associated with the account. \n\n\n<!--\ntype: tab\ntitle: Mobile OTP\n-->\n\n\n\nThe number will receive an SMS:\n\n```\nOTP: xxxxx\nYour CHIPS generated verification code\n```\n\n<!--\ntype: tab\ntitle: Email OTP\n-->\n\n\n\nThe following will be sent to the email address.\n![OTP Email](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AuthAPI/CHIPS-EMailOTP.png)\n\n\n<!-- type: tab-end -->\n\n\nThe OTP can then be used with [POST /chips/auth/api/pin][api-chips-auth-api-pin-post] to reset the CHIPS&reg; account PIN code.\n\n\n\n\n[api-chips-auth-api-pin-post]: swagger.json/paths/~1pin\n\n\n\n",
                 "tags": [
                     "PIN Management"
                 ]

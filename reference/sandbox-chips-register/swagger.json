@@ -15,7 +15,7 @@
         },
         "description": "The CHIPS payment platform enables registered users/merchants to create a payment request token that can be paid with various MasterPass enabled payment applications available on the South African payments landscape.\n\nThird parties can build their own wallet with the CHIPS&reg; Value Store as the backend. The third party application will need to on-board their users into the CHIPS&reg; Payment Network.\n\n# Overview\n[![CHIPS Onboarding Sequence Diagram](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/Onboarding-SequenceDiagram.png)][stoplight-flow]\n\n[![Test It](https://marketplace.trustlinkhosting.com/images/Trustlink/TestIt.png)][stoplight-flow]\n\n\n* [Business details](https://marketplace.trustlinkhosting.com/api-documentation/api-publishers/chips-open-banking-platform/chips-user-onboarding)\n* [Technical guides](https://stoplight.io/p/docs/gh/trustlink-apim/chips)\n\n\n\nFor more info on CHIPS&reg;:\n* [CHIPS home page](https://chips.co.za)\n* [CHIPS for business](https://www.chips.co.za/payment-network/index.php/businesses)\n\n\n# Getting Started\n* Register on the [Trustlink API Marketplace](https://marketplace.trustlinkhosting.com/component/apiportal/registration)\n* Send an email requesting access to the CHIPS Point of Sale: Token Based Payment API to apisales@trustlink.co.za\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n1. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)\n\n[stoplight-flow]: https://stoplight.io/p/docs/gh/trustlink-apim/chips/docs/2-CHIPS-for-Individuals/01-CHIPS-Onboarding.md"
     },
-    "host": "marketplace-qa.trustlinkhosting.com:8165",
+    "host": "apim.trustlinkhosting.com:8065",
     "schemes": [
         "https"
     ],
@@ -1982,7 +1982,7 @@
                                         },
                                         "photo": {
                                             "type": "string",
-                                            "description": "Selfie photo as base64 string with meta header. Use https://www.base64-image.de to generate examples.",
+                                            "description": "Selfie photo as base64 string with meta header.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n\nRecommended image size is 600x600\n\nUse https://www.base64-image.de to generate examples. ",
                                             "example": "data:image/png;base64,iVBORw0KG..."
                                         },
                                         "referrerUuid": {
@@ -2042,7 +2042,7 @@
                                                 },
                                                 "photo": {
                                                     "type": "string",
-                                                    "description": "Photo of ID book or card. Encoded in base 64 with  header. Use https://www.base64-image.de to generate examples.",
+                                                    "description": "Photo of ID book or card. Encoded in base 64 with  header.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n\nRecommended image size is 600x600.\n\nUse https://www.base64-image.de to generate examples.",
                                                     "example": "data:image/png;base64,iVBORw0KG..."
                                                 }
                                             },

@@ -15,7 +15,7 @@
         },
         "description": "APIs to assist integrators to test and integrate the CHIPS&reg; Money API.\n\n# Features\n* Simulate Cash In\n\n# Note\nThese APIs are only available in the sandbox environment"
     },
-    "host": "tar.sandbox.tlsag.net",
+    "host": "marketplace-qa.trustlinkhosting.com:8165",
     "schemes": [
         "https"
     ],
@@ -28,7 +28,7 @@
     "paths": {
         "/simulate/cashin": {
             "post": {
-                "summary": "SSI Account Transfer",
+                "summary": "Pay@ Cash In Simulation",
                 "operationId": "chips-post-money-tools-simulate-cashin",
                 "responses": {
                     "200": {
@@ -444,6 +444,19 @@
                             ]
                         },
                         "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "description": "Marketplace API Key",
+                        "name": "marketplaceKeyId",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Version of the API. (Latest version 1.0)",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -461,6 +474,18 @@
         null,
         null
     ],
-    "securityDefinitions": {},
+    "securityDefinitions": {
+        "Marketplace API Key": {
+            "type": "apiKey",
+            "description": "API Key",
+            "name": "marketplaceKeyId"
+        },
+        "in": "header"
+    },
+    "security": [
+        {
+            "Marketplace API Key": []
+        }
+    ],
     "buildtarget": "stoplight"
 }
