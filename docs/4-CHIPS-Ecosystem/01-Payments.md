@@ -1,6 +1,7 @@
 # CHIPS Payments 
 
-Let us look under the hood of a CHIPS Payment. There are several options the facilitate payments in the CHIPS ecosystem.
+Let us look under the hood of a CHIPS Payment. There are several methods to facilitate payments in the CHIPS ecosystem.
+
 
 # Payment Methods
 ## Pay a CHIPS merchant
