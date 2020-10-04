@@ -13,16 +13,10 @@ The [Trustlink API Marketplace] exposes APIs in 3 versions.
 # Storefront APIs
 
 The storefront APIs are demonstration APIs that return static mocked up responses.
-They can be accessed with the following headers
 
-<!-- title: Storefront Headers -->
+See [Demo Authentication](docs/1-CHIPS-Authorization/02-Demo-Authentication.md) for details on calling Storefront APIs.
 
-| Header           | Value                                                                                                     |
-| ---------------- | --------------------------------------------------------------------------------------------------------- |
-| markteplaceKeyId | cc8d4f9b-bda5-4025-9b95-a0896242edb1                                                                      |
-| Authorization    | DEMO MjE3MDJhZWYtYTkwMi00YmU0LTgxNTUtNjk3OTljNWY0MjczOmIyNzAyNmZhLTlkYWUtNDcwOS05MzQxLTFiYWFjOGJlMzc3NA== |
-
-In the Stoplight Docs these values are prepopulated in most of the example flows.
+In the Stoplight Docs the authentication values are prepopulated in most of the example flows.
 
 <!-- theme: warning -->
 
@@ -32,21 +26,21 @@ In the Stoplight Docs these values are prepopulated in most of the example flows
 You can identify a mocked up result by looking at the `apimStatus.marketplaceMocked` value returned.
 
 **Example**
-
-    {
-      "externalAmount": 8.7,
-      "internalAmount": 2.5,
-      "totalAmount": 12.88,
-      "vatAmount": 1.68,
-      "apimStatus": {
-        "marketplaceId": "Id-cfbdb25ef35fb9cd72ad0b08",
-        "statusCode": 200,
-        "marketplaceCode": 200,
-        "providerCode": "200",
-        "marketplaceMocked": true
-      }
-    }
-
+```json
+{
+  "externalAmount": 8.7,
+  "internalAmount": 2.5,
+  "totalAmount": 12.88,
+  "vatAmount": 1.68,
+  "apimStatus": {
+    "marketplaceId": "Id-cfbdb25ef35fb9cd72ad0b08",
+    "statusCode": 200,
+    "marketplaceCode": 200,
+    "providerCode": "200",
+    "marketplaceMocked": true
+  }
+}
+```
 # Sandbox APIs
 
 The sandbox APIs test through to sandbox versions of the APIs at the back of the [Trustlink API Marketplace]. These sandbox environments are clones of the production environment with fictious data and attempt to simulate production as close as possible. 
