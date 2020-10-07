@@ -15,7 +15,7 @@ In order to address the different scenarios, the following Authorization methods
 * Session Lapsed Authorization Token 
 * Basic Device Authentication
 * Basic External Participant System Authentication
-* [Basic Subscribed Service Intermediary (BSSI)](./20-CHIPS-Basic-Subscribed-Service-Intermediary-Authentication.md)
+* [Basic Secured System Interface (BSSI)](./20-CHIPS-Basic-Secured-System-Interface-Authentication.md)
 * BSSI Hybrid 
 
 
