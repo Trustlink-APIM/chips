@@ -2794,7 +2794,9 @@
         "/transactions": {
             "get": {
                 "summary": "Transaction History",
-                "tags": [],
+                "tags": [
+                    "Account"
+                ],
                 "responses": {
                     "200": {
                         "description": "Transaction List",
