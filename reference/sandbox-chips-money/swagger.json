@@ -2885,6 +2885,7 @@
                                                     },
                                                     {
                                                         "type": "object",
+                                                        "description": "Transaction List Fields",
                                                         "properties": {
                                                             "requestId": {
                                                                 "maxLength": 36,
@@ -3568,6 +3569,13 @@
                         "in": "query",
                         "name": "orderBy",
                         "type": "string"
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "See CHIPS Authorization Methods",
+                        "required": true
                     },
                     {
                         "type": "string",
