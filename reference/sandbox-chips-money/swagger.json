@@ -2834,230 +2834,246 @@
                                         "values": {
                                             "type": "array",
                                             "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "uuid": {
-                                                        "type": "string",
-                                                        "description": "The unique reference used to identify the token request.",
-                                                        "example": "d3adba08-7a54-46ec-bf03-8ce09cd38ee5",
-                                                        "minLength": 36,
-                                                        "maxLength": 36,
-                                                        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
-                                                    },
-                                                    "created": {
-                                                        "type": "string",
-                                                        "description": "The date and time that the token request was created.\nUTC Datetime with time zone\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
-                                                        "format": "date-time",
-                                                        "example": "2020-04-14T16:31:43.715+02:00"
-                                                    },
-                                                    "createdBy": {
-                                                        "type": "string",
-                                                        "description": "Member UUID (ISO/IEC 9834-8:2014) or System",
-                                                        "example": "System"
-                                                    },
-                                                    "lastModified": {
-                                                        "type": "string",
-                                                        "format": "date-time",
-                                                        "example": "2020-04-14T16:31:43.715+02:00",
-                                                        "description": "The date and time that the token request was last modified.\nUTC Datetime with time zone\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)"
-                                                    },
-                                                    "modifiedBy": {
-                                                        "type": "string",
-                                                        "description": "Member UUID (ISO/IEC 9834-8:2014) or System",
-                                                        "example": "System"
-                                                    },
-                                                    "systemRefInfo": {
-                                                        "type": "string",
-                                                        "description": "System reference number",
-                                                        "minLength": 0,
-                                                        "maxLength": 36
-                                                    },
-                                                    "requestId": {
-                                                        "maxLength": 36,
-                                                        "minLength": 0,
-                                                        "type": "string",
-                                                        "description": "External request identifier. Recommended UUID",
-                                                        "example": "c070567d-da4d-4e4e-a5a5-0f9dbd516042"
-                                                    },
-                                                    "amount": {
-                                                        "minimum": 0,
-                                                        "exclusiveMinimum": false,
-                                                        "type": "number",
-                                                        "description": "Transaction amount"
-                                                    },
-                                                    "gratuityAmount": {
-                                                        "minimum": 0,
-                                                        "exclusiveMinimum": false,
-                                                        "type": "number",
-                                                        "description": "Gratuity amount"
-                                                    },
-                                                    "fees": {
-                                                        "title": "CHIPS Fee Object",
+                                                "allOf": [
+                                                    {
+                                                        "title": "CHIPS Generic Response Fields",
                                                         "type": "object",
-                                                        "description": "Generic object for CHIPS&reg; fees.",
                                                         "properties": {
-                                                            "vatAmount": {
-                                                                "description": "VAT amount on total fee",
-                                                                "exclusiveMinimum": false,
-                                                                "minimum": 0,
-                                                                "type": "number"
+                                                            "uuid": {
+                                                                "type": "string",
+                                                                "description": "The unique reference used to identify the token request.\n(UUID - ISO/IEC 9834-8:2014)",
+                                                                "example": "d3adba08-7a54-46ec-bf03-8ce09cd38ee5",
+                                                                "minLength": 36,
+                                                                "maxLength": 36,
+                                                                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
                                                             },
-                                                            "totalAmount": {
-                                                                "description": "Total fee amount",
-                                                                "exclusiveMinimum": false,
-                                                                "minimum": 0,
-                                                                "type": "number"
+                                                            "created": {
+                                                                "type": "string",
+                                                                "description": "The date and time that the token request was created.\nUTC Datetime with time zone\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                                                                "format": "date-time",
+                                                                "example": "2020-04-14T16:31:43.715+02:00"
                                                             },
-                                                            "internalAmount": {
-                                                                "description": "Internal fee amount",
-                                                                "exclusiveMinimum": false,
-                                                                "minimum": 0,
-                                                                "type": "number"
+                                                            "createdBy": {
+                                                                "type": "string",
+                                                                "description": "Member UUID (ISO/IEC 9834-8:2014) or System",
+                                                                "example": "System"
                                                             },
-                                                            "externalAmount": {
-                                                                "description": "External fee amount",
-                                                                "exclusiveMinimum": false,
-                                                                "minimum": 0,
-                                                                "type": "number"
+                                                            "lastModified": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2020-04-14T16:31:43.715+02:00",
+                                                                "description": "The date and time that the token request was last modified.\nUTC Datetime with time zone\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)"
+                                                            },
+                                                            "modifiedBy": {
+                                                                "type": "string",
+                                                                "description": "Member UUID (ISO/IEC 9834-8:2014) or System",
+                                                                "example": "System"
+                                                            },
+                                                            "systemRefInfo": {
+                                                                "type": "string",
+                                                                "description": "System reference number",
+                                                                "minLength": 0,
+                                                                "maxLength": 36
                                                             }
                                                         },
-                                                        "x-tags": [
-                                                            "Fees"
+                                                        "required": [
+                                                            "uuid",
+                                                            "created",
+                                                            "lastModified",
+                                                            "systemRefInfo"
                                                         ]
                                                     },
-                                                    "accountUuid": {
-                                                        "description": "Account UUID",
-                                                        "maxLength": 36,
-                                                        "minLength": 36,
-                                                        "type": "string"
-                                                    },
-                                                    "category1": {
-                                                        "description": "Category 1",
-                                                        "maxLength": 50,
-                                                        "minLength": 0,
-                                                        "type": "string"
-                                                    },
-                                                    "category2": {
-                                                        "description": "Category 2",
-                                                        "maxLength": 50,
-                                                        "minLength": 0,
-                                                        "type": "string"
-                                                    },
-                                                    "category3": {
-                                                        "description": "Category 3",
-                                                        "maxLength": 50,
-                                                        "minLength": 0,
-                                                        "type": "string"
-                                                    },
-                                                    "contraAccountUuid": {
-                                                        "description": "Contra account UUID",
-                                                        "maxLength": 36,
-                                                        "minLength": 36,
-                                                        "type": "string"
-                                                    },
-                                                    "contraCounter": {
-                                                        "description": "Contra counter",
-                                                        "format": "int32",
-                                                        "type": "integer"
-                                                    },
-                                                    "contraMemberUuid": {
-                                                        "description": "Contra member UUID",
-                                                        "maxLength": 36,
-                                                        "minLength": 36,
-                                                        "type": "string"
-                                                    },
-                                                    "description": {
-                                                        "description": "Transaction description",
-                                                        "maxLength": 60,
-                                                        "minLength": 0,
-                                                        "type": "string"
-                                                    },
-                                                    "facilityType": {
-                                                        "maxLength": 20,
-                                                        "minLength": 0,
-                                                        "type": "string"
-                                                    },
-                                                    "memberUuid": {
-                                                        "description": "Member UUID",
-                                                        "maxLength": 36,
-                                                        "minLength": 36,
-                                                        "type": "string"
-                                                    },
-                                                    "message": {
-                                                        "description": "Message",
-                                                        "maxLength": 120,
-                                                        "minLength": 0,
-                                                        "type": "string"
-                                                    },
-                                                    "movementAmount": {
-                                                        "description": "Movement amount",
-                                                        "type": "number"
-                                                    },
-                                                    "providerCode": {
-                                                        "maxLength": 40,
-                                                        "minLength": 0,
-                                                        "type": "string"
-                                                    },
-                                                    "serviceCode": {
-                                                        "description": "Service code",
-                                                        "maxLength": 20,
-                                                        "minLength": 0,
-                                                        "type": "string"
-                                                    },
-                                                    "siteName": {
-                                                        "description": "Site name",
-                                                        "maxLength": 100,
-                                                        "minLength": 0,
-                                                        "type": "string"
-                                                    },
-                                                    "siteRefInfo": {
-                                                        "description": "Site reference",
-                                                        "maxLength": 36,
-                                                        "minLength": 0,
-                                                        "type": "string"
-                                                    },
-                                                    "tokenId": {
-                                                        "maxLength": 10,
-                                                        "minLength": 0,
-                                                        "type": "string"
-                                                    },
-                                                    "transactionStatus": {
-                                                        "description": "Transaction status",
-                                                        "enum": [
-                                                            "CANCELLED",
-                                                            "FINALISED",
-                                                            "PENDING"
-                                                        ],
-                                                        "type": "string"
-                                                    },
-                                                    "transactionType": {
-                                                        "description": "Transaction type",
-                                                        "enum": [
-                                                            "COMMISSION",
-                                                            "FEE",
-                                                            "FUNDING",
-                                                            "INTEREST",
-                                                            "LIQUIDITY",
-                                                            "PAYMENT",
-                                                            "PAY_IN",
-                                                            "PAY_OUT",
-                                                            "REVERSAL"
-                                                        ],
-                                                        "type": "string"
-                                                    },
-                                                    "transferUuid": {
-                                                        "description": "Transfer UUID (ISO/IEC 9834-8:201)",
-                                                        "maxLength": 36,
-                                                        "minLength": 0,
-                                                        "type": "string"
-                                                    },
-                                                    "txRefInfo": {
-                                                        "description": "Transaction reference",
-                                                        "maxLength": 36,
-                                                        "minLength": 0,
-                                                        "type": "string"
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "requestId": {
+                                                                "maxLength": 36,
+                                                                "minLength": 0,
+                                                                "type": "string",
+                                                                "description": "External request identifier. Recommended UUID",
+                                                                "example": "c070567d-da4d-4e4e-a5a5-0f9dbd516042"
+                                                            },
+                                                            "amount": {
+                                                                "minimum": 0,
+                                                                "exclusiveMinimum": false,
+                                                                "type": "number",
+                                                                "description": "Transaction amount"
+                                                            },
+                                                            "gratuityAmount": {
+                                                                "minimum": 0,
+                                                                "exclusiveMinimum": false,
+                                                                "type": "number",
+                                                                "description": "Gratuity amount"
+                                                            },
+                                                            "fees": {
+                                                                "title": "CHIPS Fee Object",
+                                                                "type": "object",
+                                                                "description": "Generic object for CHIPS&reg; fees.",
+                                                                "properties": {
+                                                                    "vatAmount": {
+                                                                        "description": "VAT amount on total fee",
+                                                                        "exclusiveMinimum": false,
+                                                                        "minimum": 0,
+                                                                        "type": "number"
+                                                                    },
+                                                                    "totalAmount": {
+                                                                        "description": "Total fee amount",
+                                                                        "exclusiveMinimum": false,
+                                                                        "minimum": 0,
+                                                                        "type": "number"
+                                                                    },
+                                                                    "internalAmount": {
+                                                                        "description": "Internal fee amount",
+                                                                        "exclusiveMinimum": false,
+                                                                        "minimum": 0,
+                                                                        "type": "number"
+                                                                    },
+                                                                    "externalAmount": {
+                                                                        "description": "External fee amount",
+                                                                        "exclusiveMinimum": false,
+                                                                        "minimum": 0,
+                                                                        "type": "number"
+                                                                    }
+                                                                },
+                                                                "x-tags": [
+                                                                    "Fees"
+                                                                ]
+                                                            },
+                                                            "accountUuid": {
+                                                                "description": "Account UUID",
+                                                                "maxLength": 36,
+                                                                "minLength": 36,
+                                                                "type": "string"
+                                                            },
+                                                            "category1": {
+                                                                "description": "Category 1",
+                                                                "maxLength": 50,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            },
+                                                            "category2": {
+                                                                "description": "Category 2",
+                                                                "maxLength": 50,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            },
+                                                            "category3": {
+                                                                "description": "Category 3",
+                                                                "maxLength": 50,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            },
+                                                            "contraAccountUuid": {
+                                                                "description": "Contra account UUID",
+                                                                "maxLength": 36,
+                                                                "minLength": 36,
+                                                                "type": "string"
+                                                            },
+                                                            "contraCounter": {
+                                                                "description": "Contra counter",
+                                                                "format": "int32",
+                                                                "type": "integer"
+                                                            },
+                                                            "contraMemberUuid": {
+                                                                "description": "Contra member UUID",
+                                                                "maxLength": 36,
+                                                                "minLength": 36,
+                                                                "type": "string"
+                                                            },
+                                                            "description": {
+                                                                "description": "Transaction description",
+                                                                "maxLength": 60,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            },
+                                                            "facilityType": {
+                                                                "maxLength": 20,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            },
+                                                            "memberUuid": {
+                                                                "description": "Member UUID",
+                                                                "maxLength": 36,
+                                                                "minLength": 36,
+                                                                "type": "string"
+                                                            },
+                                                            "message": {
+                                                                "description": "Message",
+                                                                "maxLength": 120,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            },
+                                                            "movementAmount": {
+                                                                "description": "Movement amount",
+                                                                "type": "number"
+                                                            },
+                                                            "providerCode": {
+                                                                "maxLength": 40,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            },
+                                                            "serviceCode": {
+                                                                "description": "Service code",
+                                                                "maxLength": 20,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            },
+                                                            "siteName": {
+                                                                "description": "Site name",
+                                                                "maxLength": 100,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            },
+                                                            "siteRefInfo": {
+                                                                "description": "Site reference",
+                                                                "maxLength": 36,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            },
+                                                            "tokenId": {
+                                                                "maxLength": 10,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            },
+                                                            "transactionStatus": {
+                                                                "description": "Transaction status",
+                                                                "enum": [
+                                                                    "CANCELLED",
+                                                                    "FINALISED",
+                                                                    "PENDING"
+                                                                ],
+                                                                "type": "string"
+                                                            },
+                                                            "transactionType": {
+                                                                "description": "Transaction type",
+                                                                "enum": [
+                                                                    "COMMISSION",
+                                                                    "FEE",
+                                                                    "FUNDING",
+                                                                    "INTEREST",
+                                                                    "LIQUIDITY",
+                                                                    "PAYMENT",
+                                                                    "PAY_IN",
+                                                                    "PAY_OUT",
+                                                                    "REVERSAL"
+                                                                ],
+                                                                "type": "string"
+                                                            },
+                                                            "transferUuid": {
+                                                                "description": "Transfer UUID (ISO/IEC 9834-8:201)",
+                                                                "maxLength": 36,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            },
+                                                            "txRefInfo": {
+                                                                "description": "Transaction reference",
+                                                                "maxLength": 36,
+                                                                "minLength": 0,
+                                                                "type": "string"
+                                                            }
+                                                        }
                                                     }
-                                                }
+                                                ]
                                             }
                                         }
                                     }
@@ -3477,7 +3493,7 @@
                         }
                     }
                 },
-                "operationId": "chips-money-purchase-get",
+                "operationId": "chips-money-transactions-get",
                 "description": "Retrieve transaction history.",
                 "parameters": [
                     {
