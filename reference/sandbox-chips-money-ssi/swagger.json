@@ -1779,7 +1779,7 @@
                     }
                 },
                 "operationId": "chips-get-money-ssi-bank-payments-fees",
-                "description": "Calculate the fees the CHIPS&reg; account holder will have to pay to transfer money to a bank account.\n\n*Supported Branch Codes*\n\n| Bank | Branch Codes |\n| --- | --- |\n|\tNedbank\t|\t198765\t|\n|\tAbsa Bank\t|\t632005\t|\n|\tCapitec Bank\t|\t470010\t|\n|\tInvestec Bank\t|\t580105\t|\n|\tStandard Bank\t|\t051001\t|\n|\tFirst National Bank\t|\t250655\t|\n\n\n",
+                "description": "Calculate the fees the CHIPS&reg; account holder will have to pay to transfer money to a bank account.\n\n*Quick Reference for Universal Branch Codes*\n\n| Bank | Branch Codes |\n| --- | --- |\n|\tNedbank\t|\t198765\t|\n|\tAbsa Bank\t|\t632005\t|\n|\tCapitec Bank\t|\t470010\t|\n|\tInvestec Bank\t|\t580105\t|\n|\tStandard Bank\t|\t051001\t|\n|\tFirst National Bank\t|\t250655\t|\n\nThe end-point allows all bank codes found at [here](https://www.sashares.co.za/bank-branch-codes/#gs.j94p8q) \n\n",
                 "parameters": [
                     {
                         "type": "string",
