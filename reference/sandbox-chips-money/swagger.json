@@ -4815,6 +4815,11 @@
                                     "required": [
                                         "payments"
                                     ]
+                                },
+                                {
+                                    "title": "CHIPS Multiple Payments",
+                                    "type": "object",
+                                    "description": " "
                                 }
                             ]
                         }
