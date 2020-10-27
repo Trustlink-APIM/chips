@@ -4795,8 +4795,14 @@
                                                         "required": [
                                                             "amount"
                                                         ]
+                                                    },
+                                                    {
+                                                        "title": "CHIPS Payments",
+                                                        "type": "object",
+                                                        "description": ""
                                                     }
-                                                ]
+                                                ],
+                                                "description": "CHIPS to CHIPS Payments"
                                             }
                                         },
                                         "noOfInstructions": {
