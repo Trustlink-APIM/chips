@@ -3371,8 +3371,7 @@
                                         "required": [
                                             "uuid",
                                             "created",
-                                            "lastModified",
-                                            "systemRefInfo"
+                                            "lastModified"
                                         ]
                                     },
                                     {
@@ -3806,7 +3805,7 @@
                     {
                         "type": "string",
                         "in": "header",
-                        "name": "Authoriztion",
+                        "name": "Authorization",
                         "required": true,
                         "description": "CHIPS BSSI Authorization"
                     },
