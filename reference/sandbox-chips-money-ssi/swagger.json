@@ -3855,16 +3855,16 @@
     "basePath": "/sandbox/chips/money/ssi",
     "tags": [
         {
-            "name": "Bank Deposits"
+            "name": "Transfer"
+        },
+        {
+            "name": "Banking"
         },
         {
             "name": "Bank Payments"
         },
         {
-            "name": "Transfer"
-        },
-        {
-            "name": "Banking"
+            "name": "Bank Deposits"
         }
     ],
     "securityDefinitions": {
