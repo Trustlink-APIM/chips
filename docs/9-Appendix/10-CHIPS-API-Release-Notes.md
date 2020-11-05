@@ -33,7 +33,7 @@ We exposed the [POST /payments/purchases/multi-payments][chips-money-payments-pu
 
 <!-- API Links -->
 [chips-money-ssi-bank-payments-fees]: ../../reference/sandbox-chips-money-ssi/swagger.json/paths/~1bank~1payments~1fees/get
-[chips-money-ssi-bank-payments]: ../../reference/sandbox-chips-money-ssi/swagger.json/paths/~1bank~1payments~1/post
+[chips-money-ssi-bank-payments]: ../../reference/sandbox-chips-money-ssi/swagger.json/paths/~1bank~1payments/post
 [chips-money-ssi-banks]: ../../reference/sandbox-chips-money-ssi/swagger.json/paths/~1banks/get
 [chips-money-payments-purchases-multi-payments]: ../../reference/sandbox-chips-money/swagger.json/paths/~1payments~1purchases~1multi-payments/post
 
