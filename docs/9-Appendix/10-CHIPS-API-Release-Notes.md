@@ -13,7 +13,7 @@ You can now use *bankCode* as a bank identifier in the following calls:
 * [GET /bank/payments/fees][chips-money-ssi-bank-payment-fees]
 
 
-[chips-money-ssi-bank-payment-fees]: reference/sandbox-chips-money-ssi/swagger.json/paths/~1bank~1payments~1fees/get
+[chips-money-ssi-bank-payment-fees]: ../../reference/sandbox-chips-money-ssi/swagger.json/paths/~1bank~1payments~1fees/get
 
 
 
