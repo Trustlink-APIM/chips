@@ -13,7 +13,7 @@
             "url": "https://marketplace.trustlinkhosting.com",
             "email": "apisales@trustlink.co.za"
         },
-        "description": "The CHIPS payment platform enables registered users/merchants to create a payment request token that can be paid with various MasterPass enabled payment applications available on the South African payments landscape.\n\nThird parties can build their own wallet with the CHIPS&reg; Value Store as the backend. The third party application will need to on-board their users into the CHIPS&reg; Payment Network.\n\n# Overview\n[![CHIPS Onboarding Sequence Diagram](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/Onboarding-SequenceDiagram.png)][stoplight-flow]\n\n[![Test It](https://marketplace.trustlinkhosting.com/images/Trustlink/TestIt.png)][stoplight-flow]\n\n\n* [Business details](https://marketplace.trustlinkhosting.com/api-documentation/api-publishers/chips-open-banking-platform/chips-user-onboarding)\n* [Technical guides](https://stoplight.io/p/docs/gh/trustlink-apim/chips)\n\n\n\nFor more info on CHIPS&reg;:\n* [CHIPS home page](https://chips.co.za)\n* [CHIPS for business](https://www.chips.co.za/payment-network/index.php/businesses)\n\n\n# Getting Started\n* Register on the [Trustlink API Marketplace](https://marketplace.trustlinkhosting.com/component/apiportal/registration)\n* Send an email requesting access to the CHIPS Point of Sale: Token Based Payment API to apisales@trustlink.co.za\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n1. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)\n\n[stoplight-flow]: https://stoplight.io/p/docs/gh/trustlink-apim/chips/docs/2-CHIPS-for-Individuals/01-CHIPS-Onboarding.md"
+        "description": "The CHIPS payment platform enables registered users/merchants to create a payment request token that can be paid with various MasterPass enabled payment applications available on the South African payments landscape.\n\nThird parties can build their own wallet with the CHIPS&reg; Value Store as the backend. The third party application will need to on-board their users into the CHIPS&reg; Payment Network.\n\n# Overview\n[![CHIPS Onboarding Sequence Diagram](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/Onboarding-SequenceDiagram.png)][stoplight-flow]\n\n* [Business details](https://marketplace.trustlinkhosting.com/api-documentation/api-publishers/chips-open-banking-platform/chips-user-onboarding)\n* [Technical guides](https://stoplight.io/p/docs/gh/trustlink-apim/chips)\n\n\n\nFor more info on CHIPS&reg;:\n* [CHIPS home page](https://chips.co.za)\n* [CHIPS for business](https://www.chips.co.za/payment-network/index.php/businesses)\n\n\n# Getting Started\n* Register on the [Trustlink API Marketplace](https://marketplace.trustlinkhosting.com/component/apiportal/registration)\n* Send an email requesting access to the CHIPS Point of Sale: Token Based Payment API to apisales@trustlink.co.za\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n1. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)\n\n[stoplight-flow]: https://stoplight.io/p/docs/gh/trustlink-apim/chips/docs/2-CHIPS-for-Individuals/01-CHIPS-Onboarding.md"
     },
     "host": "marketplace-qa.trustlinkhosting.com:8065",
     "schemes": [
@@ -987,7 +987,7 @@
                         }
                     }
                 },
-                "description": "Request an OTP for a mobile number. The number will receive an SMS:\n\n```\nOTP: xxxxx\nYour CHIPS generated verification code\n```\n\n> **Sandbox testing**\n>\n> The OTP sent to the phone does incur costs. For testing to the sandbox, the number of calls to the endpoint is rate limited.\n> You can test with mobileNumbers starting with '+2785' to trigger a mockup success response.\n\n> **Storefront testing**\n> \n> All requests to the storefront OTP will return a mockup success response",
+                "description": "Request an OTP for a mobile number. The number will receive an SMS:\n\n```\nOTP: xxxxx\nYour CHIPS generated verification code\n```\n\n> **Sandbox testing**\n>\n> The OTP sent to the phone does incur costs. For testing to the sandbox, the number of calls to the endpoint is rate limited.\n> You can test with mobileNumbers starting with '+2785' to trigger a mockup success response.\n",
                 "parameters": [
                     {
                         "type": "string",
@@ -1966,13 +1966,14 @@
                                         "displayName": {
                                             "type": "string",
                                             "maxLength": 60,
-                                            "example": "Tony Stark"
+                                            "example": "Enzo Mazibuko",
+                                            "description": "User provided display name."
                                         },
                                         "email": {
                                             "type": "string",
-                                            "description": "ironman@stark.com",
-                                            "example": "ironman@stark.com",
-                                            "maxLength": 80
+                                            "description": "User email address. Must be unique.",
+                                            "maxLength": 80,
+                                            "example": "ezno.mazibuko@zamail.co.za"
                                         },
                                         "mobileNumber": {
                                             "type": "string",
@@ -1982,13 +1983,13 @@
                                         },
                                         "photo": {
                                             "type": "string",
-                                            "description": "Selfie photo as base64 string with meta header.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n\nRecommended image size is 600x600\n\nUse https://www.base64-image.de to generate examples. ",
+                                            "description": "Selfie photo as base64 string with meta header.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n* data:application/pdf;base64\n\nRecommended image size is 600x600\n\nUse https://www.base64-image.de to generate examples.",
                                             "example": "data:image/png;base64,iVBORw0KG..."
                                         },
                                         "referrerUuid": {
                                             "type": "string",
                                             "example": "3e1b841d-9cd2-4a93-89e0-da43e0cc9783",
-                                            "description": "CHIPS Account ID of the referrer. (ISO/IEC 9834-8:2014)",
+                                            "description": "CHIPS Account UUID of the referrer. \nMust be the merchant UUID if integrating a wallet ecosystem under a miBusiness merchant.\nMust NOT be supplied if integrating as a wallet ecosystem owner (using BSSI Auth).",
                                             "pattern": "^[0-9a-fA-F]{36}$",
                                             "maxLength": 36,
                                             "minLength": 0
@@ -2000,15 +2001,15 @@
                                                 "identityNumber": {
                                                     "type": "string",
                                                     "description": "ID number as per RSA ID book",
-                                                    "example": "7005295023081",
                                                     "minLength": 13,
                                                     "maxLength": 13,
-                                                    "pattern": "^[0-9]*"
+                                                    "pattern": "^[0-9]*",
+                                                    "example": "9609135044088"
                                                 },
                                                 "firstNames": {
                                                     "type": "string",
                                                     "description": "First names as per RSA ID book. Space separated.",
-                                                    "example": "Anthony Edward"
+                                                    "example": "Enzokuhle Innocent"
                                                 },
                                                 "maidenName": {
                                                     "type": "string",
@@ -2017,7 +2018,7 @@
                                                 "surname": {
                                                     "type": "string",
                                                     "description": "Surname as per RSA ID book.",
-                                                    "example": "Stark"
+                                                    "example": "Mazibuko"
                                                 },
                                                 "genderType": {
                                                     "type": "string",
@@ -2030,19 +2031,20 @@
                                                 },
                                                 "countryOfBirth": {
                                                     "type": "string",
-                                                    "description": "Country of Birth abbreviation.",
+                                                    "description": "Country of Birth abbreviation. \nISO 3166-1 alpha-2 code.\nZA for South Africa.",
                                                     "minLength": 0,
                                                     "maxLength": 2,
                                                     "example": "ZA"
                                                 },
                                                 "dateOfBirth": {
                                                     "type": "string",
-                                                    "description": "Format yyyy-mm-dd",
-                                                    "format": "date"
+                                                    "description": "Date of birth. Format yyyy-mm-dd",
+                                                    "format": "date",
+                                                    "example": "1996-09-13"
                                                 },
                                                 "photo": {
                                                     "type": "string",
-                                                    "description": "Photo of ID book or card. Encoded in base 64 with  header.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n\nRecommended image size is 600x600.\n\nUse https://www.base64-image.de to generate examples.",
+                                                    "description": "Photo of ID book or card. Encoded in base 64 with  header.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n* data:application/pdf;base64\n\nRecommended image size is 600x600.\n\nUse https://www.base64-image.de to generate examples.",
                                                     "example": "data:image/png;base64,iVBORw0KG..."
                                                 }
                                             },
@@ -2052,6 +2054,86 @@
                                                 "surname",
                                                 "genderType",
                                                 "countryOfBirth",
+                                                "dateOfBirth",
+                                                "photo"
+                                            ]
+                                        },
+                                        "passport": {
+                                            "title": "CHIPS Passport Object",
+                                            "type": "object",
+                                            "properties": {
+                                                "passportNumber": {
+                                                    "type": "string",
+                                                    "description": "Number as per Passport.",
+                                                    "maxLength": 20,
+                                                    "minLength": 0,
+                                                    "example": "674837123"
+                                                },
+                                                "firstNames": {
+                                                    "type": "string",
+                                                    "description": "First names as per Passport. Space separated.",
+                                                    "example": "Peter Gabriel"
+                                                },
+                                                "surname": {
+                                                    "type": "string",
+                                                    "description": "Surname as per Passport.",
+                                                    "example": "Munguambe"
+                                                },
+                                                "genderType": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "FEMALE",
+                                                        "MALE"
+                                                    ],
+                                                    "example": "MALE",
+                                                    "description": "Gender."
+                                                },
+                                                "countryOfIssue": {
+                                                    "type": "string",
+                                                    "description": "Country the passport is issued in. ISO 3166-1 aplha-2.",
+                                                    "minLength": 0,
+                                                    "maxLength": 2,
+                                                    "example": "MZ"
+                                                },
+                                                "countryOfCitizenship": {
+                                                    "type": "string",
+                                                    "description": "Country of Citizenship. ISO 3166-1 alpha-2.",
+                                                    "maxLength": 2,
+                                                    "example": "MZ"
+                                                },
+                                                "dateOfIssue": {
+                                                    "type": "string",
+                                                    "description": "Date the passport was issued. Format yyyy-mm-dd",
+                                                    "format": "date",
+                                                    "example": "2020-06-15"
+                                                },
+                                                "dateOfExpiry": {
+                                                    "type": "string",
+                                                    "description": "Date passport will expiry on. Format yyyy-mm-dd",
+                                                    "format": "date",
+                                                    "example": "2025-06-14"
+                                                },
+                                                "dateOfBirth": {
+                                                    "type": "string",
+                                                    "description": "Date of birth. Format yyyy-mm-dd",
+                                                    "format": "date",
+                                                    "example": "1967-07-23"
+                                                },
+                                                "photo": {
+                                                    "type": "string",
+                                                    "description": "Photo of passport page with personal information. Encoded in base 64 with header.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n\nRecommended image size is 600x600.\n\nUse https://www.base64-image.de to generate examples.",
+                                                    "example": "data:image/png;base64,iVBORw0KG..."
+                                                }
+                                            },
+                                            "required": [
+                                                "passportNumber",
+                                                "firstNames",
+                                                "surname",
+                                                "genderType",
+                                                "countryOfIssue",
+                                                "countryOfCitizenship",
+                                                "dateOfIssue",
+                                                "dateOfExpiry",
                                                 "dateOfBirth",
                                                 "photo"
                                             ]
