@@ -14,7 +14,7 @@ In order to address the different scenarios, the following Authorization methods
 * Authorization Token 
 * Session Lapsed Authorization Token 
 * Basic Device / System Authentication
-* [Basic Secured System Interface (BSSI)](./20-CHIPS-Basic-Secured-System-Interface-Authentication.md)
+* [Basic Secured System Interface (BSSI)](./58-CHIPS-Basic-Secured-System-Interface-Authentication.md)
 * BSSI Hybrid 
 
 
