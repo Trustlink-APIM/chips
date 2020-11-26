@@ -26,7 +26,7 @@ Referrer accounts are the same as any other [CHIPS Money Manager][web-chips-indi
 [post-chips-money-ssi-bank-deposits-notifications]: ../reference/sandbox-chips-money-ssi/swagger.json/paths/~1bank~1deposits~1notifications/post
 [post-chips-money-ssi-transfer]: ../reference/sandbox-chips-money-ssi/swagger.json/path/~1transfers/post
 [post-chips-money-ssi-bank-payments]: ../reference/sandbox-chips-money-ssi/swagger.json/paths/~1bank~1payments/post
-[docs-chips-bssi-auth]: ./1-CHIPS-Authentication-and-Authorization/20-CHIPS-Basic-Secured-System-Interface-Authentication.md
+[docs-chips-bssi-auth]: ./1-CHIPS-Authentication-and-Authorization/58-CHIPS-Basic-Secured-System-Interface-Authentication.md
 
 [web-chips-mibusiness-landingpage]: https://chips.co.za/payment-network/index.php/businesses
 [web-chips-individual-landigpage]: https://www.chips.co.za/payment-network/index.php/chips-for-individuals
