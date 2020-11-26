@@ -6,6 +6,9 @@ CHIPS Payment Network Integrators can create an ecosystem of CHIPS Accounts unde
 Mediators onboard CHIPS Accounts with the following features and capabilities:
 * Mediators can deposit funds into Trustlink's bank account and notify the CHIPS Payment Network to allocate the funds to a specific CHIPS Account. See [CHIPS Money SSI Account Funding][post-chips-money-ssi-bank-deposits-notifications]
 
+Mediators are also referred to as SSI Integrators. SSI refers to the authentication method used. 
+
+
 ## Referrer Model
 
 

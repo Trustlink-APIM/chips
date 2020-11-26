@@ -1,4 +1,4 @@
-# Basic Subscribed Service Intermediary (BSSI) Authentication
+# Basic Secured System Interface (BSSI) Authentication
 
 BSSI uses Basic HTTP Authentication using the SSI UUID as username and SSI APIKey as password.  The Basic HTTP authentication should use ```BSSI``` instead of ```Basic```. As per Basic HTTP authenication the username + ':' + password should be base64 encoded.
 
