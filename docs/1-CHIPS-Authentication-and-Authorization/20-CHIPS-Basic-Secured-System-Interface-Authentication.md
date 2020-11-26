@@ -12,4 +12,4 @@ The resulting header to be send will be
 Authorization: BSSI ZDZmZjEzMWQtMmU2NC00ZTNhLWEzNmMtMzBjM2ZlMGZkZThkOjBkNjI3YmYxLTFjNGItNGRhMS1iZmFjLWYzOTQ0MTE1MTJmMw==
 ```
 
-
+In the production environment BSSI authentication is also further secured using mTLS and/or static public IP adres whitelisting.
