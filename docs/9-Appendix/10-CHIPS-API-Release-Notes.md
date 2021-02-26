@@ -4,6 +4,15 @@ tags: [CHIPS]
 
 # CHIPS API Release Notes
 
+## 25 February 2021
+
+### CHIPS Money API 
+![Enhancement][relnotes-enhancement-logo]
+We exposed the following end-points to facilitate CHIPS Account to Bank EFTs.
+* [GET /banks][chips-money-banks]
+* [GET /eft/payments/fees][chips-money-eft-payments-fees]
+* [POST /eft/payments][chips-money-eft-payments]
+
 ## 4 November 2020
 
 ### CHIPS Money API Subscribed Service Intermediary Plugin
@@ -36,6 +45,9 @@ We exposed the [POST /payments/purchases/multi-payments][chips-money-payments-pu
 [chips-money-ssi-bank-payments]: ../../reference/sandbox-chips-money-ssi/swagger.json/paths/~1bank~1payments/post
 [chips-money-ssi-banks]: ../../reference/sandbox-chips-money-ssi/swagger.json/paths/~1banks/get
 [chips-money-payments-purchases-multi-payments]: ../../reference/sandbox-chips-money/swagger.json/paths/~1payments~1purchases~1multi-payments/post
+[chips-money-eft-payments-fees]: ../../reference/sandbox-chips-money/swagger.json/paths/~1eft~1payments~1fees/get
+[chips-money-banks]: ../../reference/sandbox-chips-money/swagger.json/paths/~1banks/get
+[chips-money-eft-payments]: ../../reference/sandbox-chips-money/swagger.json/paths/~1eft~1payments/post
 
 
 
