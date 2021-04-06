@@ -15,7 +15,7 @@
         },
         "description": "The CHIPS&reg; Money Subscribed Service Intermediary (SSI) plugin allows integrators matching certain criteria to completely manage their user base.\n\nAn SSI is allowed\n* to authorise money movement on behave of their users.\n* fund accounts in real-time. \n\n\n\nAlso see:\n* [CHIPS BSSI Authentication](../../docs/1-CHIPS-Authorization/20-CHIPS-Basic-Subscribed-Service-Intermediary-Authentication.md)\n\n# Terms and Conditions\nBy using these APIs you agree to the following terms and conditions\n1. [CHIPS Terms and Conditions](http://www.chips.co.za/downloads/CHIPS_Terms_Conditions_2019-07-25.pdf)\n1. [AOS Terms and Conditions](http://www.chips.co.za/downloads/AOS_Terms_and_Conditions_2018-06-26.pdf)\n1. Trustlink API Marketplace Usage and Authorization Terms and Conditions\n\n"
     },
-    "host": "marketplace-qa.trustlinkhosting.com:8165",
+    "host": "apim.trustlinkhosting.com:8165",
     "schemes": [
         "https"
     ],
@@ -2465,7 +2465,7 @@
                         "in": "body",
                         "name": "body",
                         "schema": {
-                            "title": "chips-request-bank-payments.v1",
+                            "title": "CHIPS Bank Payment (EFT)",
                             "type": "object",
                             "x-tags": [
                                 "Bank Payments"
@@ -2500,7 +2500,7 @@
                                 "branchCode": {
                                     "type": "string",
                                     "example": "632005",
-                                    "description": "Universal bank branch code"
+                                    "description": "Universal bank branch code. Note: it is preferred to use bankCode as returned by GET /chips/money/banks to identify a bank."
                                 },
                                 "accountName": {
                                     "type": "string",
@@ -2518,11 +2518,17 @@
                                     "description": "External reference to be displayed on the bank transaction",
                                     "maxLength": 12,
                                     "minLength": 1
+                                },
+                                "bankCode": {
+                                    "type": "string",
+                                    "description": "'code' as returned by the GET /chips/money/banks",
+                                    "minLength": 1,
+                                    "maxLength": 30,
+                                    "example": "POSTBANK"
                                 }
                             },
                             "required": [
                                 "payerAccountUuid",
-                                "branchCode",
                                 "accountNumber",
                                 "bankRefInfo"
                             ]
