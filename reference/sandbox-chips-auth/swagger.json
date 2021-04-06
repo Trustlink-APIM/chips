@@ -15,7 +15,7 @@
         },
         "description": "Exposes authentication of CHIPS users via direct API calls.\n\n# Features \n![Authentication](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AuthAPI/Authentication.png)\n* Authenticate a CHIPS user in order to retrieve a refresh and bearer auth token. \n* Request a new bearer token with the refresh token as authorization. \n\n\n![OTP PIN Reset](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AuthAPI/OTPPINSet.png)\n* Send an OTP to a mobile number.\n* Reset the CHIPS user PIN.  \n"
     },
-    "host": "marketplace-qa.trustlinkhosting.com:8065",
+    "host": "apim.trustlinkhosting.com:8165",
     "schemes": [
         "https"
     ],
