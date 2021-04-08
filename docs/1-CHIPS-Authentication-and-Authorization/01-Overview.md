@@ -10,13 +10,12 @@ A number of integration methods are exists and the following needs to be taken i
 * Risk.
 
 In order to address the different scenarios, the following Authorization methods exists.
-* [Demo Authentication](./02-Demo-Authentication.md)
-* Authorization Token 
+* Custodian Participant System Authentication
+* Authorization Token (Currently as API)
+* Authorization Token (Web Frame - Coming Soon)
 * Session Lapsed Authorization Token 
 * Basic Device Authentication
-* Basic External Participant System Authentication
-* [Basic Secured System Interface (BSSI)](./20-CHIPS-Basic-Secured-System-Interface-Authentication.md)
-* BSSI Hybrid 
+
 
 
 
