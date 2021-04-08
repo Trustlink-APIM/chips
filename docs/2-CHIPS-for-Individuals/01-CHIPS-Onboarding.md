@@ -9,14 +9,15 @@ tags: [Onboarding]
 Onboarding of individuals into Trustlink Payment Network follows the sequence diagram as above. 
 
 # Requirements 
-For Sandbox and Storefront API Calls:
+## Sandbox and Storefront API Calls
+You will require
 * Trustlink marketplaceKeyId linked to the following API bundles
   * CHIPS Onboarding API
   * CHIPS Authentication API (Optional)
 
 As a minimum the CHIPS Money API should the linked to the marketplaceKeyId as well to enable transactions capabilities.
 
-For Production:
+## Production API Calls
 * In order to integrate securely to the Trustlink Payment Network there should be a backend system that issues the APIs through to the Trustlink API Gateway.
 * The backend should be authenticated with the a production marketplaceKeyId link to the production versions of the CHIPS Onboarding API and if required the CHIPS Authentication API.
 * The backend should further be authentication via Static IPs and/or mTLS using a recognized CA.
