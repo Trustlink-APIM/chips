@@ -29,7 +29,7 @@ As a minimum the CHIPS Money API should the linked to the marketplaceKeyId as we
 
 # Flow
 ## User sign up
-[*GET /chips/register/status/get*]: ../../reference/sandbox-chips-register/swagger.json/paths/~1status/get
+[*GET /chips/register/status/get*](../../reference/sandbox-chips-register/swagger.json/paths/~1status/get)
 
 Once the user indicates that they want to sign up for a CHIPS&reg; profile and account, a check is done to see if the mobile number has been registered before or not.
 
