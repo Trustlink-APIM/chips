@@ -15,7 +15,7 @@
         },
         "description": "The CHIPS Money API utilizes the CHIPS Payment Network that allows creation of user ecosystem via an App in order for users to convert cash to CHIPS at supported ATMs and Store, make CHIPS user to CHIPS user Payments, Scan to pay and code to pay at supported stores and convert CHIPS to cash at supported ATMs and stores.\n\n# Features\n\n![Account Details Icon](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AccountDetails.png) \n\n* Check account balance and limits. [Try it!][flow-chips-account-details]\n\n![ATM Withdrawal Icon](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/ATMWithdrawal.png)\n\n* Allows sending an ATM Voucher for withdrawal at supported Bank ATMs. [Try it!][flow-chips-cashsends-atm]\n\n\n\n\n\n\n[flow-chips-account-details]: https://marketplace.trustlinkhosting.com/chips-account-details-flow\n[flow-chips-cashsends-atm]: https://marketplace.trustlinkhosting.com/chips-money-cashsends-atm-flow"
     },
-    "host": "apim.trustlinkhosting.com:8065",
+    "host": "apim.trustlinkhosting.com:8165",
     "schemes": [
         "https"
     ],
@@ -729,8 +729,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "See CHIPS Authorization Methods",
-                        "required": true
+                        "description": "See CHIPS Authorization Methods"
                     },
                     {
                         "type": "string",
@@ -769,8 +768,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "See CHIPS Authorization Methods",
-                        "required": true
+                        "description": "See CHIPS Authorization Methods"
                     },
                     {
                         "type": "string",
@@ -1825,8 +1823,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "See CHIPS Authorization Methods",
-                        "required": true
+                        "description": "See CHIPS Authorization Methods"
                     },
                     {
                         "type": "string",
@@ -2847,8 +2844,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "See CHIPS Authorization Methods",
-                        "required": true
+                        "description": "See CHIPS Authorization Methods"
                     },
                     {
                         "type": "string",
@@ -3653,8 +3649,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "See CHIPS Authorization Methods",
-                        "required": true
+                        "description": "See CHIPS Authorization Methods"
                     },
                     {
                         "type": "string",
@@ -4611,8 +4606,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "See CHIPS Authorization Methods",
-                        "required": true
+                        "description": "See CHIPS Authorization Methods"
                     },
                     {
                         "in": "body",
@@ -5453,7 +5447,6 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "required": true,
                         "description": "CHIPS Authorization"
                     },
                     {
@@ -6022,8 +6015,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "See CHIPS Authorization Methods",
-                        "required": true
+                        "description": "See CHIPS Authorization Methods"
                     },
                     {
                         "in": "body",
@@ -6126,8 +6118,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "See CHIPS Authorization Methods",
-                        "required": true
+                        "description": "See CHIPS Authorization Methods"
                     },
                     {
                         "type": "string",
@@ -7233,8 +7224,7 @@
                         "type": "string",
                         "in": "header",
                         "description": "See CHIPS Authorization Methods",
-                        "name": "Authorization",
-                        "required": true
+                        "name": "Authorization"
                     },
                     {
                         "type": "string",
@@ -7804,8 +7794,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "CHIPS BSSI Authorization",
-                        "required": true
+                        "description": "CHIPS BSSI Authorization"
                     },
                     {
                         "type": "number",
@@ -8480,8 +8469,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "CHIPS Authorization",
-                        "required": true
+                        "description": "CHIPS Authorization"
                     },
                     {
                         "in": "body",
