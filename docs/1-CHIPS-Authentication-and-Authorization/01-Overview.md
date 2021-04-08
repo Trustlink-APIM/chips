@@ -12,9 +12,10 @@ A number of integration methods are exists and the following needs to be taken i
 In order to address the different scenarios, the following Authorization methods exists.
 * Custodian Participant System Authentication
 * Authorization Token (Currently as API)
-* Authorization Token (Web Frame - Coming Soon)
+* Authorization Token (Web Frame - Coming 2021-Q3)
 * Session Lapsed Authorization Token 
 * Basic Device Authentication
+* [Demo Authentication](../1-CHIPS-Authorization/02-Demo-Authentication.md) 
 
 
 
