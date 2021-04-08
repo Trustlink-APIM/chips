@@ -118,7 +118,7 @@ title: Successful OTP verification
   },
   "body": {
     "mobileNumber": "+27852223334",
-    "otp": "45361"
+    "otp": "45678"
   }
 }
 ```
@@ -139,7 +139,7 @@ title: Failed OTP verification
   },
   "body": {
     "mobileNumber": "+27852223334",
-    "otp": "45678"
+    "otp": "45231"
   }
 }
 ```
