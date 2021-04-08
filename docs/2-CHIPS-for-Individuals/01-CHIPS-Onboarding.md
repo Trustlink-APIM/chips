@@ -43,7 +43,7 @@ title: Mobile number not registered
   "method": "get",
   "url": "https://apim.trustlinkhosting.com:8165/sandbox/chips/register/status",
   "query": {
-    "mobileNumber": "+27852223333",
+    "mobileNumber": "+27851112233",
     "version": "1.0"
   },
   "headers": {
