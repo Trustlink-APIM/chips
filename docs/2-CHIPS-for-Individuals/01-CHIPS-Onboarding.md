@@ -28,7 +28,7 @@ For Production:
 
 # Flow
 ## User sign up
-[*GET /chips/register/status*]
+[*GET /chips/register/status/get*]: ../../reference/sandbox-chips-register/swagger.json/paths/~1status/get
 
 Once the user indicates that they want to sign up for a CHIPS&reg; profile and account, a check is done to see if the mobile number has been registered before or not.
 
@@ -151,7 +151,4 @@ Get the [Storefront marketplaceKeyId] here.
 
 [How it works]: https://trustlink.stoplight.io/docs/chips/docs/06-how-it-works.md
 [Storefront marketplaceKeyId]: https://trustlink.stoplight.io/docs/chips/docs/1-CHIPS-Authorization/02-Demo-Authentication.md
-
-
 [Trustlink API Marketplace]: https://marketplace.trustlinkhosting.com
-[*GET /chips/register/status/get*]: ../../reference/sandbox-chips-register/swagger.json/paths/~1status/get
