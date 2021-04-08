@@ -553,7 +553,7 @@
                     }
                 },
                 "operationId": "chips-register-status-get",
-                "description": "Check registration status based on mobile number. If the number exists, the user is already onboarded.\n\n**Testing on Storefront and Sandbox**\n\nThe following mobileNumbers will have the following mocked responses for Storefront and Sandbox APIs. \n\n| mobileNumber | registered | uuid | maskedName | \n|---|---|---|---|\n| +27851231234 | true | dfc4b21d-c87e-41e1-a775-fb5ba3ab85a2 | T... A.....t |\n| +27853453456 | true | 176194f5-118d-41fa-bd65-e04b78b8a49a | G....e M.......d |\n| +27856786789 | false |  |  |\n| +27851112233 | false |  |  |\n",
+                "description": "Check registration status based on mobile number. If the number exists, the user is already onboarded.\n\n**Testing on Storefront and Sandbox**\n\nThe following mobileNumbers will have the following mocked responses for Storefront and Sandbox APIs. \n\n| mobileNumber | registered | uuid | maskedName | \n|---|---|---|---|\n| +27851231234 | true | dfc4b21d-c87e-41e1-a775-fb5ba3ab85a2 | T... A.....t |\n| +27853453456 | true | 176194f5-118d-41fa-bd65-e04b78b8a49a | G....e M.......d |\n| +27856786789 | false |  |  |\n| +27851112233 | false |  |  |\n| Any other | true | 35c441d6-dd41-4c8b-b508-a7749de94aab | J......n B....s |\n",
                 "parameters": [
                     {
                         "type": "string",
