@@ -29,7 +29,7 @@ As a minimum the CHIPS Money API should the linked to the marketplaceKeyId as we
 
 # Flow
 ## User sign up
-[*GET /chips/register/status/get*](../../reference/sandbox-chips-register/swagger.json/paths/~1status/get)
+*Full Documentation:* [*GET /chips/register/status/get*](../../reference/sandbox-chips-register/swagger.json/paths/~1status/get)
 
 Once the user indicates that they want to sign up for a CHIPS&reg; profile and account, a check is done to see if the mobile number has been registered before or not.
 
@@ -81,7 +81,7 @@ Testing with a mobile number that is register to George MacDonald.
 ## Confirm the user's mobile number with OTP
 
 ### Request an OTP for the mobile number
-[*POST /chips/register/mobile/otp*](../../reference/sandbox-chips-register/swagger.json/paths/~1mobile~1otp/get)
+*Full Documentation:* [*POST /chips/register/mobile/otp*](../../reference/sandbox-chips-register/swagger.json/paths/~1mobile~1otp/get)
 
 ```json http
 {
@@ -99,7 +99,7 @@ Testing with a mobile number that is register to George MacDonald.
 ```
 
 ### Verify the OTP 
-[*POST /chips/register/mobile/otp*](../../reference/sandbox-chips-register/swagger.json/paths/~1mobile~1otp/post)
+*Full Documentation:* [*POST /chips/register/mobile/otp*](../../reference/sandbox-chips-register/swagger.json/paths/~1mobile~1otp/post)
 
 <!--
 type: tab
@@ -143,7 +143,30 @@ title: Failed OTP verification
   }
 }
 ```
-<!-- type: tab-end -->
+
+### Register User Profile and Account
+[*POST /chips/register/persons*](../../reference/sandbox-chips-register/swagger.json/paths/~1mobile~1otp/post)
+
+```json http
+{
+  "method": "post",
+  "url": "https://apim.trustlinkhosting.com:8165/sandbox/chips/register/mobile/otp",
+  "query": {
+    "version": "1.0"
+  },
+  "headers": {
+    "marketplaceKeyId": "dddb67f4-22d0-4ee8-a441-91966950bd9f",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "mobileNumber": "+27852223334",
+    "otp": "45678"
+  }
+}
+```
+
+
+
 
 # Also See 
 See [How it works] for more details on Storefront and Sandbox testing.
