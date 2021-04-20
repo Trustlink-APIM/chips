@@ -15,7 +15,7 @@
         },
         "description": "APIs to assist integrators to test and integrate the CHIPS&reg; Money API.\n\n# Features\n* Simulate Cash In\n\n# Note\nThese APIs are only available in the sandbox environment"
     },
-    "host": "marketplace-qa.trustlinkhosting.com:8165",
+    "host": "apim.trustlinkhosting.com:8165",
     "schemes": [
         "https"
     ],
@@ -418,7 +418,7 @@
                         }
                     }
                 },
-                "description": "Allow simulation of the Cash In transaction at any Pay@ kiosk.",
+                "description": "Allow simulation of the Cash In/Payment transaction at any Pay@ kiosk.",
                 "parameters": [
                     {
                         "in": "body",
@@ -436,10 +436,16 @@
                                     "description": "Amount to load into wallet",
                                     "format": "double",
                                     "example": 300
+                                },
+                                "tokenId": {
+                                    "type": "string",
+                                    "minLength": 0,
+                                    "maxLength": 16,
+                                    "example": "1172701234512345",
+                                    "description": "Pay@ token starting with 117270 concatenated by a MasterPass payment request token."
                                 }
                             },
                             "required": [
-                                "mobileNumber",
                                 "amount"
                             ]
                         },
@@ -470,9 +476,7 @@
     "tags": [
         {
             "name": "Tools"
-        },
-        null,
-        null
+        }
     ],
     "securityDefinitions": {
         "Marketplace API Key": {
