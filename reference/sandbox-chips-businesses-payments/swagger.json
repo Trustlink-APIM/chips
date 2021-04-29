@@ -598,7 +598,7 @@
             },
             "parameters": [],
             "get": {
-                "summary": "Generate a",
+                "summary": "List payment requests",
                 "operationId": "tpn-business-payments-requests-get",
                 "responses": {
                     "200": {
