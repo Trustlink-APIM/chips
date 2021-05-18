@@ -36,7 +36,7 @@
                 }
             ],
             "get": {
-                "summary": "Your GET endpoint",
+                "summary": "GET Merchants by uuid",
                 "tags": [],
                 "responses": {
                     "200": {
@@ -209,7 +209,7 @@
         },
         "/v1.0/prepaid/merchants": {
             "get": {
-                "summary": "Your GET endpoint",
+                "summary": "GET Merchants",
                 "tags": [],
                 "responses": {
                     "200": {
@@ -414,7 +414,7 @@
         },
         "/v1.0/prepaid/products": {
             "get": {
-                "summary": "Your GET endpoint",
+                "summary": "GET Prepaid Products",
                 "tags": [],
                 "responses": {},
                 "operationId": "get-v1.0-prepaid-products",
@@ -594,7 +594,7 @@
                 ]
             },
             "post": {
-                "summary": "",
+                "summary": "POST Create purchase",
                 "operationId": "post-v1.0-prepaid-products",
                 "responses": {
                     "200": {
@@ -694,7 +694,7 @@
                 }
             ],
             "get": {
-                "summary": "Your GET endpoint",
+                "summary": "GET Prepaid products by uuid",
                 "tags": [],
                 "responses": {},
                 "operationId": "get-v1.0-prepaid-products-uuid",
@@ -834,7 +834,7 @@
         },
         "/v1.0/prepaid/purchases": {
             "get": {
-                "summary": "Your GET endpoint",
+                "summary": "Get Purchases",
                 "tags": [],
                 "responses": {},
                 "operationId": "get-v1.0-prepaid-purchases",
@@ -1024,7 +1024,7 @@
                 }
             ],
             "get": {
-                "summary": "Your GET endpoint",
+                "summary": "GET Purchases by uuid",
                 "tags": [],
                 "responses": {},
                 "operationId": "get-v1.0-prepaid-purchases-uuid",
