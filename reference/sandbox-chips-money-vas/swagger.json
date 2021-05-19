@@ -44,104 +44,34 @@
                         "schema": {
                             "description": "",
                             "type": "object",
-                            "x-examples": {
-                                "example-1": {
-                                    "pageSize": 200,
-                                    "pageNumber": 1,
-                                    "totalPages": 1,
-                                    "totalElements": 1,
-                                    "values": []
-                                }
-                            },
-                            "properties": {
-                                "pageSize": {
-                                    "type": "number",
-                                    "description": "Number of entries per page"
-                                },
-                                "pageNumber": {
-                                    "type": "number",
-                                    "description": "Current page number"
-                                },
-                                "totalPages": {
-                                    "type": "number",
-                                    "description": "Total number of pages"
-                                },
-                                "totalElements": {
-                                    "type": "number",
-                                    "description": "Total number of entries\n"
-                                },
-                                "values": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object"
-                                    }
-                                }
-                            },
-                            "required": [
-                                "pageSize",
-                                "pageNumber",
-                                "totalPages",
-                                "totalElements",
-                                "values"
-                            ]
-                        }
-                    }
-                },
-                "operationId": "get-prepaid-merchants-UUID",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "schema": {
-                            "description": "",
-                            "type": "object",
-                            "x-examples": {
-                                "example-1": {
-                                    "uuid": "string",
-                                    "requestId": "string",
-                                    "created": "2021-05-12T06:04:00.277Z",
-                                    "createdBy": "string",
-                                    "createdByChannelUuid": "string",
-                                    "lastModified": "2021-05-12T06:04:00.277Z",
-                                    "modifiedBy": "string",
-                                    "lastModifiedByChannelUuid": "string",
-                                    "reason": "string",
-                                    "name": "string",
-                                    "merchantType": "ELECTRICITY"
-                                }
-                            },
                             "properties": {
                                 "uuid": {
                                     "type": "string",
-                                    "minLength": 1,
-                                    "description": "The unique reference usd to identify the token request"
+                                    "minLength": 1
                                 },
                                 "requestId": {
                                     "type": "string",
-                                    "minLength": 1,
-                                    "description": "External request identifier, recommended UUID\n"
+                                    "minLength": 1
                                 },
                                 "created": {
                                     "type": "string",
-                                    "minLength": 1,
-                                    "description": "The date and time that the token request was created\n"
+                                    "minLength": 1
                                 },
                                 "createdBy": {
-                                    "description": "Member UUID or System\n",
-                                    "type": "string"
+                                    "type": "string",
+                                    "minLength": 1
                                 },
                                 "createdByChannelUuid": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "minLength": 1
                                 },
                                 "lastModified": {
                                     "type": "string",
-                                    "minLength": 1,
-                                    "description": "The date and time that the token request was last modified\n"
+                                    "minLength": 1
                                 },
                                 "modifiedBy": {
                                     "type": "string",
-                                    "minLength": 1,
-                                    "description": "Member UUID\n"
+                                    "minLength": 1
                                 },
                                 "lastModifiedByChannelUuid": {
                                     "type": "string",
@@ -157,38 +87,55 @@
                                 },
                                 "merchantType": {
                                     "type": "string",
-                                    "minLength": 1,
-                                    "description": "Type of merchant requested, either electricity or mobile"
+                                    "minLength": 1
                                 }
                             },
                             "required": [
                                 "uuid",
                                 "requestId",
                                 "created",
+                                "createdBy",
+                                "createdByChannelUuid",
                                 "lastModified",
                                 "modifiedBy",
                                 "lastModifiedByChannelUuid",
                                 "reason",
                                 "name",
                                 "merchantType"
-                            ]
-                        },
-                        "description": "",
-                        "x-examples": {
-                            "example-1": {
-                                "uuid": "string",
-                                "requestId": "string",
-                                "created": "string",
-                                "createdBy": "string",
-                                "createdByChannelUuid": "string",
-                                "lastModified": "string",
-                                "modifiedBy": "string",
-                                "lastModifiedByChannelUuid": "string",
-                                "reason": "string",
-                                "name": "string",
-                                "merchantType": "string"
+                            ],
+                            "x-examples": {
+                                "example-1": {
+                                    "uuid": "string",
+                                    "requestId": "string",
+                                    "created": "2021-05-19T06:23:45.449Z",
+                                    "createdBy": "string",
+                                    "createdByChannelUuid": "string",
+                                    "lastModified": "2021-05-19T06:23:45.449Z",
+                                    "modifiedBy": "string",
+                                    "lastModifiedByChannelUuid": "string",
+                                    "reason": "string",
+                                    "name": "string",
+                                    "merchantType": "ELECTRICITY"
+                                }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    }
+                },
+                "operationId": "get-prepaid-merchants-UUID",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "uuid",
+                        "description": "The unique reference used to identify the token request.",
+                        "required": true
                     },
                     {
                         "type": "string",
@@ -272,129 +219,35 @@
                 "description": "Get one or more merchants by criteria",
                 "parameters": [
                     {
-                        "in": "body",
-                        "name": "body",
-                        "schema": {
-                            "description": "",
-                            "type": "object",
-                            "x-examples": {
-                                "example-1": {
-                                    "pageSize": 0,
-                                    "pageNumber": 0,
-                                    "totalPages": 0,
-                                    "totalElements": 0,
-                                    "values": [
-                                        {
-                                            "uuid": "string",
-                                            "requestId": "string",
-                                            "created": "2021-05-12T08:59:56.527Z",
-                                            "createdBy": "string",
-                                            "createdByChannelUuid": "string",
-                                            "lastModified": "2021-05-12T08:59:56.527Z",
-                                            "modifiedBy": "string",
-                                            "lastModifiedByChannelUuid": "string",
-                                            "reason": "string",
-                                            "name": "string",
-                                            "merchantType": "ELECTRICITY"
-                                        }
-                                    ]
-                                }
-                            },
-                            "properties": {
-                                "pageSize": {
-                                    "type": "number",
-                                    "default": 0
-                                },
-                                "pageNumber": {
-                                    "type": "number",
-                                    "default": 0
-                                },
-                                "totalPages": {
-                                    "type": "number",
-                                    "default": 0
-                                },
-                                "totalElements": {
-                                    "type": "number",
-                                    "default": 0
-                                },
-                                "values": {
-                                    "type": "array",
-                                    "uniqueItems": true,
-                                    "minItems": 1,
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "uuid": {
-                                                "type": "string",
-                                                "minLength": 1,
-                                                "description": "The unique reference number used to identify the toke n request"
-                                            },
-                                            "requestId": {
-                                                "type": "string",
-                                                "minLength": 1
-                                            },
-                                            "created": {
-                                                "type": "string",
-                                                "minLength": 1
-                                            },
-                                            "createdBy": {
-                                                "type": "string",
-                                                "minLength": 1
-                                            },
-                                            "createdByChannelUuid": {
-                                                "type": "string",
-                                                "minLength": 1
-                                            },
-                                            "lastModified": {
-                                                "type": "string",
-                                                "minLength": 1
-                                            },
-                                            "modifiedBy": {
-                                                "type": "string",
-                                                "minLength": 1
-                                            },
-                                            "lastModifiedByChannelUuid": {
-                                                "type": "string",
-                                                "minLength": 1
-                                            },
-                                            "reason": {
-                                                "type": "string",
-                                                "minLength": 1
-                                            },
-                                            "name": {
-                                                "type": "string",
-                                                "minLength": 1
-                                            },
-                                            "merchantType": {
-                                                "type": "string",
-                                                "minLength": 1
-                                            }
-                                        },
-                                        "required": [
-                                            "uuid",
-                                            "requestId",
-                                            "created",
-                                            "createdBy",
-                                            "createdByChannelUuid",
-                                            "lastModified",
-                                            "modifiedBy",
-                                            "lastModifiedByChannelUuid",
-                                            "reason",
-                                            "name",
-                                            "merchantType"
-                                        ]
-                                    }
-                                }
-                            },
-                            "required": [
-                                "pageSize",
-                                "pageNumber",
-                                "totalPages",
-                                "totalElements",
-                                "values"
-                            ]
-                        },
-                        "description": ""
+                        "in": "formData",
+                        "type": "string",
+                        "name": "merchantType",
+                        "description": "Type of merchant. Electricity or Mobile"
+                    },
+                    {
+                        "in": "formData",
+                        "type": "integer",
+                        "name": "page",
+                        "description": "Page number requested"
+                    },
+                    {
+                        "in": "formData",
+                        "type": "integer",
+                        "name": "size",
+                        "description": "Number of entries to include per page"
+                    },
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "order",
+                        "description": "Order of entries. ASC or DESC"
+                    },
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "orderBy",
+                        "description": "Sort field",
+                        "default": "lastModified"
                     },
                     {
                         "type": "string",
@@ -416,68 +269,49 @@
             "get": {
                 "summary": "GET Prepaid Products",
                 "tags": [],
-                "responses": {},
-                "operationId": "get-v1.0-prepaid-products",
-                "description": "Get one or more products",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
+                "responses": {
+                    "200": {
+                        "description": "OK",
                         "schema": {
                             "description": "",
                             "type": "object",
-                            "x-examples": {
-                                "example-1": {
-                                    "pageSize": 0,
-                                    "pageNumber": 0,
-                                    "totalPages": 0,
-                                    "totalElements": 0,
-                                    "values": [
-                                        {
-                                            "uuid": "string",
-                                            "requestId": "string",
-                                            "created": "2021-05-12T09:07:02.104Z",
-                                            "createdBy": "string",
-                                            "createdByChannelUuid": "string",
-                                            "lastModified": "2021-05-12T09:07:02.104Z",
-                                            "modifiedBy": "string",
-                                            "lastModifiedByChannelUuid": "string",
-                                            "reason": "string",
-                                            "merchantUuid": "string",
-                                            "productType": "AIRTIME",
-                                            "productCode": "string",
-                                            "description": "string",
-                                            "amount": 0,
-                                            "productStatus": "ACTIVE",
-                                            "approvalStatus": "PENDING",
-                                            "approvedDescription": "string"
-                                        }
-                                    ]
-                                }
-                            },
                             "properties": {
                                 "pageSize": {
-                                    "type": "number",
-                                    "description": "Number of entries per page"
+                                    "type": "number"
                                 },
                                 "pageNumber": {
-                                    "type": "number",
-                                    "description": "Current page number\n"
+                                    "type": "number"
                                 },
                                 "totalPages": {
-                                    "type": "number",
-                                    "description": "Total Number of Pages\n"
+                                    "type": "number"
                                 },
                                 "totalElements": {
-                                    "type": "number",
-                                    "description": "Total number of entries"
+                                    "type": "number"
                                 },
                                 "values": {
                                     "type": "array",
                                     "uniqueItems": true,
                                     "minItems": 1,
                                     "items": {
-                                        "type": "object",
+                                        "required": [
+                                            "uuid",
+                                            "requestId",
+                                            "created",
+                                            "createdBy",
+                                            "createdByChannelUuid",
+                                            "lastModified",
+                                            "modifiedBy",
+                                            "lastModifiedByChannelUuid",
+                                            "reason",
+                                            "merchantUuid",
+                                            "productType",
+                                            "productCode",
+                                            "description",
+                                            "amount",
+                                            "productStatus",
+                                            "approvalStatus",
+                                            "approvedDescription"
+                                        ],
                                         "properties": {
                                             "uuid": {
                                                 "type": "string",
@@ -546,26 +380,7 @@
                                                 "type": "string",
                                                 "minLength": 1
                                             }
-                                        },
-                                        "required": [
-                                            "uuid",
-                                            "requestId",
-                                            "created",
-                                            "createdBy",
-                                            "createdByChannelUuid",
-                                            "lastModified",
-                                            "modifiedBy",
-                                            "lastModifiedByChannelUuid",
-                                            "reason",
-                                            "merchantUuid",
-                                            "productType",
-                                            "productCode",
-                                            "description",
-                                            "amount",
-                                            "productStatus",
-                                            "approvalStatus",
-                                            "approvedDescription"
-                                        ]
+                                        }
                                     }
                                 }
                             },
@@ -575,98 +390,102 @@
                                 "totalPages",
                                 "totalElements",
                                 "values"
-                            ]
-                        }
-                    },
-                    {
-                        "type": "string",
-                        "description": "Marketplace API Key",
-                        "name": "marketplaceKeyId",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Version of the API. (Latest version 1.0)",
-                        "name": "version",
-                        "in": "query",
-                        "required": true
-                    }
-                ]
-            },
-            "post": {
-                "summary": "POST Create purchase",
-                "operationId": "post-v1.0-prepaid-products",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "description": "Create Purchase",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "schema": {
-                            "description": "",
-                            "type": "object",
+                            ],
                             "x-examples": {
                                 "example-1": {
-                                    "payerAccountUuid": "string",
-                                    "payerCategory1": "string",
-                                    "payerCategory2": "string",
-                                    "payerCategory3": "string",
-                                    "payerRefInfo": "string",
-                                    "productUuid": "string",
-                                    "itemNumber": "string",
-                                    "amount": 0
+                                    "pageSize": 0,
+                                    "pageNumber": 0,
+                                    "totalPages": 0,
+                                    "totalElements": 0,
+                                    "values": [
+                                        {
+                                            "uuid": "string",
+                                            "requestId": "string",
+                                            "created": "2021-05-19T06:28:03.435Z",
+                                            "createdBy": "string",
+                                            "createdByChannelUuid": "string",
+                                            "lastModified": "2021-05-19T06:28:03.435Z",
+                                            "modifiedBy": "string",
+                                            "lastModifiedByChannelUuid": "string",
+                                            "reason": "string",
+                                            "merchantUuid": "string",
+                                            "productType": "AIRTIME",
+                                            "productCode": "string",
+                                            "description": "string",
+                                            "amount": 0,
+                                            "productStatus": "ACTIVE",
+                                            "approvalStatus": "PENDING",
+                                            "approvedDescription": "string"
+                                        }
+                                    ]
                                 }
-                            },
-                            "properties": {
-                                "payerAccountUuid": {
-                                    "type": "string",
-                                    "minLength": 1,
-                                    "description": "The uniqe reference number used to identify the token request"
-                                },
-                                "payerCategory1": {
-                                    "type": "string",
-                                    "minLength": 1
-                                },
-                                "payerCategory2": {
-                                    "type": "string",
-                                    "minLength": 1
-                                },
-                                "payerCategory3": {
-                                    "type": "string",
-                                    "minLength": 1
-                                },
-                                "payerRefInfo": {
-                                    "type": "string",
-                                    "minLength": 1
-                                },
-                                "productUuid": {
-                                    "type": "string",
-                                    "minLength": 1
-                                },
-                                "itemNumber": {
-                                    "type": "string",
-                                    "minLength": 1
-                                },
-                                "amount": {
-                                    "type": "number"
-                                }
-                            },
-                            "required": [
-                                "payerAccountUuid",
-                                "payerCategory1",
-                                "payerCategory2",
-                                "payerCategory3",
-                                "payerRefInfo",
-                                "productUuid",
-                                "itemNumber",
-                                "amount"
-                            ]
-                        },
-                        "description": ""
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    }
+                },
+                "operationId": "get-v1.0-prepaid-products",
+                "description": "Get one or more products",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "merchantUuid",
+                        "description": "The unique reference used to identify the token request."
+                    },
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "productType",
+                        "description": "Type of prepaid product. Airtime, data, sms, other, or electricity."
+                    },
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "productCode"
+                    },
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "productStatus",
+                        "description": "Status of the product. Active or Inactive."
+                    },
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "approvalStatus",
+                        "description": "Approval status of the product. Pending, Approved, or Rejected."
+                    },
+                    {
+                        "in": "formData",
+                        "type": "integer",
+                        "name": "page",
+                        "description": "Page number requested"
+                    },
+                    {
+                        "in": "formData",
+                        "type": "integer",
+                        "name": "size",
+                        "description": "Number of entries to include per page"
+                    },
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "oder",
+                        "description": "Sort order. Asc, or desc."
+                    },
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "orderBy",
+                        "description": "Sort Field",
+                        "default": "lastModified"
                     },
                     {
                         "type": "string",
@@ -696,12 +515,9 @@
             "get": {
                 "summary": "GET Prepaid products by uuid",
                 "tags": [],
-                "responses": {},
-                "operationId": "get-v1.0-prepaid-products-uuid",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
+                "responses": {
+                    "200": {
+                        "description": "OK",
                         "schema": {
                             "description": "",
                             "type": "object",
@@ -797,10 +613,10 @@
                                 "example-1": {
                                     "uuid": "string",
                                     "requestId": "string",
-                                    "created": "2021-05-12T09:41:55.415Z",
+                                    "created": "2021-05-19T06:28:54.566Z",
                                     "createdBy": "string",
                                     "createdByChannelUuid": "string",
-                                    "lastModified": "2021-05-12T09:41:55.415Z",
+                                    "lastModified": "2021-05-19T06:28:54.566Z",
                                     "modifiedBy": "string",
                                     "lastModifiedByChannelUuid": "string",
                                     "reason": "string",
@@ -815,6 +631,22 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    }
+                },
+                "operationId": "get-v1.0-prepaid-products-uuid",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "uuid",
+                        "description": "The unique reference used to identify the token request."
                     },
                     {
                         "type": "string",
@@ -836,67 +668,49 @@
             "get": {
                 "summary": "Get Purchases",
                 "tags": [],
-                "responses": {},
-                "operationId": "get-v1.0-prepaid-purchases",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
                         "schema": {
                             "description": "",
                             "type": "object",
-                            "x-examples": {
-                                "example-1": {
-                                    "pageSize": 0,
-                                    "pageNumber": 0,
-                                    "totalPages": 0,
-                                    "totalElements": 0,
-                                    "values": [
-                                        {
-                                            "uuid": "string",
-                                            "requestId": "string",
-                                            "created": "2021-05-12T09:46:38.457Z",
-                                            "createdBy": "string",
-                                            "createdByChannelUuid": "string",
-                                            "lastModified": "2021-05-12T09:46:38.457Z",
-                                            "modifiedBy": "string",
-                                            "lastModifiedByChannelUuid": "string",
-                                            "reason": "string",
-                                            "payerAccountUuid": "string",
-                                            "payerCategory1": "string",
-                                            "payerCategory2": "string",
-                                            "payerCategory3": "string",
-                                            "payerRefInfo": "string",
-                                            "productUuid": "string",
-                                            "itemNumber": "string",
-                                            "amount": 0
-                                        }
-                                    ]
-                                }
-                            },
                             "properties": {
                                 "pageSize": {
-                                    "type": "number",
-                                    "description": "Number of entries per page"
+                                    "type": "number"
                                 },
                                 "pageNumber": {
-                                    "type": "number",
-                                    "description": "Current page number"
+                                    "type": "number"
                                 },
                                 "totalPages": {
-                                    "type": "number",
-                                    "description": "Total number of pages"
+                                    "type": "number"
                                 },
                                 "totalElements": {
-                                    "type": "number",
-                                    "description": "Total number of entries"
+                                    "type": "number"
                                 },
                                 "values": {
                                     "type": "array",
                                     "uniqueItems": true,
                                     "minItems": 1,
                                     "items": {
-                                        "type": "object",
+                                        "required": [
+                                            "uuid",
+                                            "requestId",
+                                            "created",
+                                            "createdBy",
+                                            "createdByChannelUuid",
+                                            "lastModified",
+                                            "modifiedBy",
+                                            "lastModifiedByChannelUuid",
+                                            "reason",
+                                            "payerAccountUuid",
+                                            "payerCategory1",
+                                            "payerCategory2",
+                                            "payerCategory3",
+                                            "payerRefInfo",
+                                            "productUuid",
+                                            "itemNumber",
+                                            "amount"
+                                        ],
                                         "properties": {
                                             "uuid": {
                                                 "type": "string",
@@ -965,26 +779,7 @@
                                             "amount": {
                                                 "type": "number"
                                             }
-                                        },
-                                        "required": [
-                                            "uuid",
-                                            "requestId",
-                                            "created",
-                                            "createdBy",
-                                            "createdByChannelUuid",
-                                            "lastModified",
-                                            "modifiedBy",
-                                            "lastModifiedByChannelUuid",
-                                            "reason",
-                                            "payerAccountUuid",
-                                            "payerCategory1",
-                                            "payerCategory2",
-                                            "payerCategory3",
-                                            "payerRefInfo",
-                                            "productUuid",
-                                            "itemNumber",
-                                            "amount"
-                                        ]
+                                        }
                                     }
                                 }
                             },
@@ -994,8 +789,79 @@
                                 "totalPages",
                                 "totalElements",
                                 "values"
-                            ]
+                            ],
+                            "x-examples": {
+                                "example-1": {
+                                    "pageSize": 0,
+                                    "pageNumber": 0,
+                                    "totalPages": 0,
+                                    "totalElements": 0,
+                                    "values": [
+                                        {
+                                            "uuid": "string",
+                                            "requestId": "string",
+                                            "created": "2021-05-19T06:29:36.840Z",
+                                            "createdBy": "string",
+                                            "createdByChannelUuid": "string",
+                                            "lastModified": "2021-05-19T06:29:36.840Z",
+                                            "modifiedBy": "string",
+                                            "lastModifiedByChannelUuid": "string",
+                                            "reason": "string",
+                                            "payerAccountUuid": "string",
+                                            "payerCategory1": "string",
+                                            "payerCategory2": "string",
+                                            "payerCategory3": "string",
+                                            "payerRefInfo": "string",
+                                            "productUuid": "string",
+                                            "itemNumber": "string",
+                                            "amount": 0
+                                        }
+                                    ]
+                                }
+                            }
                         }
+                    }
+                },
+                "operationId": "get-v1.0-prepaid-purchases",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "required": true,
+                        "name": "payerAccountUuid",
+                        "description": "The unique reference used to identify the token request."
+                    },
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "productUuid",
+                        "description": "The unique reference used to identify the token request."
+                    },
+                    {
+                        "in": "formData",
+                        "type": "integer",
+                        "name": "page",
+                        "description": "Page number requested"
+                    },
+                    {
+                        "in": "formData",
+                        "type": "integer",
+                        "description": "Number of entries to include per page",
+                        "name": "size",
+                        "default": 200
+                    },
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "order",
+                        "description": "Sort order. Asc, or Desc."
+                    },
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "orderBy",
+                        "description": "Sort Field.",
+                        "default": "lastModified"
                     },
                     {
                         "type": "string",
@@ -1012,6 +878,153 @@
                     }
                 ],
                 "description": "Get one or more purchases"
+            },
+            "post": {
+                "summary": "",
+                "operationId": "post-v1.0-prepaid-purchases",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "description": "",
+                            "type": "object",
+                            "properties": {
+                                "payerAccountUuid": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "payerCategory1": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "payerCategory2": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "payerCategory3": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "payerRefInfo": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "productUuid": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "itemNumber": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "amount": {
+                                    "type": "number"
+                                }
+                            },
+                            "required": [
+                                "payerAccountUuid",
+                                "payerCategory1",
+                                "payerCategory2",
+                                "payerCategory3",
+                                "payerRefInfo",
+                                "productUuid",
+                                "itemNumber",
+                                "amount"
+                            ],
+                            "x-examples": {
+                                "example-1": {
+                                    "payerAccountUuid": "string",
+                                    "payerCategory1": "string",
+                                    "payerCategory2": "string",
+                                    "payerCategory3": "string",
+                                    "payerRefInfo": "string",
+                                    "productUuid": "string",
+                                    "itemNumber": "string",
+                                    "amount": 0
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Create Purchase",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "description": "",
+                            "type": "object",
+                            "properties": {
+                                "payerAccountUuid": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "payerCategory1": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "payerCategory2": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "payerCategory3": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "payerRefInfo": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "productUuid": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "itemNumber": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "amount": {
+                                    "type": "number"
+                                }
+                            },
+                            "required": [
+                                "payerAccountUuid",
+                                "payerCategory1",
+                                "payerCategory2",
+                                "payerCategory3",
+                                "payerRefInfo",
+                                "productUuid",
+                                "itemNumber",
+                                "amount"
+                            ],
+                            "x-examples": {
+                                "example-1": {
+                                    "payerAccountUuid": "string",
+                                    "payerCategory1": "string",
+                                    "payerCategory2": "string",
+                                    "payerCategory3": "string",
+                                    "payerRefInfo": "string",
+                                    "productUuid": "string",
+                                    "itemNumber": "string",
+                                    "amount": 0
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Marketplace API Key",
+                        "name": "marketplaceKeyId",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Version of the API. (Latest version 1.0)",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
+                    }
+                ]
             }
         },
         "/v1.0/prepaid/purchases/{uuid}": {
@@ -1026,13 +1039,9 @@
             "get": {
                 "summary": "GET Purchases by uuid",
                 "tags": [],
-                "responses": {},
-                "operationId": "get-v1.0-prepaid-purchases-uuid",
-                "description": "Get purchase by UUID",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
+                "responses": {
+                    "200": {
+                        "description": "OK",
                         "schema": {
                             "description": "",
                             "type": "object",
@@ -1128,10 +1137,10 @@
                                 "example-1": {
                                     "uuid": "string",
                                     "requestId": "string",
-                                    "created": "2021-05-12T09:50:22.403Z",
+                                    "created": "2021-05-19T06:33:21.578Z",
                                     "createdBy": "string",
                                     "createdByChannelUuid": "string",
-                                    "lastModified": "2021-05-12T09:50:22.403Z",
+                                    "lastModified": "2021-05-19T06:33:21.578Z",
                                     "modifiedBy": "string",
                                     "lastModifiedByChannelUuid": "string",
                                     "reason": "string",
@@ -1146,6 +1155,24 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    }
+                },
+                "operationId": "get-v1.0-prepaid-purchases-uuid",
+                "description": "Get purchase by UUID",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "type": "string",
+                        "name": "uuid",
+                        "required": true,
+                        "description": "The unique reference used to identify the token request."
                     },
                     {
                         "type": "string",
