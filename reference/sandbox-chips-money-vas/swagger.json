@@ -17,7 +17,7 @@
     },
     "host": "apim.trustlinkhosting.com:8165",
     "schemes": [
-        "http"
+        "https"
     ],
     "produces": [
         "application/json"
