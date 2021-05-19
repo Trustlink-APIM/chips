@@ -219,35 +219,34 @@
                 "description": "Get one or more merchants by criteria",
                 "parameters": [
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "merchantType",
                         "description": "Type of merchant. Electricity or Mobile"
                     },
                     {
-                        "in": "formData",
                         "type": "integer",
+                        "in": "query",
                         "name": "page",
                         "description": "Page number requested"
                     },
                     {
-                        "in": "formData",
                         "type": "integer",
+                        "in": "query",
                         "name": "size",
                         "description": "Number of entries to include per page"
                     },
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "order",
                         "description": "Order of entries. ASC or DESC"
                     },
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "orderBy",
-                        "description": "Sort field",
-                        "default": "lastModified"
+                        "description": "Sort field"
                     },
                     {
                         "type": "string",
