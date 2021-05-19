@@ -26,7 +26,7 @@
         "application/json"
     ],
     "paths": {
-        "/v1.0/prepaid/merchants/{uuid}": {
+        "/prepaid/merchants/{uuid}": {
             "parameters": [
                 {
                     "type": "string",
@@ -154,7 +154,7 @@
                 "description": "Get prepaid merchant from UUID"
             }
         },
-        "/v1.0/prepaid/merchants": {
+        "/prepaid/merchants": {
             "get": {
                 "summary": "GET Merchants",
                 "tags": [],
@@ -262,9 +262,10 @@
                         "required": true
                     }
                 ]
-            }
+            },
+            "parameters": []
         },
-        "/v1.0/prepaid/products": {
+        "/prepaid/products": {
             "get": {
                 "summary": "GET Prepaid Products",
                 "tags": [],
@@ -499,9 +500,10 @@
                         "required": true
                     }
                 ]
-            }
+            },
+            "parameters": []
         },
-        "/v1.0/prepaid/products/{uuid}": {
+        "/prepaid/products/{uuid}": {
             "parameters": [
                 {
                     "type": "string",
@@ -662,7 +664,7 @@
                 ]
             }
         },
-        "/v1.0/prepaid/purchases": {
+        "/prepaid/purchases": {
             "get": {
                 "summary": "Get Purchases",
                 "tags": [],
@@ -1021,9 +1023,10 @@
                         "required": true
                     }
                 ]
-            }
+            },
+            "parameters": []
         },
-        "/v1.0/prepaid/purchases/{uuid}": {
+        "/prepaid/purchases/{uuid}": {
             "parameters": [
                 {
                     "type": "string",
