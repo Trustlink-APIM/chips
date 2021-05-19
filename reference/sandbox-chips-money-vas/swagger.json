@@ -131,8 +131,8 @@
                 "operationId": "get-prepaid-merchants-UUID",
                 "parameters": [
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "uuid",
                         "description": "The unique reference used to identify the token request.",
                         "required": true
@@ -433,58 +433,57 @@
                 "description": "Get one or more products",
                 "parameters": [
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "merchantUuid",
                         "description": "The unique reference used to identify the token request."
                     },
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "productType",
                         "description": "Type of prepaid product. Airtime, data, sms, other, or electricity."
                     },
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "productCode"
                     },
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "productStatus",
                         "description": "Status of the product. Active or Inactive."
                     },
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "approvalStatus",
                         "description": "Approval status of the product. Pending, Approved, or Rejected."
                     },
                     {
-                        "in": "formData",
                         "type": "integer",
+                        "in": "query",
                         "name": "page",
                         "description": "Page number requested"
                     },
                     {
-                        "in": "formData",
                         "type": "integer",
+                        "in": "query",
                         "name": "size",
                         "description": "Number of entries to include per page"
                     },
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "oder",
-                        "description": "Sort order. Asc, or desc."
+                        "description": "Sort order. Asc, or Desc."
                     },
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "orderBy",
-                        "description": "Sort Field",
-                        "default": "lastModified"
+                        "description": "Sort Field"
                     },
                     {
                         "type": "string",
@@ -642,8 +641,8 @@
                 "operationId": "get-v1.0-prepaid-products-uuid",
                 "parameters": [
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "uuid",
                         "description": "The unique reference used to identify the token request."
                     },
@@ -824,43 +823,41 @@
                 "operationId": "get-v1.0-prepaid-purchases",
                 "parameters": [
                     {
-                        "in": "formData",
                         "type": "string",
-                        "required": true,
+                        "in": "query",
                         "name": "payerAccountUuid",
-                        "description": "The unique reference used to identify the token request."
+                        "description": "The unique reference used to identify the token request.",
+                        "required": true
                     },
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "productUuid",
                         "description": "The unique reference used to identify the token request."
                     },
                     {
-                        "in": "formData",
                         "type": "integer",
+                        "in": "query",
                         "name": "page",
                         "description": "Page number requested"
                     },
                     {
-                        "in": "formData",
                         "type": "integer",
-                        "description": "Number of entries to include per page",
+                        "in": "query",
                         "name": "size",
-                        "default": 200
+                        "description": "Number of entries to include per page"
                     },
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "order",
                         "description": "Sort order. Asc, or Desc."
                     },
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "orderBy",
-                        "description": "Sort Field.",
-                        "default": "lastModified"
+                        "description": "Sort Field."
                     },
                     {
                         "type": "string",
@@ -1167,11 +1164,11 @@
                 "description": "Get purchase by UUID",
                 "parameters": [
                     {
-                        "in": "formData",
                         "type": "string",
+                        "in": "query",
                         "name": "uuid",
-                        "required": true,
-                        "description": "The unique reference used to identify the token request."
+                        "description": "The unique reference used to identify the token request.",
+                        "required": true
                     },
                     {
                         "type": "string",
