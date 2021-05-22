@@ -9889,13 +9889,13 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "qr": {
+                                "codeQR": {
                                     "type": "string",
                                     "description": "Text decoding of scanned QR."
                                 }
                             },
                             "required": [
-                                "qr"
+                                "codeQR"
                             ]
                         }
                     },
