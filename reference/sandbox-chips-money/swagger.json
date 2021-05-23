@@ -10774,7 +10774,7 @@
                         }
                     }
                 },
-                "description": "Initiate payment scanned QR code.\n\n## Implementation Notes\n* Get details of the payment QR by calling [POST /chips/money/payments/qr][post-chips-money-payments-qr]\n* Add the *payerAccountUuid* into the details returned.\n* Add *payerRefInfo*. \n* See the implementation notes in [POST /chips/money/payments/qr][post-chips-money-payments-qr] for details on the handling of the amount fileds.\n\n[post-chips-money-payments-qr]: /docs/chips/reference/sandbox-chips-money/swagger.json/paths/~1payments~1qr/post",
+                "description": "Initiate payment scanned QR code.\n\n## Implementation Notes\n* Get details of the payment QR by calling [POST /chips/money/payments/qr][post-chips-money-payments-qr]\n* Add the *payerAccountUuid* into the details returned.\n* Add *payerRefInfo*. \n* See the implementation notes in [POST /chips/money/payments/qr][post-chips-money-payments-qr] for details on the handling of the amount fileds.\n\n[post-chips-money-payments-qr]: ../~1payments~1qr/post",
                 "parameters": [
                     {
                         "type": "string",
