@@ -9900,7 +9900,7 @@
                         }
                     }
                 },
-                "description": "The Trustlink Payment Network allows payment of any masterpass or pay@ QR code. Retrieve the payment details to action payment with POST /payments\n\n## Implementation Notes\n* If *amount* is returned as 0.00, the payer must supply the amount on payment. This is normally for static QR codes.\n* If the *gratuityAmount* is returned, it will in most case be 0.00. The presence of the field indicated that the payer can add a tip.\n\n[post-chips-money-payments-qr-pay]: /docs/chips/reference/sandbox-chips-money/swagger.json/paths/~1payments~1qr~1pay/post",
+                "description": "The Trustlink Payment Network allows payment of any masterpass or pay@ QR code. Retrieve the payment details to action payment with [POST /chips/money/payments/qr/pay][post-chips-money-payments-qr-pay]\n\n## Implementation Notes\n* If *amount* is returned as 0.00, the payer must supply the amount on payment. This is normally for static QR codes.\n* If the *gratuityAmount* is returned, it will in most case be 0.00. The presence of the field indicated that the payer can add a tip.\n\n[post-chips-money-payments-qr-pay]: /docs/chips/reference/sandbox-chips-money/swagger.json/paths/~1payments~1qr~1pay/post",
                 "parameters": [
                     {
                         "in": "body",
