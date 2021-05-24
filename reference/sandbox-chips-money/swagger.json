@@ -9933,7 +9933,7 @@
                     }
                 ],
                 "tags": [
-                    "Payments"
+                    "QR Payments"
                 ]
             }
         },
@@ -10990,7 +10990,7 @@
                     }
                 ],
                 "tags": [
-                    "Payments"
+                    "QR Payments"
                 ]
             }
         }
@@ -11009,6 +11009,9 @@
         },
         {
             "name": "Payments"
+        },
+        {
+            "name": "QR Payments"
         },
         {
             "name": "Instant EFT Funding"
