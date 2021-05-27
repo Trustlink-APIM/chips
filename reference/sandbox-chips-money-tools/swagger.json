@@ -426,11 +426,6 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "mobileNumber": {
-                                    "type": "string",
-                                    "description": "Mobile number associated with the wallet the needs to be topped up. (International format)",
-                                    "example": "+27851231234"
-                                },
                                 "amount": {
                                     "type": "number",
                                     "description": "Amount to load into wallet",
@@ -446,7 +441,8 @@
                                 }
                             },
                             "required": [
-                                "amount"
+                                "amount",
+                                "tokenId"
                             ]
                         },
                         "description": ""
