@@ -4859,7 +4859,7 @@
             "get": {
                 "summary": "List of Supported Banks",
                 "tags": [
-                    "Banking"
+                    "EFT Payments"
                 ],
                 "responses": {
                     "200": {
@@ -11962,28 +11962,25 @@
             "name": "Account"
         },
         {
-            "name": "Cash Send"
-        },
-        {
             "name": "Cash Funding"
-        },
-        {
-            "name": "Payments"
-        },
-        {
-            "name": "QR Payments"
         },
         {
             "name": "Instant EFT Funding"
         },
         {
+            "name": "Send Funds"
+        },
+        {
+            "name": "Cash Send"
+        },
+        {
+            "name": "QR Payments"
+        },
+        {
             "name": "EFT Payments"
         },
         {
-            "name": "Banking"
-        },
-        {
-            "name": "Send Funds"
+            "name": "Payments"
         }
     ],
     "securityDefinitions": {
