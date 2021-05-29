@@ -11923,6 +11923,27 @@
                                     "required": [
                                         "payerRefInfo"
                                     ]
+                                },
+                                {
+                                    "title": "CHIPS amount Fields",
+                                    "type": "object",
+                                    "properties": {
+                                        "amount": {
+                                            "minimum": 0,
+                                            "exclusiveMinimum": false,
+                                            "type": "number",
+                                            "description": "Transaction amount"
+                                        },
+                                        "gratuityAmount": {
+                                            "minimum": 0,
+                                            "exclusiveMinimum": false,
+                                            "type": "number",
+                                            "description": "Gratuity amount"
+                                        }
+                                    },
+                                    "required": [
+                                        "amount"
+                                    ]
                                 }
                             ]
                         },
