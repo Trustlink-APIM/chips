@@ -162,14 +162,14 @@
                                     ]
                                 },
                                 {
-                                    "title": "CHIPS payeeAccountUuid Field",
+                                    "title": "Trustlink Payment Network payeeAccountUuid Field",
                                     "type": "object",
                                     "properties": {
                                         "payeeAccountUuid": {
                                             "maxLength": 36,
                                             "minLength": 36,
                                             "type": "string",
-                                            "description": "Payee account UUID in the CHIPS Payment Network. Searchable.",
+                                            "description": "Payee account UUID in the Trustlink Payment Network. Searchable.",
                                             "example": "7aaf1331-67a5-4ecd-8e26-9583346b243e"
                                         }
                                     },
@@ -1606,6 +1606,1008 @@
                 ],
                 "security": []
             }
+        },
+        "/sendfunds": {
+            "post": {
+                "summary": "Send funds to CHIPS supported account",
+                "operationId": "chips-business-payments-sendfunds-post",
+                "responses": {
+                    "200": {
+                        "description": "CHIPS Purchase Transaction Response",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "title": "CHIPS Generic Response Fields",
+                                    "type": "object",
+                                    "properties": {
+                                        "uuid": {
+                                            "type": "string",
+                                            "description": "The unique reference used to identify the token request.\n(UUID - ISO/IEC 9834-8:2014)",
+                                            "example": "d3adba08-7a54-46ec-bf03-8ce09cd38ee5",
+                                            "minLength": 36,
+                                            "maxLength": 36,
+                                            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+                                        },
+                                        "created": {
+                                            "type": "string",
+                                            "description": "The date and time that the token request was created.\nUTC Datetime with time zone\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                                            "format": "date-time",
+                                            "example": "2020-04-14T16:31:43.715+02:00"
+                                        },
+                                        "createdBy": {
+                                            "type": "string",
+                                            "description": "Member UUID (ISO/IEC 9834-8:2014) or System",
+                                            "example": "System"
+                                        },
+                                        "lastModified": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2020-04-14T16:31:43.715+02:00",
+                                            "description": "The date and time that the token request was last modified.\nUTC Datetime with time zone\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)"
+                                        },
+                                        "modifiedBy": {
+                                            "type": "string",
+                                            "description": "Member UUID (ISO/IEC 9834-8:2014) or System",
+                                            "example": "System"
+                                        },
+                                        "systemRefInfo": {
+                                            "type": "string",
+                                            "description": "System reference number",
+                                            "minLength": 0,
+                                            "maxLength": 36
+                                        }
+                                    },
+                                    "required": [
+                                        "uuid",
+                                        "created",
+                                        "lastModified"
+                                    ]
+                                },
+                                {
+                                    "title": "CHIPS Payment Input - Payee Details",
+                                    "description": "Model for the Payee fields of a CHIPS payment.\nPlease see details per end-point. In some cases the required fields and usage of fields might differ.",
+                                    "allOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "payeeAccountUuid": {
+                                                    "maxLength": 36,
+                                                    "minLength": 36,
+                                                    "type": "string",
+                                                    "description": "Payee account UUID in the CHIPS Payment Network. Searchable.",
+                                                    "example": "8ef11c5a-160f-4cbd-991c-43c5d4beaab4"
+                                                },
+                                                "payeeRefInfo": {
+                                                    "type": "string",
+                                                    "description": "A reference provided by the payee, application or external system to identify the purpose of the payment. Searchable.",
+                                                    "example": "online-20200305-INV123304",
+                                                    "minLength": 0,
+                                                    "maxLength": 36
+                                                },
+                                                "payeeMessage": {
+                                                    "maxLength": 120,
+                                                    "minLength": 0,
+                                                    "type": "string",
+                                                    "description": "Message supplied by the payee.",
+                                                    "example": "Please arrange delivery on a Friday"
+                                                },
+                                                "payeeSiteRefInfo": {
+                                                    "type": "string",
+                                                    "description": "A reference provided by the application or external system to identify the specific business unit or paypoint.",
+                                                    "example": "ONLINE-GROC",
+                                                    "maxLength": 36,
+                                                    "minLength": 0
+                                                },
+                                                "payeeCategory1": {
+                                                    "type": "string",
+                                                    "description": "Field to categorize the transaction from the Payee point of view.",
+                                                    "example": "Online",
+                                                    "minLength": 0,
+                                                    "maxLength": 50
+                                                },
+                                                "payeeCategory2": {
+                                                    "type": "string",
+                                                    "description": "Field to categorize the transaction from the Payee point of view.",
+                                                    "example": "Food",
+                                                    "minLength": 0,
+                                                    "maxLength": 50
+                                                },
+                                                "payeeCategory3": {
+                                                    "type": "string",
+                                                    "description": "Field to categorize the transaction from the Payee point of view.",
+                                                    "example": "Canned Goods",
+                                                    "minLength": 0,
+                                                    "maxLength": 50
+                                                }
+                                            },
+                                            "required": [
+                                                "payeeAccountUuid",
+                                                "payeeRefInfo"
+                                            ]
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "payeeSiteName": {
+                                                    "type": "string",
+                                                    "description": "A description provided by the application or external system to label the site where the payment originates.",
+                                                    "example": "The Web Shop",
+                                                    "minLength": 0,
+                                                    "maxLength": 100
+                                                },
+                                                "siteName": {
+                                                    "type": "string",
+                                                    "description": "See payeeSiteName. Field marked for deprecation.",
+                                                    "example": "The Web Shop",
+                                                    "minLength": 0,
+                                                    "maxLength": 100
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "title": "CHIPS Payment Input - Payer Details",
+                                    "description": "Model for the Payer fields of a CHIPS payment.\nPlease see details per end-point. In some cases the required fields and usage of fields might differ.",
+                                    "allOf": [
+                                        {
+                                            "title": "CHIPS payerAccountUuid Field",
+                                            "type": "object",
+                                            "properties": {
+                                                "payerAccountUuid": {
+                                                    "maxLength": 36,
+                                                    "minLength": 36,
+                                                    "type": "string",
+                                                    "description": "Payer account UUID in the CHIPS Payment Network. Searchable.",
+                                                    "example": "b4a90a07-c197-408b-8419-ba3ed7ab3f8e"
+                                                }
+                                            },
+                                            "required": [
+                                                "payerAccountUuid"
+                                            ]
+                                        },
+                                        {
+                                            "title": "CHIPS payerRefInfo Field",
+                                            "type": "object",
+                                            "properties": {
+                                                "payerRefInfo": {
+                                                    "type": "string",
+                                                    "description": "A reference provided by the payer, application or external system to identify the purpose of the payment. Searchable.",
+                                                    "example": "Groceries 20201003",
+                                                    "minLength": 0,
+                                                    "maxLength": 36
+                                                }
+                                            },
+                                            "required": [
+                                                "payerRefInfo"
+                                            ]
+                                        },
+                                        {
+                                            "title": "CHIPS payerCategoryX Fields",
+                                            "type": "object",
+                                            "properties": {
+                                                "payerCategory1": {
+                                                    "type": "string",
+                                                    "description": "Field to categorize the transaction from the Payer point of view.",
+                                                    "example": "Online",
+                                                    "minLength": 0,
+                                                    "maxLength": 50
+                                                },
+                                                "payerCategory2": {
+                                                    "type": "string",
+                                                    "description": "Field to categorize the transaction from the Payer point of view.",
+                                                    "example": "Food",
+                                                    "minLength": 0,
+                                                    "maxLength": 50
+                                                },
+                                                "payerCategory3": {
+                                                    "type": "string",
+                                                    "description": "Field to categorize the transaction from the Payer point of view.",
+                                                    "example": "Canned Goods",
+                                                    "minLength": 0,
+                                                    "maxLength": 50
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "title": "CHIPS Payment Input - Transaction Details",
+                                    "type": "object",
+                                    "description": "",
+                                    "properties": {
+                                        "requestId": {
+                                            "maxLength": 36,
+                                            "minLength": 0,
+                                            "type": "string",
+                                            "description": "External request identifier. Recommended UUID",
+                                            "example": "c070567d-da4d-4e4e-a5a5-0f9dbd516042"
+                                        },
+                                        "amount": {
+                                            "minimum": 0,
+                                            "type": "number",
+                                            "description": "Payment amount (excluding gratuity)"
+                                        },
+                                        "gratuityAmount": {
+                                            "minimum": 0,
+                                            "type": "number",
+                                            "description": "Gratuity amount"
+                                        }
+                                    },
+                                    "required": [
+                                        "amount"
+                                    ]
+                                },
+                                {
+                                    "allOf": [
+                                        {
+                                            "title": "CHIPS paymentDate Field",
+                                            "type": "object",
+                                            "properties": {
+                                                "paymentDate": {
+                                                    "type": "string",
+                                                    "description": "Informational field indicating the date by when the payment is due.\n[Format ISO8601 i.e. yyyy-mm-dd]",
+                                                    "format": "date",
+                                                    "example": "2021-11-30"
+                                                }
+                                            },
+                                            "required": [
+                                                "paymentDate"
+                                            ]
+                                        },
+                                        {
+                                            "title": "CHIPS description for Payment Field",
+                                            "type": "object",
+                                            "description": "This field can be provided by the end user or by the integrator. It is free form, but does have special meaning in some payment contexts. For example, for a token based payment, the QR scanning app will display the description to the payer. ",
+                                            "properties": {
+                                                "description": {
+                                                    "type": "string",
+                                                    "description": "Description for the payment.",
+                                                    "example": "Cart Checkout",
+                                                    "minLength": 0,
+                                                    "maxLength": 60
+                                                }
+                                            },
+                                            "required": [
+                                                "description"
+                                            ]
+                                        },
+                                        {
+                                            "title": "CHIPS feeSponserType Field",
+                                            "type": "object",
+                                            "properties": {
+                                                "feeSponsorType": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "PAYER",
+                                                        "PAYEE",
+                                                        "NONE"
+                                                    ],
+                                                    "example": "PAYER",
+                                                    "description": "Indicator of who is paying the fee for the transfer. \n- If PAYER, then the amount deducted from the PAYER is *amount + fee*. The PAYEE receives *amount*. \n- If PAYEE, then the aomunt deducted from the PAYER is *amount*. The PAYEE receives *amount - fee* "
+                                                }
+                                            },
+                                            "required": [
+                                                "feeSponsorType"
+                                            ]
+                                        },
+                                        {
+                                            "title": "CHIPS paymentType Field",
+                                            "type": "object",
+                                            "properties": {
+                                                "paymentType": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "BULK",
+                                                        "CARD",
+                                                        "DEFAULT"
+                                                    ],
+                                                    "description": "Type of payment \n* DEFAULT - wallet to wallet\n* BULK - part of a bulk / multiple payments instruction\n* CARD - processed via card transaction\n"
+                                                }
+                                            },
+                                            "required": [
+                                                "paymentType"
+                                            ]
+                                        },
+                                        {
+                                            "title": "CHIPS payment status Field",
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "string",
+                                                    "description": "The status of the token. See enum for valid values.",
+                                                    "enum": [
+                                                        "COMPLETED",
+                                                        "EXPIRED",
+                                                        "FAILED",
+                                                        "PENDING",
+                                                        "REJECTED",
+                                                        "REVERSED"
+                                                    ],
+                                                    "example": "PENDING"
+                                                }
+                                            },
+                                            "required": [
+                                                "status"
+                                            ],
+                                            "description": ""
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "apimStatus": {
+                                            "type": "object",
+                                            "title": "Status",
+                                            "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                            "x-examples": {
+                                                "Success": {
+                                                    "apimStatus": {
+                                                        "marketplaceCode": 200,
+                                                        "marketplaceMsg": "Success",
+                                                        "providerCode": "200",
+                                                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                                    }
+                                                },
+                                                "Lookup failure": {
+                                                    "apimStatus": {
+                                                        "marketplaceCode": 200,
+                                                        "marketplaceMsg": "Success",
+                                                        "providerCode": "404",
+                                                        "providerMsg": "Not Found",
+                                                        "userMsg": "Item requested was not found",
+                                                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                                    }
+                                                },
+                                                "Authorization Error": {
+                                                    "apimStatus": {
+                                                        "marketplaceCode": 401,
+                                                        "marketplaceMsg": "Unauthorized",
+                                                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                                    }
+                                                }
+                                            },
+                                            "x-tags": [
+                                                "API Marketplace Core"
+                                            ],
+                                            "properties": {
+                                                "marketplaceCode": {
+                                                    "type": "integer",
+                                                    "example": 450,
+                                                    "description": "Indicates status on the marketplace layer. ",
+                                                    "title": "Markerplace layer status code"
+                                                },
+                                                "marketplaceMsg": {
+                                                    "type": "string",
+                                                    "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                                    "default": "Success",
+                                                    "example": "An API subscription application for the requested URI was not found.",
+                                                    "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                                },
+                                                "providerCode": {
+                                                    "type": "string",
+                                                    "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                                    "example": "ERRDB04"
+                                                },
+                                                "providerMsg": {
+                                                    "type": "string",
+                                                    "example": "Table not found",
+                                                    "description": "Error message passed by provider"
+                                                },
+                                                "userMsg": {
+                                                    "type": "string",
+                                                    "example": "Your cart was not found.",
+                                                    "description": "User friendly message"
+                                                },
+                                                "statusCode": {
+                                                    "type": "integer",
+                                                    "description": "Same as the http status code",
+                                                    "example": 200
+                                                },
+                                                "marketplaceId": {
+                                                    "type": "string",
+                                                    "description": "Marketplace request id for support and tracing queries.",
+                                                    "example": "Id-ae65955ee8063fdc870e1758"
+                                                },
+                                                "marketplaceMocked": {
+                                                    "type": "boolean",
+                                                    "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                                }
+                                            },
+                                            "required": [
+                                                "statusCode",
+                                                "marketplaceId"
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Too Many Requests",
+                        "schema": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "title": "CHIPS Error",
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "apimStatus": {
+                                    "type": "object",
+                                    "title": "Status",
+                                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
+                                    "x-examples": {
+                                        "Success": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "200",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Lookup failure": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 200,
+                                                "marketplaceMsg": "Success",
+                                                "providerCode": "404",
+                                                "providerMsg": "Not Found",
+                                                "userMsg": "Item requested was not found",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        },
+                                        "Authorization Error": {
+                                            "apimStatus": {
+                                                "marketplaceCode": 401,
+                                                "marketplaceMsg": "Unauthorized",
+                                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
+                                            }
+                                        }
+                                    },
+                                    "x-tags": [
+                                        "API Marketplace Core"
+                                    ],
+                                    "properties": {
+                                        "marketplaceCode": {
+                                            "type": "integer",
+                                            "example": 450,
+                                            "description": "Indicates status on the marketplace layer. ",
+                                            "title": "Markerplace layer status code"
+                                        },
+                                        "marketplaceMsg": {
+                                            "type": "string",
+                                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
+                                            "default": "Success",
+                                            "example": "An API subscription application for the requested URI was not found.",
+                                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
+                                        },
+                                        "providerCode": {
+                                            "type": "string",
+                                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
+                                            "example": "ERRDB04"
+                                        },
+                                        "providerMsg": {
+                                            "type": "string",
+                                            "example": "Table not found",
+                                            "description": "Error message passed by provider"
+                                        },
+                                        "userMsg": {
+                                            "type": "string",
+                                            "example": "Your cart was not found.",
+                                            "description": "User friendly message"
+                                        },
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "description": "Same as the http status code",
+                                            "example": 200
+                                        },
+                                        "marketplaceId": {
+                                            "type": "string",
+                                            "description": "Marketplace request id for support and tracing queries.",
+                                            "example": "Id-ae65955ee8063fdc870e1758"
+                                        },
+                                        "marketplaceMocked": {
+                                            "type": "boolean",
+                                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "marketplaceId"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "title": "CHIPS Payment Input - Payee Details",
+                                    "description": "Model for the Payee fields of a CHIPS payment.\nPlease see details per end-point. In some cases the required fields and usage of fields might differ.",
+                                    "allOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "payeeAccountUuid": {
+                                                    "maxLength": 36,
+                                                    "minLength": 36,
+                                                    "type": "string",
+                                                    "description": "Payee account UUID in the CHIPS Payment Network. Searchable.",
+                                                    "example": "8ef11c5a-160f-4cbd-991c-43c5d4beaab4"
+                                                },
+                                                "payeeRefInfo": {
+                                                    "type": "string",
+                                                    "description": "A reference provided by the payee, application or external system to identify the purpose of the payment. Searchable.",
+                                                    "example": "online-20200305-INV123304",
+                                                    "minLength": 0,
+                                                    "maxLength": 36
+                                                },
+                                                "payeeMessage": {
+                                                    "maxLength": 120,
+                                                    "minLength": 0,
+                                                    "type": "string",
+                                                    "description": "Message supplied by the payee.",
+                                                    "example": "Please arrange delivery on a Friday"
+                                                },
+                                                "payeeSiteRefInfo": {
+                                                    "type": "string",
+                                                    "description": "A reference provided by the application or external system to identify the specific business unit or paypoint.",
+                                                    "example": "ONLINE-GROC",
+                                                    "maxLength": 36,
+                                                    "minLength": 0
+                                                },
+                                                "payeeCategory1": {
+                                                    "type": "string",
+                                                    "description": "Field to categorize the transaction from the Payee point of view.",
+                                                    "example": "Online",
+                                                    "minLength": 0,
+                                                    "maxLength": 50
+                                                },
+                                                "payeeCategory2": {
+                                                    "type": "string",
+                                                    "description": "Field to categorize the transaction from the Payee point of view.",
+                                                    "example": "Food",
+                                                    "minLength": 0,
+                                                    "maxLength": 50
+                                                },
+                                                "payeeCategory3": {
+                                                    "type": "string",
+                                                    "description": "Field to categorize the transaction from the Payee point of view.",
+                                                    "example": "Canned Goods",
+                                                    "minLength": 0,
+                                                    "maxLength": 50
+                                                }
+                                            },
+                                            "required": [
+                                                "payeeAccountUuid",
+                                                "payeeRefInfo"
+                                            ]
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "payeeSiteName": {
+                                                    "type": "string",
+                                                    "description": "A description provided by the application or external system to label the site where the payment originates.",
+                                                    "example": "The Web Shop",
+                                                    "minLength": 0,
+                                                    "maxLength": 100
+                                                },
+                                                "siteName": {
+                                                    "type": "string",
+                                                    "description": "See payeeSiteName. Field marked for deprecation.",
+                                                    "example": "The Web Shop",
+                                                    "minLength": 0,
+                                                    "maxLength": 100
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "title": "CHIPS payerAccountUuid Field",
+                                    "type": "object",
+                                    "properties": {
+                                        "payerAccountUuid": {
+                                            "maxLength": 36,
+                                            "minLength": 36,
+                                            "type": "string",
+                                            "description": "Payer account UUID in the CHIPS Payment Network. Searchable.",
+                                            "example": "b4a90a07-c197-408b-8419-ba3ed7ab3f8e"
+                                        }
+                                    },
+                                    "required": [
+                                        "payerAccountUuid"
+                                    ]
+                                },
+                                {
+                                    "title": "CHIPS payerRefInfo Field",
+                                    "type": "object",
+                                    "properties": {
+                                        "payerRefInfo": {
+                                            "type": "string",
+                                            "description": "A reference provided by the payer, application or external system to identify the purpose of the payment. Searchable.",
+                                            "example": "Groceries 20201003",
+                                            "minLength": 0,
+                                            "maxLength": 36
+                                        }
+                                    },
+                                    "required": [
+                                        "payerRefInfo"
+                                    ]
+                                },
+                                {
+                                    "title": "CHIPS amount Fields",
+                                    "type": "object",
+                                    "properties": {
+                                        "amount": {
+                                            "minimum": 0,
+                                            "exclusiveMinimum": false,
+                                            "type": "number",
+                                            "description": "Transaction amount"
+                                        },
+                                        "gratuityAmount": {
+                                            "minimum": 0,
+                                            "exclusiveMinimum": false,
+                                            "type": "number",
+                                            "description": "Gratuity amount"
+                                        }
+                                    },
+                                    "required": [
+                                        "amount"
+                                    ]
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "See CHIPS Authorization Methods"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Marketplace API Key",
+                        "name": "marketplaceKeyId",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Version of the API. (Latest version 1.0)",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "description": "Send funds to CHIPS supported account",
+                "tags": [
+                    "Send Funds"
+                ]
+            }
         }
     },
     "definitions": {},
@@ -1631,6 +2633,9 @@
     "tags": [
         {
             "name": "Payments"
+        },
+        {
+            "name": "Send Funds"
         },
         {
             "name": "Masterpass"
