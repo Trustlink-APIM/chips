@@ -3,7 +3,7 @@
     "info": {
         "title": "CHIPS Money API - Mobile Prepaid Purchases",
         "version": "1.0",
-        "description": "APIs to assist integrators to test and integrate Mobile Prepaid Purchases. \n\n# Features\n*Get one or more prepaid merchants by criteria\n*Get prepaid merchant by UUID\n*Get one or more products\n*Get product\n*Get one or more purchases\n*Create purchase\n*Get purchase\n\n",
+        "description": "APIs to assist integrators to test and integrate Mobile Prepaid Purchases. \n\n# Features\n\n* Get one or more prepaid merchants by criteria\n* Get prepaid merchant by UUID\n* Get one or more products\n* Get product\n* Get one or more purchases\n* Create purchase\n* Get purchase\n\n",
         "contact": {
             "name": "API Sales",
             "url": "https://marketplace.trustlinkhosting.com",
@@ -32,7 +32,8 @@
                     "type": "string",
                     "name": "uuid",
                     "in": "path",
-                    "required": true
+                    "required": true,
+                    "description": "The unique reference used to identify the token request."
                 }
             ],
             "get": {
@@ -540,13 +541,6 @@
                 },
                 "operationId": "get-prepaid-merchants-UUID",
                 "parameters": [
-                    {
-                        "type": "string",
-                        "in": "query",
-                        "name": "uuid",
-                        "description": "The unique reference used to identify the token request.",
-                        "required": true
-                    },
                     {
                         "type": "string",
                         "description": "Marketplace API Key",
