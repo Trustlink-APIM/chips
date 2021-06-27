@@ -1089,7 +1089,8 @@
                         ],
                         "in": "query",
                         "name": "status",
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "^(COMPLETED|EXPIRED|FAILED|PENDING|REJECTED|REVERSED)$"
                     },
                     {
                         "allowEmptyValue": true,
@@ -1140,6 +1141,31 @@
                         "in": "query",
                         "name": "orderBy",
                         "type": "string"
+                    },
+                    {
+                        "type": "string",
+                        "in": "query",
+                        "name": "payeeAccountUuid"
+                    },
+                    {
+                        "type": "string",
+                        "in": "query",
+                        "name": "payerAccountUuid"
+                    },
+                    {
+                        "type": "string",
+                        "in": "query",
+                        "name": "siteName"
+                    },
+                    {
+                        "type": "string",
+                        "in": "query",
+                        "name": "siteRefInfo"
+                    },
+                    {
+                        "type": "string",
+                        "in": "query",
+                        "name": "systemRefInfo"
                     },
                     {
                         "type": "string",
