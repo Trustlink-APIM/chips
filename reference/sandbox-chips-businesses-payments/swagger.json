@@ -1145,7 +1145,9 @@
                     {
                         "type": "string",
                         "in": "query",
-                        "name": "payeeAccountUuid"
+                        "name": "payeeAccountUuid",
+                        "required": true,
+                        "description": "Payee"
                     },
                     {
                         "type": "string",
