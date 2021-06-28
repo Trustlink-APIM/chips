@@ -3,7 +3,7 @@
     "info": {
         "title": "CHIPS Money API - Mobile Prepaid Purchases",
         "version": "1.0",
-        "description": "APIs to assist integrators to test and integrate Mobile Prepaid Purchases. \n\n# Features\n\n* Get one or more prepaid merchants by criteria\n* Get prepaid merchant by UUID\n* Get one or more products\n* Get product\n* Get one or more purchases\n* Create purchase\n* Get purchase\n\n",
+        "description": "APIs to assist integrators to test and integrate Mobile Prepaid Purchases. \n\n# Features\n\n* Get one or more prepaid merchants by criteria\n* Get prepaid merchant by UUID\n* Get one or more products\n* Get product\n* Get one or more purchases\n* Create purchase\n* Get purchase\n\n# Flow\n\n1. Get a list of merchants. \n1. Get a list of products from that merchant.\n1. Do the purchase\n\n\n",
         "contact": {
             "name": "API Sales",
             "url": "https://marketplace.trustlinkhosting.com",
@@ -37,7 +37,7 @@
                 }
             ],
             "get": {
-                "summary": "GET Merchants by uuid",
+                "summary": "Get a mobile prepaid merchant",
                 "tags": [
                     "Merchants"
                 ],
@@ -221,8 +221,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "401": {
@@ -323,8 +322,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "403": {
@@ -425,8 +423,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "429": {
@@ -534,12 +531,11 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     }
                 },
-                "operationId": "get-prepaid-merchants-UUID",
+                "operationId": "chips-money-prepaid-merchants-uuid-get",
                 "parameters": [
                     {
                         "type": "string",
@@ -560,7 +556,7 @@
         },
         "/merchants": {
             "get": {
-                "summary": "GET Merchants",
+                "summary": "List mobile prepaid merchants",
                 "tags": [
                     "Merchants"
                 ],
@@ -599,12 +595,7 @@
                                 "values": {
                                     "type": "array",
                                     "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "": {
-                                                "type": "string"
-                                            }
-                                        }
+                                        "type": "object"
                                     }
                                 }
                             },
@@ -716,8 +707,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "401": {
@@ -818,8 +808,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "403": {
@@ -920,8 +909,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "429": {
@@ -1029,8 +1017,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     }
                 },
@@ -1080,7 +1067,7 @@
         },
         "/products": {
             "get": {
-                "summary": "GET Prepaid Products",
+                "summary": "List of mobile prepaid products",
                 "tags": [
                     "Products"
                 ],
@@ -1335,8 +1322,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "401": {
@@ -1437,8 +1423,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "403": {
@@ -1539,8 +1524,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "429": {
@@ -1648,12 +1632,11 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     }
                 },
-                "operationId": "get-v1.0-prepaid-products",
+                "operationId": "chips-money-prepaid-mobile-products-get",
                 "description": "Get one or more products",
                 "parameters": [
                     {
@@ -1677,7 +1660,8 @@
                         "type": "string",
                         "in": "query",
                         "name": "productStatus",
-                        "description": "Status of the product. Active or Inactive."
+                        "description": "Status of the product. ACTIVE or INACTIVE.",
+                        "pattern": "^(ACTIVE|INACTIVE)$"
                     },
                     {
                         "type": "string",
@@ -1700,8 +1684,9 @@
                     {
                         "type": "string",
                         "in": "query",
-                        "name": "oder",
-                        "description": "Sort order. Asc, or Desc."
+                        "name": "order",
+                        "description": "Sort order. ASC or DESC.",
+                        "pattern": "^(ASC|DESC)$"
                     },
                     {
                         "type": "string",
@@ -1955,8 +1940,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "401": {
@@ -2057,8 +2041,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "403": {
@@ -2159,8 +2142,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "429": {
@@ -2268,18 +2250,18 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     }
                 },
-                "operationId": "get-v1.0-prepaid-products-uuid",
+                "operationId": "chips-money-prepaid-mobile-products-uuid-get",
                 "parameters": [
                     {
                         "type": "string",
                         "in": "query",
                         "name": "uuid",
-                        "description": "The unique reference used to identify the token request."
+                        "description": "The unique reference used to identify the token request.",
+                        "required": true
                     },
                     {
                         "type": "string",
@@ -2555,8 +2537,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "401": {
@@ -2657,8 +2638,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "403": {
@@ -2759,8 +2739,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "429": {
@@ -2868,8 +2847,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     }
                 },
@@ -2929,8 +2907,8 @@
                 "description": "Get one or more purchases"
             },
             "post": {
-                "summary": "",
-                "operationId": "post-v1.0-prepaid-purchases",
+                "summary": "Purchase a mobile prepaid product",
+                "operationId": "chips-money-prepaid-mobile-purchases-post",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -3003,6 +2981,18 @@
                         "schema": {
                             "description": "",
                             "type": "object",
+                            "x-examples": {
+                                "example-1": {
+                                    "payerAccountUuid": "string",
+                                    "payerCategory1": "string",
+                                    "payerCategory2": "string",
+                                    "payerCategory3": "string",
+                                    "payerRefInfo": "string",
+                                    "productUuid": "string",
+                                    "itemNumber": "string",
+                                    "amount": 0
+                                }
+                            },
                             "properties": {
                                 "payerAccountUuid": {
                                     "type": "string",
@@ -3038,26 +3028,9 @@
                             },
                             "required": [
                                 "payerAccountUuid",
-                                "payerCategory1",
-                                "payerCategory2",
-                                "payerCategory3",
-                                "payerRefInfo",
                                 "productUuid",
-                                "itemNumber",
                                 "amount"
-                            ],
-                            "x-examples": {
-                                "example-1": {
-                                    "payerAccountUuid": "string",
-                                    "payerCategory1": "string",
-                                    "payerCategory2": "string",
-                                    "payerCategory3": "string",
-                                    "payerRefInfo": "string",
-                                    "productUuid": "string",
-                                    "itemNumber": "string",
-                                    "amount": 0
-                                }
-                            }
+                            ]
                         }
                     },
                     {
@@ -3306,8 +3279,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "401": {
@@ -3408,8 +3380,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "403": {
@@ -3510,8 +3481,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     },
                     "429": {
@@ -3619,8 +3589,7 @@
                                         "marketplaceId"
                                     ]
                                 }
-                            },
-                            "description": ""
+                            }
                         }
                     }
                 },
@@ -3654,190 +3623,7 @@
             }
         }
     },
-    "definitions": {
-        "Chips-error.v1": {
-            "title": "CHIPS Error",
-            "type": "object",
-            "properties": {
-                "key": {
-                    "type": "string"
-                },
-                "code": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "apimStatus": {
-                    "type": "object",
-                    "title": "Status",
-                    "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
-                    "x-examples": {
-                        "Success": {
-                            "apimStatus": {
-                                "marketplaceCode": 200,
-                                "marketplaceMsg": "Success",
-                                "providerCode": "200",
-                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                            }
-                        },
-                        "Lookup failure": {
-                            "apimStatus": {
-                                "marketplaceCode": 200,
-                                "marketplaceMsg": "Success",
-                                "providerCode": "404",
-                                "providerMsg": "Not Found",
-                                "userMsg": "Item requested was not found",
-                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                            }
-                        },
-                        "Authorization Error": {
-                            "apimStatus": {
-                                "marketplaceCode": 401,
-                                "marketplaceMsg": "Unauthorized",
-                                "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                            }
-                        }
-                    },
-                    "x-tags": [
-                        "API Marketplace Core"
-                    ],
-                    "properties": {
-                        "marketplaceCode": {
-                            "type": "integer",
-                            "example": 450,
-                            "description": "Indicates status on the marketplace layer. ",
-                            "title": "Markerplace layer status code"
-                        },
-                        "marketplaceMsg": {
-                            "type": "string",
-                            "title": "Human readable message to provide more details on the *marketplaceCode*.",
-                            "default": "Success",
-                            "example": "An API subscription application for the requested URI was not found.",
-                            "description": "Human readable description providing details about the error. On success the value will be 'Success'"
-                        },
-                        "providerCode": {
-                            "type": "string",
-                            "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
-                            "example": "ERRDB04"
-                        },
-                        "providerMsg": {
-                            "type": "string",
-                            "example": "Table not found",
-                            "description": "Error message passed by provider"
-                        },
-                        "userMsg": {
-                            "type": "string",
-                            "example": "Your cart was not found.",
-                            "description": "User friendly message"
-                        },
-                        "statusCode": {
-                            "type": "integer",
-                            "description": "Same as the http status code",
-                            "example": 200
-                        },
-                        "marketplaceId": {
-                            "type": "string",
-                            "description": "Marketplace request id for support and tracing queries.",
-                            "example": "Id-ae65955ee8063fdc870e1758"
-                        },
-                        "marketplaceMocked": {
-                            "type": "boolean",
-                            "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
-                        }
-                    },
-                    "required": [
-                        "statusCode",
-                        "marketplaceId"
-                    ]
-                }
-            },
-            "description": ""
-        },
-        "Status.v1": {
-            "type": "object",
-            "title": "Status",
-            "description": "All responses from the marketplace will at least contain the *apimStatus* object.  The purpose is to inform the requester of status details above and beyond the HTTP status code.\n\nNote that it is possible to have a success indicator on the marketplace layer, but have a unsuccessful indication on the *providerCode*. This in essence means that even if the API to the provider returned for example a 'not found' result, the request is still chargable on the marketplace layer.\n\nThe *providerCode* will only be present if the API was routed to the API Provider.\n\n## Marketplace Codes\n\n| Code | Description |\n|------|---------------|\n| 200 | Successfully serviced and charged. |\n| 250 | Successfully serviced with no charge. |\n| 401 | Unauthorized.  |\n| 404 | Not Found. |\n| 450 | Application Not Found. |\n| 451 | Organization Not Found. |\n| 500 | Internal Server Error. | \n\n\n\n",
-            "x-examples": {
-                "Success": {
-                    "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "200",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                    }
-                },
-                "Lookup failure": {
-                    "apimStatus": {
-                        "marketplaceCode": 200,
-                        "marketplaceMsg": "Success",
-                        "providerCode": "404",
-                        "providerMsg": "Not Found",
-                        "userMsg": "Item requested was not found",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                    }
-                },
-                "Authorization Error": {
-                    "apimStatus": {
-                        "marketplaceCode": 401,
-                        "marketplaceMsg": "Unauthorized",
-                        "marketplaceId": "Id-ae65955ee8063fdc870e1758"
-                    }
-                }
-            },
-            "x-tags": [
-                "API Marketplace Core"
-            ],
-            "properties": {
-                "marketplaceCode": {
-                    "type": "integer",
-                    "example": 450,
-                    "description": "Indicates status on the marketplace layer. ",
-                    "title": "Markerplace layer status code"
-                },
-                "marketplaceMsg": {
-                    "type": "string",
-                    "title": "Human readable message to provide more details on the *marketplaceCode*.",
-                    "default": "Success",
-                    "example": "An API subscription application for the requested URI was not found.",
-                    "description": "Human readable description providing details about the error. On success the value will be 'Success'"
-                },
-                "providerCode": {
-                    "type": "string",
-                    "description": "Error code returned API provider. The value is of type string seeing as the prodiver might respond with a string error code like 'ERRDB01'",
-                    "example": "ERRDB04"
-                },
-                "providerMsg": {
-                    "type": "string",
-                    "example": "Table not found",
-                    "description": "Error message passed by provider"
-                },
-                "userMsg": {
-                    "type": "string",
-                    "example": "Your cart was not found.",
-                    "description": "User friendly message"
-                },
-                "statusCode": {
-                    "type": "integer",
-                    "description": "Same as the http status code",
-                    "example": 200
-                },
-                "marketplaceId": {
-                    "type": "string",
-                    "description": "Marketplace request id for support and tracing queries.",
-                    "example": "Id-ae65955ee8063fdc870e1758"
-                },
-                "marketplaceMocked": {
-                    "type": "boolean",
-                    "description": "Indicates if the response was generated by a marketplace mockup. This is only relevant to API that start with the /storefront and /sandbox paths. \nIf true, the API was not passed on to the API provider backend, but the response is being mocked up the marketplace.\nIf false, it indicates that the API call was pushed through to the API provider backend. The backend in turn might have stubbed the response in order to prevent costs like SMS notifications. "
-                }
-            },
-            "required": [
-                "statusCode",
-                "marketplaceId"
-            ]
-        }
-    },
+    "definitions": {},
     "basePath": "/sandbox/chips/money/prepaid/mobile",
     "tags": [
         {
