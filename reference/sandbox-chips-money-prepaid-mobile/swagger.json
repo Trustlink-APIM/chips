@@ -2282,7 +2282,7 @@
         },
         "/purchases": {
             "get": {
-                "summary": "Get Purchases",
+                "summary": "List purchase history",
                 "tags": [
                     "Purchase"
                 ],
@@ -2851,7 +2851,7 @@
                         }
                     }
                 },
-                "operationId": "get-v1.0-prepaid-purchases",
+                "operationId": "chips-money-prepaid-mobile-purchases-get",
                 "parameters": [
                     {
                         "type": "string",
