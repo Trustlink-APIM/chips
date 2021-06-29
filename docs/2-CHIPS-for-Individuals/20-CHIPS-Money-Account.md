@@ -12,7 +12,7 @@ tags: [Account]
 
 *Full Documentation:* [*GET /chips/money/account/{uuid}*](../../reference/sandbox-chips-money/swagger.json/paths/~1accounts~1%7Buuid%7D/get)
 
-This API is normally called to retrieve the current account balance. 
+This API is called to retrieve the current account balance as well as details of any limits applicable. 
 
 ```json http
 {
