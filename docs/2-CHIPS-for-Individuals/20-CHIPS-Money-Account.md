@@ -9,20 +9,21 @@ tags: [Account]
 |![Account Details Icon](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AccountDetails.png)  | CHIPS&reg; APIs that allows for checking account balances, limits and transactions history.  |
 
 # Get Account Details
-[*GET /chips/money/account/{uuid}*][api-get-chips-money-account-uuid]
+
+*Full Documentation:* [*GET /chips/money/account/{uuid}*](../../reference/sandbox-chips-money/swagger.json/paths/~1accounts~1%7Buuid%7D/get)
 
 This API is normally called to retrieve the current account balance. 
 
 ```json http
 {
   "method": "get",
-  "url": "https://apim.trustlinkhosting.com:8065/sandbox/chips/money/accounts/fbb9f3a7-402f-432d-8293-d3c0f63d3c4d",
+  "url": "https://apim.trustlinkhosting.com:8165/sandbox/chips/money/accounts/fbb9f3a7-402f-432d-8293-d3c0f63d3c4d",
   "query": {
     "version": "1.0"
   },
+
   "headers": {
-    "Authorization": "DEMO MjE3MDJhZWYtYTkwMi00YmU0LTgxNTUtNjk3OTljNWY0MjczOmIyNzAyNmZhLTlkYWUtNDcwOS05MzQxLTFiYWFjOGJlMzc3NA==",
-    "marketplaceKeyId": "cc8d4f9b-bda5-4025-9b95-a0896242edb1"
+    "marketplaceKeyId": "dddb67f4-22d0-4ee8-a441-91966950bd9f"
   }
 }
 ```
