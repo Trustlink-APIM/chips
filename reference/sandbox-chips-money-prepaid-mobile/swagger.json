@@ -3020,7 +3020,8 @@
                                 },
                                 "itemNumber": {
                                     "type": "string",
-                                    "minLength": 1
+                                    "minLength": 1,
+                                    "description": "Mobile number that the purchase is made for. Must be in international format"
                                 },
                                 "amount": {
                                     "type": "number"
