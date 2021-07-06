@@ -37,7 +37,7 @@
                 }
             ],
             "get": {
-                "summary": "Get a mobile prepaid merchant",
+                "summary": "Get a prepaid electricity merchant",
                 "tags": [
                     "Merchants"
                 ],
@@ -556,7 +556,7 @@
         },
         "/merchants": {
             "get": {
-                "summary": "List mobile prepaid merchants",
+                "summary": "List prepaid electricity merchants",
                 "tags": [
                     "Merchants"
                 ],
@@ -1067,7 +1067,7 @@
         },
         "/products": {
             "get": {
-                "summary": "List of mobile prepaid products",
+                "summary": "List of prepaid electricity products",
                 "tags": [
                     "Products"
                 ],
