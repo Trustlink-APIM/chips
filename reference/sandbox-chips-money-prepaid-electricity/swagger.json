@@ -1717,7 +1717,8 @@
                     "type": "string",
                     "name": "uuid",
                     "in": "path",
-                    "required": true
+                    "required": true,
+                    "description": "Product uuid"
                 }
             ],
             "get": {
@@ -2256,13 +2257,6 @@
                 },
                 "operationId": "chips-money-prepaid-electricity-products-uuid-get",
                 "parameters": [
-                    {
-                        "type": "string",
-                        "in": "query",
-                        "name": "uuid",
-                        "description": "The unique reference used to identify the token request.",
-                        "required": true
-                    },
                     {
                         "type": "string",
                         "description": "Marketplace API Key",
