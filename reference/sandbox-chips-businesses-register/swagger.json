@@ -785,7 +785,7 @@
         },
         "/documents": {
             "post": {
-                "summary": "",
+                "summary": "Upload KYC and FICA Documents",
                 "operationId": "chips-business-register-documents-post",
                 "responses": {
                     "200": {
