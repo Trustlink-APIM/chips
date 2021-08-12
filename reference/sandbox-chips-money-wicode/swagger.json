@@ -593,6 +593,12 @@
                             "required": [
                                 "accountUuid"
                             ]
+                        },
+                        "x-examples": {
+                            "Try Me": {
+                                "accountUuid": "b4a90a07-c197-408b-8419-ba3ed7ab3f8e",
+                                "refInfo": "Groceries 20201003"
+                            }
                         }
                     },
                     {
@@ -1182,6 +1188,12 @@
                             "required": [
                                 "accountUuid"
                             ]
+                        },
+                        "x-examples": {
+                            "Try me": {
+                                "accountUuid": "b4a90a07-c197-408b-8419-ba3ed7ab3f8e",
+                                "refInfo": "Groceries 20201003"
+                            }
                         }
                     },
                     {
