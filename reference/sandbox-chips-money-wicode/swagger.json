@@ -1755,13 +1755,6 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "in": "query",
-                        "name": "uuid",
-                        "description": "The unique reference used to identify the token request.",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
                         "description": "Marketplace API Key",
                         "name": "marketplaceKeyId",
                         "in": "header"
