@@ -13,7 +13,7 @@
             "url": "https://marketplace.trustlinkhosting.com",
             "email": "apisales@trustlink.co.za"
         },
-        "description": "Exposes authentication of CHIPS users via direct API calls.\n\n# Features \n![Authentication](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AuthAPI/Authentication.png)\n* Authenticate a CHIPS user in order to retrieve a refresh and bearer auth token. \n* Request a new bearer token with the refresh token as authorization. \n\n\n![OTP PIN Reset](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AuthAPI/OTPPINSet.png)\n* Send an OTP to a mobile number.\n* Reset the CHIPS user PIN.  \n\nHave a good day\n\n"
+        "description": "Exposes authentication of CHIPS users via direct API calls.\n\n# Features \n![Authentication](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AuthAPI/Authentication.png)\n* Authenticate a CHIPS user in order to retrieve a refresh and bearer auth token. \n* Request a new bearer token with the refresh token as authorization. \n\n\n![OTP PIN Reset](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/AuthAPI/OTPPINSet.png)\n* Send an OTP to a mobile number.\n* Reset the CHIPS user PIN.  \n"
     },
     "host": "apim.trustlinkhosting.com:8165",
     "schemes": [
@@ -1959,46 +1959,6 @@
                 ]
             },
             "parameters": []
-        },
-        "/logout": {
-            "post": {
-                "summary": "",
-                "operationId": "post-logout",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "description": "Revokes the current token ",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "user_id": {
-                                    "type": "string",
-                                    "description": "User id to revoke all tokens for"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "type": "string",
-                        "description": "Marketplace API Key",
-                        "name": "marketplaceKeyId",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Version of the API. (Latest version 1.0)",
-                        "name": "version",
-                        "in": "query",
-                        "required": true
-                    }
-                ]
-            }
         }
     },
     "definitions": {},
