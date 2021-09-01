@@ -2733,7 +2733,7 @@
                         }
                     }
                 },
-                "description": "Verify a person's ID details prior to onboarding. \n\n<!-- theme: info -->\n\n> ### **Note**\n>\n> The ID verification is built into the [POST register/persons](docs/chips/b3A6NTYzMDg5-create-a-profile) API. Only use this pre-verification if there a precess to be followed in between getting the person's ID details and the account creation.",
+                "description": "Verify a person's ID details prior to onboarding. \n\n<!-- theme: info -->\n\n> ### **Note**\n>\n> The ID verification is built into the [POST register/persons](b3A6NTYzMDg5-create-a-profile) API. Only use this pre-verification if there a precess to be followed in between getting the person's ID details and the account creation.",
                 "parameters": [
                     {
                         "in": "body",
