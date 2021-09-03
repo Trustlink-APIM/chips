@@ -2044,7 +2044,7 @@
                                                 },
                                                 "photo": {
                                                     "type": "string",
-                                                    "description": "Photo of ID book or card. Encoded in base 64 with  header.\n\n**Optional** during details verification. Will be sorted for future profile creation if passed.\n**Required** during profile creation, if not saved during verification.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n* data:application/pdf;base64\n\nRecommended image size is 600x600.\n\nUse https://www.base64-image.de to generate examples.",
+                                                    "description": "Photo of ID book or card. Encoded in base 64 with  header.\n\n**Optional** during details verification. Will be stored for future profile creation if passed.\n\n**Required** during profile creation, if not saved during verification.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n* data:application/pdf;base64\n\nRecommended image size is 600x600.\n\nUse https://www.base64-image.de to generate examples.",
                                                     "example": "data:image/png;base64,iVBORw0KG..."
                                                 }
                                             },
@@ -2795,7 +2795,7 @@
                                 },
                                 "photo": {
                                     "type": "string",
-                                    "description": "Photo of ID book or card. Encoded in base 64 with  header.\n\n**Optional** during details verification. Will be sorted for future profile creation if passed.\n**Required** during profile creation, if not saved during verification.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n* data:application/pdf;base64\n\nRecommended image size is 600x600.\n\nUse https://www.base64-image.de to generate examples.",
+                                    "description": "Photo of ID book or card. Encoded in base 64 with  header.\n\n**Optional** during details verification. Will be stored for future profile creation if passed.\n\n**Required** during profile creation, if not saved during verification.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n* data:application/pdf;base64\n\nRecommended image size is 600x600.\n\nUse https://www.base64-image.de to generate examples.",
                                     "example": "data:image/png;base64,iVBORw0KG..."
                                 }
                             },
