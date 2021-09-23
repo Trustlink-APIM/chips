@@ -2894,7 +2894,7 @@
                 },
                 "description": "Find payment request token by criteria",
                 "tags": [
-                    "Payments"
+                    "Receive Payments"
                 ],
                 "security": [],
                 "parameters": [
@@ -13652,13 +13652,13 @@
             "name": "QR Payments"
         },
         {
-            "name": "Receive Payments"
+            "name": "Payments"
         },
         {
             "name": "EFT Payments"
         },
         {
-            "name": "Payments"
+            "name": "Receive Payments"
         }
     ],
     "securityDefinitions": {
