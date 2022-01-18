@@ -59,85 +59,72 @@
                                             "x-tags": [
                                                 "Payments"
                                             ],
-                                            "allOf": [
-                                                {
-                                                    "title": "Trustlink Payment Network payeeAccountUuid Field",
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "payeeAccountUuid": {
-                                                            "maxLength": 36,
-                                                            "minLength": 36,
-                                                            "type": "string",
-                                                            "description": "Payee account UUID in the Trustlink Payment Network. Searchable.",
-                                                            "example": "7aaf1331-67a5-4ecd-8e26-9583346b243e"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "payeeAccountUuid"
-                                                    ]
+                                            "type": "object",
+                                            "properties": {
+                                                "accountUuid": {
+                                                    "maxLength": 36,
+                                                    "minLength": 36,
+                                                    "type": "string",
+                                                    "description": "Payee account UUID in the Trustlink Payment Network. Searchable.",
+                                                    "example": "7aaf1331-67a5-4ecd-8e26-9583346b243e"
                                                 },
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "refInfo": {
-                                                            "type": "string",
-                                                            "description": "Used to uniquely identify thetransaction for the applicable Member as usedinthe external system.",
-                                                            "example": "online-20200305-INV123304",
-                                                            "minLength": 0,
-                                                            "maxLength": 36
-                                                        },
-                                                        "category1": {
-                                                            "type": "string",
-                                                            "description": "User field to categorize the transaction.",
-                                                            "example": "Online",
-                                                            "minLength": 0,
-                                                            "maxLength": 50
-                                                        },
-                                                        "category2": {
-                                                            "type": "string",
-                                                            "description": "User field to categorize the transaction.",
-                                                            "example": "Food",
-                                                            "minLength": 0,
-                                                            "maxLength": 50
-                                                        },
-                                                        "category3": {
-                                                            "type": "string",
-                                                            "description": "User field to categorize the transaction.",
-                                                            "example": "Canned Goods",
-                                                            "minLength": 0,
-                                                            "maxLength": 50
-                                                        },
-                                                        "siteRefInfo": {
-                                                            "type": "string",
-                                                            "description": "\"A reference used by the payee / external system to identify the specific business unit.",
-                                                            "example": "ONLINE-GROC",
-                                                            "minLength": 0,
-                                                            "maxLength": 36
-                                                        },
-                                                        "siteName": {
-                                                            "type": "string",
-                                                            "description": "Used to identify the site that created the token request.",
-                                                            "example": "WebShop",
-                                                            "minLength": 0,
-                                                            "maxLength": 100
-                                                        },
-                                                        "notifyUrl": {
-                                                            "type": "string",
-                                                            "example": "https://webhook.site",
-                                                            "maxLength": 255,
-                                                            "format": "uri",
-                                                            "description": "Payment notification webhook URL"
-                                                        },
-                                                        "documentUrl": {
-                                                            "type": "string",
-                                                            "example": "https://invoices.com/199790790",
-                                                            "maxLength": 255,
-                                                            "format": "uri",
-                                                            "description": "The business defined URL to provide a link to an underlying document for example, an order or invoice hosted on an external system."
-                                                        }
-                                                    }
+                                                "refInfo": {
+                                                    "type": "string",
+                                                    "description": "Used to uniquely identify thetransaction for the applicable Member as usedinthe external system.",
+                                                    "example": "online-20200305-INV123304",
+                                                    "minLength": 0,
+                                                    "maxLength": 36
+                                                },
+                                                "category1": {
+                                                    "type": "string",
+                                                    "description": "User field to categorize the transaction.",
+                                                    "example": "Online",
+                                                    "minLength": 0,
+                                                    "maxLength": 50
+                                                },
+                                                "category2": {
+                                                    "type": "string",
+                                                    "description": "User field to categorize the transaction.",
+                                                    "example": "Food",
+                                                    "minLength": 0,
+                                                    "maxLength": 50
+                                                },
+                                                "category3": {
+                                                    "type": "string",
+                                                    "description": "User field to categorize the transaction.",
+                                                    "example": "Canned Goods",
+                                                    "minLength": 0,
+                                                    "maxLength": 50
+                                                },
+                                                "siteRefInfo": {
+                                                    "type": "string",
+                                                    "description": "\"A reference used by the payee / external system to identify the specific business unit.",
+                                                    "example": "ONLINE-GROC",
+                                                    "minLength": 0,
+                                                    "maxLength": 36
+                                                },
+                                                "siteName": {
+                                                    "type": "string",
+                                                    "description": "Used to identify the site that created the token request.",
+                                                    "example": "WebShop",
+                                                    "minLength": 0,
+                                                    "maxLength": 100
+                                                },
+                                                "notifyUrl": {
+                                                    "type": "string",
+                                                    "example": "https://webhook.site",
+                                                    "maxLength": 255,
+                                                    "format": "uri",
+                                                    "description": "Payment notification webhook URL"
+                                                },
+                                                "documentUrl": {
+                                                    "type": "string",
+                                                    "example": "https://invoices.com/199790790",
+                                                    "maxLength": 255,
+                                                    "format": "uri",
+                                                    "description": "The business defined URL to provide a link to an underlying document for example, an order or invoice hosted on an external system."
                                                 }
-                                            ]
+                                            }
                                         },
                                         "payer": {
                                             "title": "TPN Payment Request Payer",
