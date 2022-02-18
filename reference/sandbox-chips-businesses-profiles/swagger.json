@@ -28,7 +28,7 @@
     "paths": {
         "/register": {
             "post": {
-                "summary": "Create merchant profile",
+                "summary": "Create Business Profile",
                 "operationId": "tpn-businesses-profiles-register-post",
                 "responses": {
                     "200": {
