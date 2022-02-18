@@ -775,6 +775,9 @@
                         "in": "query",
                         "required": true
                     }
+                ],
+                "tags": [
+                    "Businesses"
                 ]
             },
             "parameters": []
@@ -1363,6 +1366,7 @@
             "get": {
                 "summary": "Check the Business User Status",
                 "tags": [
+                    "Businesses",
                     "Users"
                 ],
                 "responses": {
@@ -1900,7 +1904,7 @@
                         }
                     }
                 },
-                "operationId": "tpn-businesses-profiles-register-post",
+                "operationId": "tpn-businesses-profiles-users-get",
                 "description": "Check if the business user exists based on email address. The primary email address for the Business will be used as the default Administration Users. \n",
                 "parameters": [
                     {
@@ -1931,14 +1935,6 @@
     },
     "definitions": {},
     "basePath": "/sandbox/chips/businesses/profiles",
-    "tags": [
-        {
-            "name": "Onboarding"
-        },
-        {
-            "name": "Merchant"
-        }
-    ],
     "securityDefinitions": {
         "Marketplace API Key": {
             "type": "apiKey",
