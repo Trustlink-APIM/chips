@@ -13,7 +13,7 @@
             "url": "https://marketplace.trustlinkhosting.com",
             "email": "apisales@trustlink.co.za"
         },
-        "description": "# Business Onboarding Call Flow\nThe API allows creation of Merchant Accounts in the Trustlink Payment Network.\n\n## Register a businesses profile\nUse the [reference/chips/tpn-businesses-profiles-api.v1.json/paths/~1register] API to create a business profile.\nAfter registration of the business profile will have an administration user link to the email provided.\n\n## Upload documents\n\n## Password Setup for the Default Administration User\nCheck the status of the user with [tpn-businesses-profiles-api.v1.json/paths/~1users~1email~1{email}]\n\n\n\n\n## Business User Login\n\n\n"
+        "description": "# Business Onboarding Call Flow\nThe API allows creation of Merchant Accounts in the Trustlink Payment Network.\n\n## Register a businesses profile\nUse the [Create Business Profile](reference/chips/tpn-businesses-profiles-api.v1.json/paths/~1register) endpoint to create a business profile.\nAfter registration of the business profile will have an administration user link to the email provided.\n\n## Upload documents\n\n## Password Setup for the Default Administration User\nCheck the status of the user with [tpn-businesses-profiles-api.v1.json/paths/~1users~1email~1{email}]\n\n\n\n\n## Business User Login\n\n\n"
     },
     "host": "apim.trustlinkhosting.com:8165",
     "schemes": [
