@@ -621,10 +621,6 @@
                     }
                 },
                 "description": "Register the merchant on the Trustlink Payment Network.\n\n",
-                "tags": [
-                    "Onboarding",
-                    "Merchant"
-                ],
                 "parameters": [
                     {
                         "in": "body",
@@ -1293,9 +1289,6 @@
                     }
                 },
                 "description": "# Overview\nEnd point for Uploading the necessary FICA documents for a Merchant\n\nDocuments are uploaded in API as base64 string with meta header.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n* data:application/pdf;base64\n\nDocuments POST payload must be smaller than 10 MB\n\n# Required Documents\n\n## Companies\n* Proof of company registration (CIPC).\n* Proof of company address.\n* Proof of company bank account.\n* Proof of ID - for all directors/owners.\n* Proof of address - for all directors.\n* Company resolution authorizing person to apply for registration, if applicable.\n* Proof of company VAT registration (SARS Documentation), if registered.\n\n## Sole Proprietors: \n* Proof of company address.\n* Proof of company bank account \n* Proof of ID - owner\n* Proof of address - owner.\n* Proof of company VAT registration (SARS Documentation), if registered.",
-                "tags": [
-                    "Merchant"
-                ],
                 "parameters": [
                     {
                         "in": "body",
@@ -1360,13 +1353,18 @@
                         "in": "query",
                         "required": true
                     }
+                ],
+                "tags": [
+                    "Businesses"
                 ]
             }
         },
         "/users/{username}": {
             "get": {
                 "summary": "Check the Business User Status",
-                "tags": [],
+                "tags": [
+                    "Users"
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
