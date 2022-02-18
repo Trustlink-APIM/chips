@@ -13,7 +13,7 @@
             "url": "https://marketplace.trustlinkhosting.com",
             "email": "apisales@trustlink.co.za"
         },
-        "description": "# Business Onboarding Call Flow\nThe API allows creation of Merchant Accounts in the Trustlink Payment Network.\n\n## Register a businesses profile\nUse the [Create Business Profile](reference/chips/tpn-businesses-profiles-api.v1.json/paths/~1register) endpoint to create a business profile.\nAfter registration of the business profile will have an administration user link to the email provided.\n\n## Upload documents\n\n## Password Setup for the Default Administration User\nCheck the status of the user with [tpn-businesses-profiles-api.v1.json/paths/~1users~1email~1{email}]\n\n\n\n\n## Business User Login\n\n\n"
+        "description": "# Business Onboarding Call Flow\nThe API allows creation of Merchant Accounts in the Trustlink Payment Network.\n\n## Register a businesses profile\nUse the [Create Business Profile](b3A6NDEyNjg2NTk-create-business-profile) endpoint to create a business profile.\nAfter registration of the business profile will have an administration user linked to the email provided.\nAn one time password will be emailed to the user during this process. \n\n## Password Setup for the Default Administration User\nCheck the status of the user with the [Check the Business User Status](b3A6NDEyNjg2NjE-check-the-business-user-status) endpoint.\n\nNote the *passwordReset* field that is returned. If *passwordReset* is true, the user must supply the one time password that was emailed as well as their new passowrd. \n\n## Business User Login\n\n\n## Upload documents\n\n\n\n\n\n\n\n\n\n\n"
     },
     "host": "apim.trustlinkhosting.com:8165",
     "schemes": [
