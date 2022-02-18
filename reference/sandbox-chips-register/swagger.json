@@ -15,7 +15,7 @@
         },
         "description": "The CHIPS payment platform enables registered users to create a payment request token that can be paid with various MasterPass enabled payment applications available on the South African payments landscape.\n\nThird parties can build their own wallet with the CHIPS&reg; Value Store as the backend. The third party application will need to on-board their users into the CHIPS&reg; Payment Network.\n\n# Overview\n![CHIPS Onboarding Sequence Diagram](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/OnboardingAPI/Onboarding-SequenceDiagram.png)\n\n"
     },
-    "host": "apim-local.trustlinkhosting.com:8165",
+    "host": "apim.trustlinkhosting.com:8165",
     "schemes": [
         "https"
     ],
