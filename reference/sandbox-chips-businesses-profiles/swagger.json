@@ -1366,7 +1366,6 @@
             "get": {
                 "summary": "Check the Business User Status",
                 "tags": [
-                    "Businesses",
                     "Users"
                 ],
                 "responses": {
@@ -1935,6 +1934,14 @@
     },
     "definitions": {},
     "basePath": "/sandbox/chips/businesses/profiles",
+    "tags": [
+        {
+            "name": "Businesses"
+        },
+        {
+            "name": "Users"
+        }
+    ],
     "securityDefinitions": {
         "Marketplace API Key": {
             "type": "apiKey",
