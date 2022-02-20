@@ -1935,7 +1935,7 @@
             "parameters": [],
             "post": {
                 "summary": "Authenticate Business User Profile",
-                "operationId": "chips-auth-api-login-post",
+                "operationId": "tpn-businesses-profiles-users-login-post",
                 "responses": {
                     "200": {
                         "description": "Authenticated",
