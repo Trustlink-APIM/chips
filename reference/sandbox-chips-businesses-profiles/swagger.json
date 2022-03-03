@@ -28,7 +28,7 @@
     "paths": {
         "/register": {
             "post": {
-                "summary": "0 - Create Business Profile",
+                "summary": "Create Business Profile",
                 "operationId": "tpn-businesses-profiles-register-post",
                 "responses": {
                     "200": {
@@ -784,7 +784,7 @@
         },
         "/documents": {
             "post": {
-                "summary": "5 - Upload KYC and FICA Documents",
+                "summary": "Upload KYC and FICA Documents",
                 "operationId": "tpn-businesses-profiles-documents-post",
                 "responses": {
                     "200": {
@@ -1364,7 +1364,7 @@
         },
         "/users/{username}": {
             "get": {
-                "summary": "2 - Check the Business User Status",
+                "summary": "Check the Business User Status",
                 "tags": [
                     "Users"
                 ],
@@ -1934,7 +1934,7 @@
         "/users/login": {
             "parameters": [],
             "post": {
-                "summary": "3 - Authenticate Business User Profile",
+                "summary": "Authenticate Business User Profile",
                 "operationId": "tpn-businesses-profiles-users-login-post",
                 "responses": {
                     "200": {
@@ -2475,7 +2475,7 @@
                 }
             ],
             "get": {
-                "summary": "4 - Check Business Status",
+                "summary": "Check Business Status",
                 "tags": [
                     "Businesses"
                 ],
