@@ -2471,7 +2471,8 @@
                     "type": "string",
                     "name": "uuid",
                     "in": "path",
-                    "required": true
+                    "required": true,
+                    "description": "UUID for the Business"
                 }
             ],
             "get": {
