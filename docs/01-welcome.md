@@ -1,20 +1,24 @@
 ---
-tags: [CHIPS]
+tags: [TPN]
 ---
 
-# Welcome to the CHIPS&reg; Payment Platform API
-The CHIPS&reg; API catalogue on the [Trustlink API Marketplace] gives you access to the CHIPS&reg; Payment Platform. The APIs and tools on the platform allow the development of applications for Business and Individuals to join the digital money space.
+# Welcome to the Trustlink Payment Network APIs
+The TPN API catalogue on the [Trustlink API Marketplace] gives you access to the Trustlink Payment network APIs. The APIs and tools on the platform allow the development of applications for Business and Individuals to join the digital money space.
 
 ## Individuals API
-The CHIPS Money API, as a base, gives you the capability to build applications for individuals that will benefit from lower transaction costs vs traditional banks and allow current cash-only people to join in the digital cash space.
+The CHIPS Money API, as a base, gives you the capability to build applications for individuals that will benefit from lower transaction costs vs traditional banks. It also allows current cash-only persons to join in the digital cash economy safely and easily.
 
 <!--
 type: tab
 title: Onboarding API
 -->
 
-The CHIPS&reg; Onboarding APIs allows users to be registered for CHIPS&reg; accounts. [Try it!][chips-register-flow]
+The CHIPS&reg; Onboarding APIs allows users to be registered for CHIPS&reg; accounts.
+During onboarding the following is validated:
+* The user's mobile phone number
+* The user's identity via validation of their ID document details and a selfie
 
+[Try it!][chips-register-flow]
 
 <!--
 type: tab
@@ -41,5 +45,5 @@ Using CHIPS as a merchant allows you to build several payment options into your 
 
 [Trustlink API Marketplace]: https://marketplace.trustlinkhosting.com
 [chips-account-details-flow]: ./2-CHIPS-for-Individuals/20-CHIPS-Money-Account.md
-[chips-register-flow]: ./2-CHIPS-for-Individuals/01-CHIPS-Onboarding.md
+[chips-register-flow]: https://trustlink.stoplight.io/docs/chips/YXBpOjU2MzA4NQ-chips-on-boarding
 [chips-money-cashsends-atm-flow]: ./2-CHIPS-for-Individuals/50-CHIPS-Money-Cashsends-ATM.md
