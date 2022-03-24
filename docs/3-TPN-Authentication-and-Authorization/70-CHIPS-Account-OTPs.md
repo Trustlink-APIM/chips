@@ -2,9 +2,9 @@
 tags: [Security]
 ---
 
-# OTPs for the CHIPS Authentication
+# OTPs for the Authentication
 
-In the CHIPS ecosystem OTPs serves 
+In the TPN ecosystem OTPs serves 
 
 - to validate the mobile number or email address for a CHIPS account holder during onboarding.
 - enable PIN resets, if forgotten or on initial account creation.
