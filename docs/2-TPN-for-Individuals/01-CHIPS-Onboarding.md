@@ -4,7 +4,7 @@ tags: [Onboarding]
 
 # Trustlink Payment Network Onboarding of Individuals
 
-![CHIPS Onboarding Sequence Diagram](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/OnboardingAPI/Onboarding-SequenceDiagram.png)
+![Onboarding Sequence Diagram](https://marketplace.trustlinkhosting.com/images/Providers/CHIPS/OnboardingAPI/Onboarding-SequenceDiagram.png)
 
 Onboarding of individuals into Trustlink Payment Network follows the sequence diagram as above. 
 
