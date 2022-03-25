@@ -44,6 +44,6 @@ Using TPN platform as a business allows you to build several payment options int
 
 
 [Trustlink API Marketplace]: https://marketplace.trustlinkhosting.com
-[chips-account-details-flow]: ./2-CHIPS-for-Individuals/20-CHIPS-Money-Account.md
-[chips-register-flow]: ./2-TPN-for-Individuals/01-CHIPS-Onboarding.md
+[chips-account-details-flow]: ./docs/2-TPN-for-Individuals/20-CHIPS-Money-Account.md
+[chips-register-flow]: ./docs/2-TPN-for-Individuals/01-CHIPS-Onboarding.md
 [chips-money-cashsends-atm-flow]: ./2-CHIPS-for-Individuals/50-CHIPS-Money-Cashsends-ATM.md
