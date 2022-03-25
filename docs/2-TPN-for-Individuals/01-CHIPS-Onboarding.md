@@ -144,26 +144,9 @@ title: Failed OTP verification
 }
 ```
 
-### Register User Profile and Account
+## Register User Profile and Account
 [*POST /chips/register/persons*](../../reference/sandbox-chips-register/swagger.json/paths/~1mobile~1otp/post)
 
-```json http
-{
-  "method": "post",
-  "url": "https://apim.trustlinkhosting.com:8165/sandbox/chips/register/mobile/otp",
-  "query": {
-    "version": "1.0"
-  },
-  "headers": {
-    "marketplaceKeyId": "dddb67f4-22d0-4ee8-a441-91966950bd9f",
-    "Content-Type": "application/json"
-  },
-  "body": {
-    "mobileNumber": "+27852223334",
-    "otp": "45678"
-  }
-}
-```
 
 
 
@@ -173,6 +156,6 @@ See [How it works] for more details on Storefront and Sandbox testing.
 
 Get the [Storefront marketplaceKeyId] here.
 
-[How it works]: https://trustlink.stoplight.io/docs/chips/docs/06-how-it-works.md
-[Storefront marketplaceKeyId]: https://trustlink.stoplight.io/docs/chips/docs/1-CHIPS-Authorization/02-Demo-Authentication.md
+[How it works]: https://trustlink.stoplight.io/docs/chips/ZG9jOjQ3Nzg3NzI4-how-it-works
+[Storefront marketplaceKeyId]: https://trustlink.stoplight.io/docs/chips/ZG9jOjQ3Nzg3NzI1-demo-authentication-on-the-storefront
 [Trustlink API Marketplace]: https://marketplace.trustlinkhosting.com
