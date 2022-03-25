@@ -13,7 +13,7 @@ Onboarding of individuals into Trustlink Payment Network follows the sequence di
 You will require
 * Trustlink marketplaceKeyId linked to the following API bundles
   * CHIPS Onboarding API
-  * CHIPS Authentication API (Optional)
+  * CHIPS Authentication API (Optional for some use cases)
 
 As a minimum the CHIPS Money API should the linked to the marketplaceKeyId as well to enable transactions capabilities.
 
@@ -101,6 +101,7 @@ Testing with a mobile number that is register to George MacDonald.
 ### Verify the OTP 
 *Full Documentation:* [*POST /chips/register/mobile/otp*](../../reference/sandbox-chips-register/swagger.json/paths/~1mobile~1otp/post)
 
+
 <!--
 type: tab
 title: Successful OTP verification
@@ -144,10 +145,31 @@ title: Failed OTP verification
 }
 ```
 
+<!-- type: tab-end -->
+
 ## Register User Profile and Account
 [*POST /chips/register/persons*](../../reference/sandbox-chips-register/swagger.json/paths/~1mobile~1otp/post)
 
+Mockup exmaple coming soon.
 
+## Setup Authentication 
+
+### Request PIN set OTP
+Note that the OTP that you received as part of the onboarding can still be used here unless it already expired. OTPs are valid for 15 minutes.
+
+[*POST /chips/auth/pin/otp*](https://trustlink.stoplight.io/docs/chips/b3A6NTY2Nzgx-request-pin-reset-otp)
+
+More information regarding OTPs during testing can be found [here](https://trustlink.stoplight.io/docs/chips/ZG9jOjQ3Nzg3NzI2-ot-ps-for-the-authentication)
+
+### Set PIN
+
+[*POST /chips/auth/pin*](https://trustlink.stoplight.io/docs/chips/b3A6NTY2Nzgy-set-chips-account-pin)
+
+### Login
+
+For details on authenticating see 
+
+* [Authenticating User](https://trustlink.stoplight.io/docs/chips/b3A6ODc2MzE2-authenticate-chips-user)
 
 
 
