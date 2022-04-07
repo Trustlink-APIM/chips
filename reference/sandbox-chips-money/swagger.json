@@ -5224,7 +5224,7 @@
                     }
                 },
                 "operationId": "chips-money-transactions-get",
-                "description": "Retrieve transaction history.",
+                "description": "Retrieve transaction history.\n\n# Transaction Descriptions\n\n## Scan to Pay\n\n### At Masterpass Supported Businesses\n\nThe fields below must match the indicated values.\n\n| Field | Value | \n| --- | --- |\n| transactionType | PURCHASE |\n| facilityType | CARD_LODGE | \n\nThe following fields then has the indicated meaning.\n\n| Field | Description | \n| --- | --- |\n| description | Business name | \n\n### Masterpass Reversals\n\nThe fields below must match the indicated values.\n\n| Field | Value | \n| --- | --- |\n| transactionType | REVERSAL |\n| facilityType | CARD_LODGE | \n\nThe following fields then has the indicated meaning.\n\n| Field | Description | \n| --- | --- |\n| description | Reversal: &lt;Business name&gt; | \n\n### At Network Business\n\nThe fields below must match the indicated values.\n\n| Field | Value | \n| --- | --- |\n| transactionType | PURCHASE |\n| facilityType | DEFAULT | \n\nThe following fields then has the indicated meaning.\n\n| Field | Description | \n| --- | --- |\n| description | Business name | \n\n",
                 "parameters": [
                     {
                         "description": "Account UUID. You must have authorization on this account.",
