@@ -4613,8 +4613,10 @@
         },
         "/requests/multi": {
             "get": {
-                "summary": "Your GET endpoint",
-                "tags": [],
+                "summary": "Get Multi Payment Requests",
+                "tags": [
+                    "Multi Payments"
+                ],
                 "responses": {
                     "200": {
                         "description": "Pagable list response",
@@ -6090,6 +6092,9 @@
                         "in": "query",
                         "required": true
                     }
+                ],
+                "tags": [
+                    "Multi Payments"
                 ]
             }
         },
@@ -6103,8 +6108,7 @@
                 }
             ],
             "get": {
-                "summary": "Your GET endpoint",
-                "tags": [],
+                "summary": "Get Multi Payment Request by Token",
                 "responses": {
                     "200": {
                         "description": "Payment token exists?",
@@ -6234,6 +6238,9 @@
                         "in": "query",
                         "required": true
                     }
+                ],
+                "tags": [
+                    "Multi Payments"
                 ]
             }
         }
