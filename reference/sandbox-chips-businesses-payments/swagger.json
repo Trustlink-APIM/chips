@@ -6771,12 +6771,6 @@
                 "description": "Allows CHIPS accounts to be funded via EFT from their bank account. The API provides an URL that needs to be launched to the CHIPS EFT processing partner.\n\n## Testing Note\n\nIn testing environment the EFT amount must be one of the following\n* R 99.83\n* R 989.48\n* R 99973.40\n\n\n",
                 "parameters": [
                     {
-                        "type": "string",
-                        "in": "header",
-                        "name": "Authorization",
-                        "description": "See CHIPS Authorization Methods"
-                    },
-                    {
                         "in": "body",
                         "name": "body",
                         "schema": {
@@ -6872,12 +6866,6 @@
                         "name": "amount",
                         "required": true,
                         "type": "number"
-                    },
-                    {
-                        "type": "string",
-                        "in": "header",
-                        "name": "Authorization",
-                        "description": "See CHIPS Authorization Methods"
                     },
                     {
                         "type": "string",
@@ -7985,12 +7973,6 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "in": "header",
-                        "description": "See CHIPS Authorization Methods",
-                        "name": "Authorization"
-                    },
-                    {
-                        "type": "string",
                         "description": "Marketplace API Key",
                         "name": "marketplaceKeyId",
                         "in": "header"
@@ -8028,16 +8010,22 @@
     ],
     "tags": [
         {
-            "name": "Payments"
-        },
-        {
             "name": "EFT Payments"
         },
         {
-            "name": "Send Funds"
+            "name": "Instant EFT Funding"
         },
         {
             "name": "Masterpass"
+        },
+        {
+            "name": "Multi Payments"
+        },
+        {
+            "name": "Payments"
+        },
+        {
+            "name": "Send Funds"
         }
     ],
     "security": [
