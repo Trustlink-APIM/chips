@@ -10155,12 +10155,12 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "memberUuid": {
+                                "uuid": {
                                     "type": "string"
                                 }
                             },
                             "required": [
-                                "memberUuid"
+                                "uuid"
                             ]
                         }
                     },
@@ -13143,12 +13143,12 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "memberUuid": {
+                                "uuid": {
                                     "type": "string"
                                 }
                             },
                             "required": [
-                                "memberUuid"
+                                "uuid"
                             ]
                         }
                     },
