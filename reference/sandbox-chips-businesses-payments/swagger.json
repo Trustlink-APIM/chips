@@ -12276,7 +12276,7 @@
         },
         "/eft/beneficiaries/uuid": {
             "get": {
-                "summary": "Retrieve Bank Accounts with UUID",
+                "summary": "Retrieve Beneficiaries with UUID",
                 "tags": [
                     "Beneficiaries"
                 ],
