@@ -10971,7 +10971,7 @@
                 ]
             }
         },
-        "/eft/beneficairies": {
+        "/eft/beneficiaries": {
             "get": {
                 "summary": "Retrieve Business Bank Beneficiaries",
                 "tags": [
