@@ -8649,13 +8649,20 @@
                         "type": "string",
                         "in": "query",
                         "name": "version ",
-                        "description": "Version of the API. (Latest version 1.0"
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
                         "description": "Basic Auth",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "marketplaceKeyId",
+                        "description": "Marketplace API Key",
                         "required": true
                     },
                     {
@@ -9261,13 +9268,20 @@
                         "type": "string",
                         "in": "query",
                         "name": "version",
-                        "description": "Version of the API. (Latest version 1.0"
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
                         "description": "Basic Auth",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "marketplaceKeyId",
+                        "description": "Marketplace API Key",
                         "required": true
                     },
                     {
@@ -10168,13 +10182,20 @@
                         "type": "string",
                         "in": "query",
                         "name": "version ",
-                        "description": "Version of the API. (Latest version 1.0"
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
                         "description": "Basic Auth",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "marketplaceKeyId",
+                        "description": "Marketplace API Key",
                         "required": true
                     },
                     {
@@ -10931,13 +10952,14 @@
                         "type": "string",
                         "in": "query",
                         "name": "version ",
-                        "description": "Version of the API. (Latest version 1.0"
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
-                        "description": "Basic Auth"
+                        "description": "Basic Auth",
+                        "required": true
                     },
                     {
                         "in": "body",
@@ -10954,6 +10976,13 @@
                                 "uuid"
                             ]
                         }
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "marketplaceKeyId",
+                        "description": "Marketplace API Key",
+                        "required": true
                     },
                     {
                         "type": "string",
@@ -11633,13 +11662,20 @@
                         "type": "string",
                         "in": "query",
                         "name": "version ",
-                        "description": "Version of the API. (Latest version 1.0"
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
                         "description": "Basic Auth",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "marketplaceKeyId",
+                        "description": "Marketplace API key",
                         "required": true
                     },
                     {
@@ -12249,13 +12285,20 @@
                         "type": "string",
                         "in": "query",
                         "name": "version",
-                        "description": "Version of the API. (Latest version 1.0"
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
                         "in": "header",
                         "name": "Authorization",
                         "description": "Basic Auth",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "marketplaceKeyId",
+                        "description": "Marketplace API Key",
                         "required": true
                     },
                     {
@@ -13156,7 +13199,7 @@
                         "type": "string",
                         "in": "query",
                         "name": "version ",
-                        "description": "Version of the API. (Latest version 1.0"
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
@@ -13164,6 +13207,13 @@
                         "name": "Authorization",
                         "description": "Basic Auth",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "marketplaceKeyId",
+                        "required": true,
+                        "description": "Marketplace API Key"
                     },
                     {
                         "type": "string",
@@ -13919,7 +13969,7 @@
                         "type": "string",
                         "in": "query",
                         "name": "version ",
-                        "description": "Version of the API. (Latest version 1.0"
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
@@ -13943,6 +13993,13 @@
                                 "uuid"
                             ]
                         }
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "marketplaceKeyId",
+                        "description": "Marketplace API Key",
+                        "required": true
                     },
                     {
                         "type": "string",
