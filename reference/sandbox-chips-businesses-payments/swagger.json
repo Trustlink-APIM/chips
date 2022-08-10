@@ -8662,8 +8662,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
-                        "description": "Marketplace API Key",
-                        "required": true
+                        "description": "Marketplace API Key"
                     },
                     {
                         "type": "string",
@@ -9281,8 +9280,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
-                        "description": "Marketplace API Key",
-                        "required": true
+                        "description": "Marketplace API Key"
                     },
                     {
                         "type": "string",
@@ -10195,8 +10193,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
-                        "description": "Marketplace API Key",
-                        "required": true
+                        "description": "Marketplace API Key"
                     },
                     {
                         "type": "string",
@@ -10981,8 +10978,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
-                        "description": "Marketplace API Key",
-                        "required": true
+                        "description": "Marketplace API Key"
                     },
                     {
                         "type": "string",
@@ -11675,8 +11671,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
-                        "description": "Marketplace API key",
-                        "required": true
+                        "description": "Marketplace API key"
                     },
                     {
                         "type": "string",
@@ -12298,8 +12293,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
-                        "description": "Marketplace API Key",
-                        "required": true
+                        "description": "Marketplace API Key"
                     },
                     {
                         "type": "string",
@@ -13212,7 +13206,6 @@
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
-                        "required": true,
                         "description": "Marketplace API Key"
                     },
                     {
@@ -13998,8 +13991,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
-                        "description": "Marketplace API Key",
-                        "required": true
+                        "description": "Marketplace API Key"
                     },
                     {
                         "type": "string",
