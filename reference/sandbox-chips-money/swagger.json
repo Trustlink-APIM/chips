@@ -14949,6 +14949,9 @@
                         "in": "query",
                         "required": true
                     }
+                ],
+                "tags": [
+                    "Bank accounts"
                 ]
             }
         },
@@ -18037,6 +18040,9 @@
                         "in": "query",
                         "required": true
                     }
+                ],
+                "tags": [
+                    "Beneficiaries"
                 ]
             }
         },
@@ -19798,6 +19804,9 @@
                         "in": "query",
                         "required": true
                     }
+                ],
+                "tags": [
+                    "Beneficiaries"
                 ]
             }
         }
