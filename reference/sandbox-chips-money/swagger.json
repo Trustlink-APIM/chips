@@ -16713,6 +16713,9 @@
                         "in": "query",
                         "required": true
                     }
+                ],
+                "tags": [
+                    "Bank accounts"
                 ]
             }
         },
