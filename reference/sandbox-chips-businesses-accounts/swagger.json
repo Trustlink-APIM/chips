@@ -1332,7 +1332,7 @@
                 }
             ]
         },
-        "/update": {
+        "/update/{uuid}": {
             "patch": {
                 "summary": "Update Account Information",
                 "operationId": "chips-businesses-accounts-update-patch",
