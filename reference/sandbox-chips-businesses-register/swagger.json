@@ -1385,8 +1385,7 @@
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
-                        "description": "Marketplace API Key",
-                        "required": true
+                        "description": "Marketplace API Key"
                     },
                     {
                         "in": "body",
