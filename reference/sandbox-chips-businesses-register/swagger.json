@@ -783,11 +783,11 @@
             },
             "parameters": []
         },
-        "/update/{uuid}": {
+        "/update/{memberUuid}": {
             "parameters": [
                 {
                     "type": "string",
-                    "name": "uuid",
+                    "name": "memberUuid",
                     "in": "path",
                     "required": true,
                     "description": "The unique identifier used by the sender of the original request. UUID (ISO/IEC 9834-8:201)"
