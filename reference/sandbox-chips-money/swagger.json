@@ -20522,7 +20522,7 @@
                     {
                         "type": "string",
                         "in": "header",
-                        "name": "marketplaceKeyIdq",
+                        "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
                     },
                     {
