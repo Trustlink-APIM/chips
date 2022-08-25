@@ -2031,14 +2031,8 @@
                 ]
             }
         },
-        "/status/{memberUuid}": {
-            "parameters": [
-                {
-                    "type": "string",
-                    "name": "memberUuid",
-                    "in": "path"
-                }
-            ],
+        "/status": {
+            "parameters": [],
             "get": {
                 "summary": "Retrieve Business Profiles",
                 "tags": [
@@ -2717,6 +2711,18 @@
                                 }
                             }
                         }
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Basic Auth"
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "marketplaceKeyId",
+                        "description": "Marketplace API Key"
                     },
                     {
                         "type": "string",
