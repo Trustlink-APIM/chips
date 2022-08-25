@@ -2715,12 +2715,6 @@
                     {
                         "type": "string",
                         "in": "header",
-                        "name": "Authorization",
-                        "description": "Basic Auth"
-                    },
-                    {
-                        "type": "string",
-                        "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
                     },
@@ -3352,12 +3346,6 @@
                 "operationId": "chips-businesses-register-status-uuid-get",
                 "description": "Retreive a business profile by using UUID.",
                 "parameters": [
-                    {
-                        "type": "string",
-                        "in": "header",
-                        "name": "Authorization ",
-                        "description": "Basic Auth"
-                    },
                     {
                         "type": "string",
                         "in": "header",
