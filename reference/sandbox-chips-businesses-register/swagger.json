@@ -2034,13 +2034,13 @@
         "/status": {
             "parameters": [],
             "get": {
-                "summary": "Retrieve Business Profiles",
+                "summary": "Retrieve All Business Profiles",
                 "tags": [
                     "Retrieve Profiles"
                 ],
                 "responses": {
                     "200": {
-                        "description": "Profile Updated",
+                        "description": "Profiles retrieved",
                         "schema": {
                             "description": "System alloccated UUID.(ISO/IEC 9834-8:201)",
                             "allOf": [
@@ -2668,48 +2668,13 @@
                     }
                 },
                 "operationId": "chips-businesses-register-status-memberUuid-get",
-                "description": "Retrieval of business profiles in custodian level using given criteria.",
+                "description": "Retrieval of all business profiles under custodian level.",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "displayName": {
-                                    "type": "string"
-                                },
-                                "email": {
-                                    "type": "string"
-                                },
-                                "name": {
-                                    "type": "string"
-                                },
-                                "phoneNumber": {
-                                    "type": "string"
-                                },
-                                "registrationNumber": {
-                                    "type": "string"
-                                },
-                                "taxReferenceNumber": {
-                                    "type": "string"
-                                },
-                                "website": {
-                                    "type": "string"
-                                },
-                                "page": {
-                                    "type": "integer"
-                                },
-                                "size": {
-                                    "type": "integer"
-                                },
-                                "order": {
-                                    "type": "string"
-                                },
-                                "orderBy": {
-                                    "type": "string"
-                                }
-                            }
+                            "type": "object"
                         }
                     },
                     {
