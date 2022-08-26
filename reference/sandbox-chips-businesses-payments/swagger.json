@@ -16419,54 +16419,132 @@
                         "schema": {
                             "allOf": [
                                 {
-                                    "title": "CHIPS Generic Response Fields",
+                                    "title": "chips-response-cash-funding.v1",
+                                    "x-stoplight": {
+                                        "id": "unzwsbveh3x2z"
+                                    },
                                     "type": "object",
                                     "properties": {
                                         "uuid": {
                                             "type": "string",
-                                            "description": "The unique reference used to identify the token request.\n(UUID - ISO/IEC 9834-8:2014)",
-                                            "example": "d3adba08-7a54-46ec-bf03-8ce09cd38ee5",
+                                            "description": "System alloccated UUID.(ISO/IEC 9834-8:201)",
                                             "minLength": 36,
-                                            "maxLength": 36,
-                                            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+                                            "maxLength": 36
                                         },
                                         "created": {
                                             "type": "string",
-                                            "description": "The date and time that the token request was created.\nUTC Datetime with time zone\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
-                                            "format": "date-time",
-                                            "example": "2020-04-14T16:31:43.715+02:00"
+                                            "description": "The date and time when created.\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)"
                                         },
                                         "createdBy": {
                                             "type": "string",
-                                            "description": "Member UUID (ISO/IEC 9834-8:2014) or System",
-                                            "example": "System"
+                                            "description": "The creator's user UUID.(ISO/IEC 9834-8:201)"
                                         },
                                         "createdByChannelUuid": {
                                             "type": "string",
-                                            "description": "UUID of the authorization channel that issued the request.\n"
+                                            "description": "The unique identifier used for the steward/agent involved.\nUUID (ISO/IEC 9834-8:201)",
+                                            "minLength": 36,
+                                            "maxLength": 36
                                         },
                                         "lastModified": {
                                             "type": "string",
-                                            "format": "date-time",
-                                            "example": "2020-04-14T16:31:43.715+02:00",
-                                            "description": "The date and time that the token request was last modified.\nUTC Datetime with time zone\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)"
+                                            "description": "The date and time of the last update.\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)"
                                         },
-                                        "modifiedBy": {
+                                        "lastModifiedBy": {
                                             "type": "string",
-                                            "description": "Member UUID (ISO/IEC 9834-8:2014) or System",
-                                            "example": "System"
+                                            "description": "The user UUID of the last update.\n(ISO/IEC 9834-8:201)"
+                                        },
+                                        "amount": {
+                                            "type": "number",
+                                            "description": "The total amount requested by the payee, e.g. R5.23 = 5.23"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "description": "The description for the request of payment.",
+                                            "minLength": 1,
+                                            "maxLength": 120
+                                        },
+                                        "documentUrl": {
+                                            "type": "string"
+                                        },
+                                        "paymentUrl": {
+                                            "type": "string",
+                                            "description": "The URL available for payment.",
+                                            "minLength": 1,
+                                            "maxLength": 255
+                                        },
+                                        "expiryTime": {
+                                            "type": "string",
+                                            "description": "The timestamp when the request for payment expires."
+                                        },
+                                        "gratuityAmount": {
+                                            "type": "number",
+                                            "description": "The amount included as gratuity, i.e. tip amount."
+                                        },
+                                        "payeeAccountUuid": {
+                                            "type": "string",
+                                            "description": "The unique identifier of the account linked to the involved merchant.\n(ISO/IEC 9834-8:201)",
+                                            "minLength": 36,
+                                            "maxLength": 36
+                                        },
+                                        "requestDeposit": {
+                                            "type": "boolean",
+                                            "description": "The indicator if the request is used to deposit funds."
+                                        },
+                                        "requestPartialPayment": {
+                                            "type": "boolean",
+                                            "description": "The indicator if a partial payment is allowed."
+                                        },
+                                        "requestStaticQR": {
+                                            "type": "boolean",
+                                            "description": "The indicates if the payment request is for a static QR."
+                                        },
+                                        "requestTip": {
+                                            "type": "boolean",
+                                            "description": "The indicator if tips are allowed."
+                                        },
+                                        "requestUseOnce": {
+                                            "type": "boolean",
+                                            "description": "The indicator if the request may only be used once,\nfor example an invoice request for payment, else it's a static request."
+                                        },
+                                        "tokenId": {
+                                            "type": "string",
+                                            "description": "The unique token used to identify the payment request.",
+                                            "minLength": 1,
+                                            "maxLength": 10
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "description": "The status of the payment request.",
+                                            "enum": [
+                                                "COMPLETED",
+                                                "EXPIRED",
+                                                "PENDING",
+                                                "REJECTED",
+                                                "REVERSED"
+                                            ]
                                         },
                                         "systemRefInfo": {
                                             "type": "string",
-                                            "description": "System reference number",
-                                            "minLength": 0,
+                                            "description": "The internal unqiue reference used within the system.",
+                                            "minLength": 1,
                                             "maxLength": 36
+                                        },
+                                        "paymentCounter": {
+                                            "type": "string"
                                         }
                                     },
                                     "required": [
                                         "uuid",
                                         "created",
-                                        "lastModified"
+                                        "lastModified",
+                                        "gratuityAmount",
+                                        "requestDeposit",
+                                        "requestPartialPayment",
+                                        "requestStaticQR",
+                                        "requestTip",
+                                        "requestUseOnce",
+                                        "status",
+                                        "systemRefInfo"
                                     ]
                                 },
                                 {
@@ -16554,17 +16632,10 @@
                                                 "statusCode",
                                                 "marketplaceId"
                                             ]
-                                        },
-                                        "tokenId": {
-                                            "type": "string",
-                                            "minLength": 16,
-                                            "maxLength": 16,
-                                            "description": "Cash funding tokenId to present to pay@ merchant."
                                         }
                                     },
                                     "required": [
-                                        "apimStatus",
-                                        "tokenId"
+                                        "apimStatus"
                                     ]
                                 }
                             ]
