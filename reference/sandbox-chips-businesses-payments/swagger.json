@@ -8861,13 +8861,6 @@
                     {
                         "type": "string",
                         "in": "header",
-                        "name": "Authorization",
-                        "description": "Basic Auth",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
                     },
@@ -9474,13 +9467,6 @@
                         "in": "query",
                         "name": "version",
                         "description": "Version of the API. (Latest version 1.0)"
-                    },
-                    {
-                        "type": "string",
-                        "in": "header",
-                        "name": "Authorization",
-                        "description": "Basic Auth",
-                        "required": true
                     },
                     {
                         "type": "string",
@@ -10294,13 +10280,6 @@
                     {
                         "type": "string",
                         "in": "header",
-                        "name": "Authorization",
-                        "description": "Basic Auth",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
                     },
@@ -11086,13 +11065,6 @@
                         "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
-                        "type": "string",
-                        "in": "header",
-                        "name": "Authorization",
-                        "description": "Basic Auth",
-                        "required": true
-                    },
-                    {
                         "in": "body",
                         "name": "body",
                         "schema": {
@@ -11825,13 +11797,6 @@
                     {
                         "type": "string",
                         "in": "header",
-                        "name": "Authorization",
-                        "description": "Basic Auth",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API key"
                     },
@@ -12442,13 +12407,6 @@
                         "in": "query",
                         "name": "version",
                         "description": "Version of the API. (Latest version 1.0)"
-                    },
-                    {
-                        "type": "string",
-                        "in": "header",
-                        "name": "Authorization",
-                        "description": "Basic Auth",
-                        "required": true
                     },
                     {
                         "type": "string",
@@ -13412,13 +13370,6 @@
                     {
                         "type": "string",
                         "in": "header",
-                        "name": "Authorization",
-                        "description": "Basic Auth",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
                     },
@@ -14202,13 +14153,6 @@
                         "in": "query",
                         "name": "version ",
                         "description": "Version of the API. (Latest version 1.0)"
-                    },
-                    {
-                        "type": "string",
-                        "in": "header",
-                        "name": "Authorization",
-                        "description": "Basic Auth",
-                        "required": true
                     },
                     {
                         "in": "body",
@@ -15013,13 +14957,6 @@
                     },
                     {
                         "type": "string",
-                        "in": "header",
-                        "name": "Authorization",
-                        "description": "Basic Auth",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
                         "in": "query",
                         "name": "version",
                         "description": "Version of the API. (Latest version 1.0)"
@@ -15056,13 +14993,6 @@
                     "application/json"
                 ],
                 "parameters": [
-                    {
-                        "type": "string",
-                        "in": "header",
-                        "name": "Authorization",
-                        "description": "Basic Auth",
-                        "required": true
-                    },
                     {
                         "type": "string",
                         "in": "query",
@@ -15656,13 +15586,6 @@
                     "application/json"
                 ],
                 "parameters": [
-                    {
-                        "type": "string",
-                        "in": "header",
-                        "name": "Authorization",
-                        "description": "Basic Auth",
-                        "required": true
-                    },
                     {
                         "type": "string",
                         "in": "query",
