@@ -14936,22 +14936,22 @@
                                     "type": "number",
                                     "description": "Amount that with bewithdrawn. Must be a multiple of R \n10",
                                     "example": 250,
-                                    "minimum": 10,
                                     "multipleOf": 10,
-                                    "exclusiveMinimum": true
+                                    "exclusiveMinimum": 10
                                 },
-                                "description": {
+                                "provider": {
                                     "type": "string",
-                                    "description": "Description for the transaction.",
-                                    "example": "ATM Payment",
-                                    "maxLength": 60
+                                    "description": "Cash send provider",
+                                    "enum": [
+                                        "NEDBANK"
+                                    ]
                                 }
                             },
                             "required": [
                                 "payerAccountUuid",
                                 "mobileNumber",
                                 "amount",
-                                "description"
+                                "provider"
                             ]
                         }
                     },
