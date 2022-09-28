@@ -706,22 +706,22 @@
                                     "type": "number",
                                     "description": "Amount that with bewithdrawn. Must be a multiple of R \n10",
                                     "example": 250,
-                                    "minimum": 10,
                                     "multipleOf": 10,
-                                    "exclusiveMinimum": true
+                                    "exclusiveMinimum": 10
                                 },
-                                "description": {
+                                "provider": {
                                     "type": "string",
-                                    "description": "Description for the transaction.",
-                                    "example": "ATM Payment",
-                                    "maxLength": 60
+                                    "description": "Cash send provider",
+                                    "enum": [
+                                        "NEDBANK"
+                                    ]
                                 }
                             },
                             "required": [
                                 "payerAccountUuid",
                                 "mobileNumber",
                                 "amount",
-                                "description"
+                                "provider"
                             ]
                         }
                     },
@@ -1382,7 +1382,6 @@
                                         },
                                         "dailyLimitAmount": {
                                             "description": "Maximum amount available per day",
-                                            "exclusiveMinimum": false,
                                             "minimum": 0,
                                             "type": "number"
                                         },
@@ -1398,25 +1397,21 @@
                                         },
                                         "availableDailyAmount": {
                                             "description": "Remaining amount available for current day",
-                                            "exclusiveMinimum": false,
                                             "minimum": 0,
                                             "type": "number"
                                         },
                                         "availableBalanceAmount": {
                                             "description": "Available balance amount",
-                                            "exclusiveMinimum": false,
                                             "minimum": 0,
                                             "type": "number"
                                         },
                                         "autoLimitAmount": {
                                             "description": "Automatic limit amount",
-                                            "exclusiveMinimum": false,
                                             "minimum": 0,
                                             "type": "number"
                                         },
                                         "approveLimitAmount": {
                                             "description": "Approved limit amount",
-                                            "exclusiveMinimum": false,
                                             "minimum": 0,
                                             "type": "number"
                                         }
@@ -1425,7 +1420,8 @@
                                         "uuid",
                                         "memberUuid",
                                         "lastModified",
-                                        "created"
+                                        "created",
+                                        "availableDailyAmount"
                                     ]
                                 },
                                 {

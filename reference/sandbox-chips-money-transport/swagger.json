@@ -49,7 +49,7 @@
                         "description": "mediaType=11 OR mediaType=12"
                     },
                     {
-                        "type": "integer",
+                        "type": "string",
                         "in": "query",
                         "name": "serialNumber",
                         "required": true,

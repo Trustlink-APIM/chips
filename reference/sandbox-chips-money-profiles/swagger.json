@@ -492,23 +492,43 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "in": "query",
-                        "name": "mobileNumber",
-                        "description": "+27 123456789",
-                        "required": true
+                        "in": "header",
+                        "name": "marketplaceKeyId",
+                        "description": "Marketplace API Key"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "mobileNumber": {
+                                    "type": "string",
+                                    "description": "+27 123456789"
+                                },
+                                "notificationType": {
+                                    "type": "string",
+                                    "description": "SMS, USSD"
+                                }
+                            },
+                            "required": [
+                                "mobileNumber",
+                                "notificationType"
+                            ]
+                        },
+                        "description": "Request one-time token"
                     },
                     {
                         "type": "string",
                         "in": "query",
-                        "name": "notificationType",
-                        "description": "SMS, USSD",
-                        "required": true
+                        "name": "version",
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
                         "in": "header",
-                        "name": "marketplaceKeyId",
-                        "description": "Marketplace API Key"
+                        "name": "Authorization",
+                        "description": "See CHIPS Authorization Methods"
                     },
                     {
                         "type": "string",
@@ -526,7 +546,7 @@
                 ],
                 "description": "Request for OTP",
                 "tags": [
-                    "Profile"
+                    "Mobile Number"
                 ]
             }
         },
@@ -998,22 +1018,42 @@
                     {
                         "type": "string",
                         "in": "query",
-                        "name": "mobileNumber",
-                        "description": "+27 123456789",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "in": "query",
-                        "name": "otp",
-                        "description": "45678",
-                        "required": true
+                        "name": "version",
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "mobileNumber": {
+                                    "type": "string",
+                                    "description": "+27 123456789"
+                                },
+                                "otp": {
+                                    "type": "string",
+                                    "description": "45678"
+                                }
+                            },
+                            "required": [
+                                "mobileNumber",
+                                "otp"
+                            ]
+                        },
+                        "description": "Verify one-time token"
+                    },
+                    {
+                        "type": "string",
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "See CHIPS Authorization Methods"
                     },
                     {
                         "type": "string",
@@ -1030,7 +1070,7 @@
                     }
                 ],
                 "tags": [
-                    "Profile"
+                    "Mobile Number"
                 ]
             }
         },
@@ -1077,23 +1117,21 @@
                     },
                     {
                         "type": "string",
-                        "in": "query",
-                        "name": "mobileNumber",
-                        "description": "+27 123456789",
-                        "required": true
+                        "in": "header",
+                        "name": "marketplaceKeyId",
+                        "description": "Marketplace API Key"
                     },
                     {
                         "type": "string",
                         "in": "query",
-                        "name": "otp",
-                        "description": "45678",
-                        "required": true
+                        "name": "version",
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
                         "in": "header",
-                        "name": "marketplaceKeyId",
-                        "description": "Marketplace API Key"
+                        "name": "Authorization",
+                        "description": "See CHIPS Authorization Methods"
                     },
                     {
                         "type": "string",
@@ -1572,7 +1610,7 @@
                 "operationId": "chips-money-profiles-mobiles-post",
                 "summary": "Change Mobile Number",
                 "tags": [
-                    "Profile"
+                    "Mobile Number"
                 ]
             }
         },
@@ -2044,15 +2082,31 @@
                     {
                         "type": "string",
                         "in": "query",
-                        "description": "sample@example.co.za",
-                        "name": "email",
-                        "required": true
+                        "description": "Version of the API. (Latest version 1.0)",
+                        "name": "version"
                     },
                     {
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "description": "example@sample.com"
+                                }
+                            },
+                            "required": [
+                                "email"
+                            ]
+                        },
+                        "description": "Request one-time token"
                     },
                     {
                         "type": "string",
@@ -2069,7 +2123,7 @@
                     }
                 ],
                 "tags": [
-                    "Profile"
+                    "Email address"
                 ]
             }
         },
@@ -2541,22 +2595,36 @@
                     {
                         "type": "string",
                         "in": "query",
-                        "name": "email",
-                        "description": "example@sample.co.za",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "in": "query",
-                        "name": "otp",
-                        "description": "45678",
-                        "required": true
+                        "name": "version",
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "description": "example@sample.co.za"
+                                },
+                                "otp": {
+                                    "type": "string",
+                                    "description": "45678"
+                                }
+                            },
+                            "required": [
+                                "email",
+                                "otp"
+                            ]
+                        },
+                        "description": "Verify one-time token"
                     },
                     {
                         "type": "string",
@@ -2573,7 +2641,7 @@
                     }
                 ],
                 "tags": [
-                    "Profile"
+                    "Email address"
                 ]
             }
         },
@@ -3043,97 +3111,38 @@
                 "description": "Change the email address with OTP",
                 "parameters": [
                     {
-                        "in": "body",
-                        "name": "body",
-                        "schema": {
-                            "title": "CHIPS Identity Object",
-                            "type": "object",
-                            "properties": {
-                                "identityNumber": {
-                                    "type": "string",
-                                    "description": "ID number as per RSA ID book",
-                                    "minLength": 13,
-                                    "maxLength": 13,
-                                    "pattern": "^[0-9]*",
-                                    "example": "9609135044088"
-                                },
-                                "firstNames": {
-                                    "type": "string",
-                                    "description": "First names as per RSA ID book. Space separated.",
-                                    "example": "Enzokuhle Innocent"
-                                },
-                                "maidenName": {
-                                    "type": "string",
-                                    "description": "Maiden name."
-                                },
-                                "surname": {
-                                    "type": "string",
-                                    "description": "Surname as per RSA ID book.",
-                                    "example": "Mazibuko"
-                                },
-                                "genderType": {
-                                    "type": "string",
-                                    "enum": [
-                                        "FEMALE",
-                                        "MALE"
-                                    ],
-                                    "example": "MALE",
-                                    "description": "Gender."
-                                },
-                                "countryOfBirth": {
-                                    "type": "string",
-                                    "description": "Country of Birth abbreviation. \nISO 3166-1 alpha-2 code.\nZA for South Africa.",
-                                    "minLength": 0,
-                                    "maxLength": 2,
-                                    "example": "ZA"
-                                },
-                                "dateOfBirth": {
-                                    "type": "string",
-                                    "description": "Date of birth. Format yyyy-mm-dd",
-                                    "format": "date",
-                                    "example": "1996-09-13"
-                                },
-                                "photo": {
-                                    "type": "string",
-                                    "description": "Photo of ID book or card. Encoded in base 64 with  header.\n\n**Optional** during details verification. Will be stored for future profile creation if passed.\n\n**Required** during profile creation, if not saved during verification.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n* data:application/pdf;base64\n\nRecommended image size is 600x600.\n\nUse https://www.base64-image.de to generate examples.",
-                                    "example": "data:image/png;base64,iVBORw0KG..."
-                                },
-                                "selfie": {
-                                    "type": "string",
-                                    "description": "Selfie of person whose identity is being verified. Encoded in base 64 with  header.\n\nIf supplied a facial match will be done against the photo on the ID that is with home affairs.\n\nCurrently supported formats\n* data:image/png;base64\n* data:image/jpeg;base64\n\nRecommended image size is 600x600.\n\nUse https://www.base64-image.de to generate examples.",
-                                    "example": "data:image/png;base64,iVBORw0KG..."
-                                }
-                            },
-                            "required": [
-                                "identityNumber",
-                                "firstNames",
-                                "surname",
-                                "genderType",
-                                "countryOfBirth",
-                                "dateOfBirth"
-                            ]
-                        },
-                        "description": ""
-                    },
-                    {
                         "type": "string",
                         "in": "query",
-                        "name": "email",
-                        "description": "example@sample.co.za",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "in": "query",
-                        "name": "otp",
-                        "description": "45678",
-                        "required": true
+                        "name": "version",
+                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "description": "example@sample.co.za"
+                                },
+                                "otp": {
+                                    "type": "string",
+                                    "description": "45678"
+                                }
+                            },
+                            "required": [
+                                "email",
+                                "otp"
+                            ]
+                        },
+                        "description": "Change email address"
                     },
                     {
                         "type": "string",
@@ -3150,7 +3159,7 @@
                     }
                 ],
                 "tags": [
-                    "Profile"
+                    "Email address"
                 ]
             },
             "parameters": []
@@ -3160,7 +3169,10 @@
     "basePath": "/sandbox/chips/money/profiles",
     "tags": [
         {
-            "name": "Profile"
+            "name": "Email address"
+        },
+        {
+            "name": "Mobile Number"
         }
     ],
     "securityDefinitions": {
