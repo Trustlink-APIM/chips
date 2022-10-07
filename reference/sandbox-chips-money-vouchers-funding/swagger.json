@@ -1113,7 +1113,7 @@
                     {
                         "type": "string",
                         "in": "header",
-                        "name": "MarketplaceKeyId ",
+                        "name": "marketplaceKeyId ",
                         "description": "Marketplace API Key"
                     },
                     {
