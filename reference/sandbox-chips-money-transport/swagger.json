@@ -629,7 +629,7 @@
                         "in": "query",
                         "name": "serialNumber",
                         "required": true,
-                        "description": "Transaction number"
+                        "description": "Card number"
                     },
                     {
                         "type": "integer",
@@ -1937,7 +1937,7 @@
                                 },
                                 "serialNumber": {
                                     "type": "string",
-                                    "description": "Serial Number",
+                                    "description": "Card Number",
                                     "minLength": 1,
                                     "maxLength": 36
                                 },
