@@ -6739,7 +6739,7 @@
         },
         "/eft/funding": {
             "post": {
-                "summary": "Account funding via EFT",
+                "summary": "Account funding via Instant EFT",
                 "operationId": "tpn-businesses-payments-eft-funding-post",
                 "responses": {
                     "200": {
@@ -8010,7 +8010,7 @@
                     }
                 },
                 "operationId": "tpn-businesses-payments-eft-funding-fees-get",
-                "summary": "Calculate EFT Funding fees",
+                "summary": "Calculate Instant EFT Funding fees",
                 "description": "Calculate the fees payable on the EFT funding.",
                 "tags": [
                     "Instant EFT Funding"
@@ -8029,7 +8029,7 @@
                 }
             ],
             "get": {
-                "summary": "Get EFT Funding Details",
+                "summary": "Get Instant EFT Funding Details",
                 "tags": [
                     "Instant EFT Funding"
                 ],
