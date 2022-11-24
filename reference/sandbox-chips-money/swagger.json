@@ -15459,25 +15459,52 @@
                             },
                             "properties": {
                                 "memberUuid": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Member UUID (ISO/IEC 9834-8:201)",
+                                    "minLength": 36,
+                                    "maxLength": 36
                                 },
                                 "branchCode": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Bank branch code",
+                                    "example": "632005",
+                                    "minLength": 1,
+                                    "maxLength": 6
                                 },
                                 "holderName": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Bank account holder name",
+                                    "example": " Mr. A.B. Brown",
+                                    "minLength": 1,
+                                    "maxLength": 60
                                 },
                                 "accountNumber": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Bank account number",
+                                    "example": "4041-119-999",
+                                    "minLength": 1,
+                                    "maxLength": 45
                                 },
                                 "accountType": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "enum": [
+                                        "CURRENT",
+                                        "TRANSMISSION",
+                                        "SAVINGS"
+                                    ],
+                                    "description": "Bank account type",
+                                    "example": "CURRENT"
                                 },
                                 "bankCode": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Bank unique code",
+                                    "example": "ABSA",
+                                    "minLength": 1,
+                                    "maxLength": 30
                                 },
                                 "defaultIndicator": {
-                                    "type": "boolean"
+                                    "type": "boolean",
+                                    "description": "Default bank account indicator"
                                 }
                             },
                             "required": [
