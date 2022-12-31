@@ -9341,13 +9341,15 @@
                             "type": "object",
                             "properties": {
                                 "memberUuid": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Member UUID (ISO/IEC 9834-8:201)"
                                 }
                             },
                             "required": [
                                 "memberUuid"
                             ]
-                        }
+                        },
+                        "description": ""
                     },
                     {
                         "type": "string",
@@ -9915,25 +9917,51 @@
                             },
                             "properties": {
                                 "memberUuid": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Member UUID (ISO/IEC 9834-8:201)",
+                                    "minLength": 36,
+                                    "maxLength": 36
                                 },
                                 "branchCode": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Bank branch code",
+                                    "example": "632005",
+                                    "minLength": 1,
+                                    "maxLength": 6
                                 },
                                 "holderName": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Bank account holder name",
+                                    "minLength": 1,
+                                    "maxLength": 60,
+                                    "example": "Bank account holder name"
                                 },
                                 "accountNumber": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Bank account number",
+                                    "minLength": 1,
+                                    "maxLength": 45,
+                                    "example": "4041-119-999"
                                 },
                                 "accountType": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Bank account type",
+                                    "enum": [
+                                        "CHEQUE",
+                                        "DEBIT",
+                                        "SAVINGS"
+                                    ]
                                 },
                                 "bankCode": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Bank unique code",
+                                    "example": "ABSA",
+                                    "minLength": 1,
+                                    "maxLength": 30
                                 },
                                 "defaultIndicator": {
-                                    "type": "boolean"
+                                    "type": "boolean",
+                                    "description": "Default bank account indicator"
                                 }
                             },
                             "required": [
@@ -10760,7 +10788,8 @@
                             "type": "object",
                             "properties": {
                                 "uuid": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "UUID (ISO/IEC 9834-8:201)"
                                 }
                             },
                             "required": [
