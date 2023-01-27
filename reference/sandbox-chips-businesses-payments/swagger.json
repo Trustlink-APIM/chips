@@ -3673,7 +3673,8 @@
                                                         "PAYER",
                                                         "NONE"
                                                     ],
-                                                    "default": "PAYER"
+                                                    "default": "PAYER",
+                                                    "example": "\"PAYER\""
                                                 },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
@@ -3749,9 +3750,7 @@
                                                 }
                                             }
                                         }
-                                    ],
-                                    "title": "",
-                                    "description": ""
+                                    ]
                                 },
                                 {
                                     "title": "CHIPS Payment Input - Payer Details",
@@ -4462,7 +4461,8 @@
                                                         "PAYER",
                                                         "NONE"
                                                     ],
-                                                    "default": "PAYER"
+                                                    "default": "PAYER",
+                                                    "example": "\"PAYER\""
                                                 },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
@@ -4538,9 +4538,7 @@
                                                 }
                                             }
                                         }
-                                    ],
-                                    "title": "",
-                                    "description": ""
+                                    ]
                                 },
                                 {
                                     "title": "CHIPS payerAccountUuid Field",
