@@ -1332,6 +1332,9 @@
                         "in": "query",
                         "required": true
                     }
+                ],
+                "tags": [
+                    "OTT"
                 ]
             }
         }
