@@ -1142,20 +1142,33 @@
                 "operationId": "get-ott-power-load-voucher_value-get",
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Power-Load status returned",
                         "schema": {
-                            "type": "object",
-                            "x-examples": {
-                                "Example 1": {
-                                    "success": true,
-                                    "message": "string",
-                                    "value": 0,
-                                    "fee": 0
-                                }
-                            },
-                            "properties": {
-                                "": {
-                                    "type": "object",
+                            "allOf": [
+                                {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "description": "Success indicator of transaction"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "Provides more information",
+                                            "example": "Valid Voucher"
+                                        },
+                                        "value": {
+                                            "type": "number",
+                                            "description": "Monetary value of transaction",
+                                            "example": 0
+                                        },
+                                        "fee": {
+                                            "type": "number",
+                                            "description": "Transaction Fee ",
+                                            "example": 200
+                                        }
+                                    }
+                                },
+                                {
                                     "properties": {
                                         "apimStatus": {
                                             "type": "object",
@@ -1242,7 +1255,8 @@
                                         }
                                     }
                                 }
-                            }
+                            ],
+                            "type": "object"
                         }
                     },
                     "400": {
