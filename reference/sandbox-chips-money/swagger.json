@@ -4124,12 +4124,19 @@
                                     ]
                                 },
                                 {
-                                    "title": "CHIPS Payment Input - Payee Details",
-                                    "description": "Model for the Payee fields of a CHIPS payment.\nPlease see details per end-point. In some cases the required fields and usage of fields might differ.",
                                     "allOf": [
                                         {
                                             "type": "object",
                                             "properties": {
+                                                "feeSponsorType": {
+                                                    "type": "string",
+                                                    "description": "Fee Sponsor Type",
+                                                    "enum": [
+                                                        "PAYER",
+                                                        "NONE"
+                                                    ],
+                                                    "default": "PAYER"
+                                                },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
                                                     "minLength": 36,
@@ -4204,7 +4211,9 @@
                                                 }
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "title": "",
+                                    "description": ""
                                 },
                                 {
                                     "title": "CHIPS Payment Input - Payer Details",
@@ -4904,12 +4913,19 @@
                         "schema": {
                             "allOf": [
                                 {
-                                    "title": "CHIPS Payment Input - Payee Details",
-                                    "description": "Model for the Payee fields of a CHIPS payment.\nPlease see details per end-point. In some cases the required fields and usage of fields might differ.",
                                     "allOf": [
                                         {
                                             "type": "object",
                                             "properties": {
+                                                "feeSponsorType": {
+                                                    "type": "string",
+                                                    "description": "Fee Sponsor Type",
+                                                    "enum": [
+                                                        "PAYER",
+                                                        "NONE"
+                                                    ],
+                                                    "default": "PAYER"
+                                                },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
                                                     "minLength": 36,
@@ -4984,7 +5000,9 @@
                                                 }
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "title": "",
+                                    "description": ""
                                 },
                                 {
                                     "title": "CHIPS Payment Input - Payer Details",
@@ -12210,12 +12228,19 @@
                                     ]
                                 },
                                 {
-                                    "title": "CHIPS Payment Input - Payee Details",
-                                    "description": "Model for the Payee fields of a CHIPS payment.\nPlease see details per end-point. In some cases the required fields and usage of fields might differ.",
                                     "allOf": [
                                         {
                                             "type": "object",
                                             "properties": {
+                                                "feeSponsorType": {
+                                                    "type": "string",
+                                                    "description": "Fee Sponsor Type",
+                                                    "enum": [
+                                                        "PAYER",
+                                                        "NONE"
+                                                    ],
+                                                    "default": "PAYER"
+                                                },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
                                                     "minLength": 36,
@@ -12290,7 +12315,9 @@
                                                 }
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "title": "",
+                                    "description": ""
                                 },
                                 {
                                     "title": "CHIPS Payment Input - Payer Details",
@@ -13264,12 +13291,19 @@
                                     ]
                                 },
                                 {
-                                    "title": "CHIPS Payment Input - Payee Details",
-                                    "description": "Model for the Payee fields of a CHIPS payment.\nPlease see details per end-point. In some cases the required fields and usage of fields might differ.",
                                     "allOf": [
                                         {
                                             "type": "object",
                                             "properties": {
+                                                "feeSponsorType": {
+                                                    "type": "string",
+                                                    "description": "Fee Sponsor Type",
+                                                    "enum": [
+                                                        "PAYER",
+                                                        "NONE"
+                                                    ],
+                                                    "default": "PAYER"
+                                                },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
                                                     "minLength": 36,
@@ -13344,7 +13378,9 @@
                                                 }
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "title": "",
+                                    "description": ""
                                 },
                                 {
                                     "title": "CHIPS Payment Input - Payer Details",
@@ -14044,12 +14080,19 @@
                         "schema": {
                             "allOf": [
                                 {
-                                    "title": "CHIPS Payment Input - Payee Details",
-                                    "description": "Model for the Payee fields of a CHIPS payment.\nPlease see details per end-point. In some cases the required fields and usage of fields might differ.",
                                     "allOf": [
                                         {
                                             "type": "object",
                                             "properties": {
+                                                "feeSponsorType": {
+                                                    "type": "string",
+                                                    "description": "Fee Sponsor Type",
+                                                    "enum": [
+                                                        "PAYER",
+                                                        "NONE"
+                                                    ],
+                                                    "default": "PAYER"
+                                                },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
                                                     "minLength": 36,
@@ -14124,7 +14167,9 @@
                                                 }
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "title": "",
+                                    "description": ""
                                 },
                                 {
                                     "title": "CHIPS payerAccountUuid Field",
