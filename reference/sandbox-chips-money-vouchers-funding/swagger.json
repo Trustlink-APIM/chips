@@ -1154,17 +1154,17 @@
                                         "message": {
                                             "type": "string",
                                             "description": "Provides more information",
-                                            "example": "Valid Voucher"
+                                            "example": "Purchase of product"
                                         },
                                         "value": {
                                             "type": "number",
                                             "description": "Monetary value of transaction",
-                                            "example": 0
+                                            "example": 50
                                         },
                                         "fee": {
                                             "type": "number",
                                             "description": "Transaction Fee ",
-                                            "example": 200
+                                            "example": "0.50"
                                         }
                                     }
                                 },
