@@ -4128,15 +4128,6 @@
                                         {
                                             "type": "object",
                                             "properties": {
-                                                "feeSponsorType": {
-                                                    "type": "string",
-                                                    "description": "Fee Sponsor Type",
-                                                    "enum": [
-                                                        "PAYER",
-                                                        "NONE"
-                                                    ],
-                                                    "default": "PAYER"
-                                                },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
                                                     "minLength": 36,
@@ -4211,9 +4202,7 @@
                                                 }
                                             }
                                         }
-                                    ],
-                                    "title": "",
-                                    "description": ""
+                                    ]
                                 },
                                 {
                                     "title": "CHIPS Payment Input - Payer Details",
@@ -4917,15 +4906,6 @@
                                         {
                                             "type": "object",
                                             "properties": {
-                                                "feeSponsorType": {
-                                                    "type": "string",
-                                                    "description": "Fee Sponsor Type",
-                                                    "enum": [
-                                                        "PAYER",
-                                                        "NONE"
-                                                    ],
-                                                    "default": "PAYER"
-                                                },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
                                                     "minLength": 36,
@@ -5000,9 +4980,7 @@
                                                 }
                                             }
                                         }
-                                    ],
-                                    "title": "",
-                                    "description": ""
+                                    ]
                                 },
                                 {
                                     "title": "CHIPS Payment Input - Payer Details",
@@ -12232,15 +12210,6 @@
                                         {
                                             "type": "object",
                                             "properties": {
-                                                "feeSponsorType": {
-                                                    "type": "string",
-                                                    "description": "Fee Sponsor Type",
-                                                    "enum": [
-                                                        "PAYER",
-                                                        "NONE"
-                                                    ],
-                                                    "default": "PAYER"
-                                                },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
                                                     "minLength": 36,
@@ -12315,9 +12284,7 @@
                                                 }
                                             }
                                         }
-                                    ],
-                                    "title": "",
-                                    "description": ""
+                                    ]
                                 },
                                 {
                                     "title": "CHIPS Payment Input - Payer Details",
@@ -13295,15 +13262,6 @@
                                         {
                                             "type": "object",
                                             "properties": {
-                                                "feeSponsorType": {
-                                                    "type": "string",
-                                                    "description": "Fee Sponsor Type",
-                                                    "enum": [
-                                                        "PAYER",
-                                                        "NONE"
-                                                    ],
-                                                    "default": "PAYER"
-                                                },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
                                                     "minLength": 36,
@@ -13378,9 +13336,7 @@
                                                 }
                                             }
                                         }
-                                    ],
-                                    "title": "",
-                                    "description": ""
+                                    ]
                                 },
                                 {
                                     "title": "CHIPS Payment Input - Payer Details",
@@ -14084,15 +14040,6 @@
                                         {
                                             "type": "object",
                                             "properties": {
-                                                "feeSponsorType": {
-                                                    "type": "string",
-                                                    "description": "Fee Sponsor Type",
-                                                    "enum": [
-                                                        "PAYER",
-                                                        "NONE"
-                                                    ],
-                                                    "default": "PAYER"
-                                                },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
                                                     "minLength": 36,
@@ -14167,9 +14114,7 @@
                                                 }
                                             }
                                         }
-                                    ],
-                                    "title": "",
-                                    "description": ""
+                                    ]
                                 },
                                 {
                                     "title": "CHIPS payerAccountUuid Field",
