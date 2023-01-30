@@ -3666,16 +3666,6 @@
                                         {
                                             "type": "object",
                                             "properties": {
-                                                "feeSponsorType": {
-                                                    "type": "string",
-                                                    "description": "Fee Sponsor Type",
-                                                    "enum": [
-                                                        "PAYER",
-                                                        "NONE"
-                                                    ],
-                                                    "default": "PAYER",
-                                                    "example": "\"PAYER\""
-                                                },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
                                                     "minLength": 36,
@@ -4454,16 +4444,6 @@
                                         {
                                             "type": "object",
                                             "properties": {
-                                                "feeSponsorType": {
-                                                    "type": "string",
-                                                    "description": "Fee Sponsor Type",
-                                                    "enum": [
-                                                        "PAYER",
-                                                        "NONE"
-                                                    ],
-                                                    "default": "PAYER",
-                                                    "example": "\"PAYER\""
-                                                },
                                                 "payeeAccountUuid": {
                                                     "maxLength": 36,
                                                     "minLength": 36,
