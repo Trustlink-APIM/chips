@@ -6824,7 +6824,7 @@
                                             "maxLength": 100
                                         },
                                         "amount": {
-                                            "type": "integer",
+                                            "type": "number",
                                             "description": "The transfer amount requested"
                                         },
                                         "status": {
@@ -8116,7 +8116,7 @@
                                             "maxLength": 100
                                         },
                                         "amount": {
-                                            "type": "integer",
+                                            "type": "number",
                                             "description": "The transfer amount requested"
                                         },
                                         "status": {
