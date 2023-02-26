@@ -20426,36 +20426,6 @@
                     "200": {
                         "description": "CHIPS EFT Payment Response",
                         "schema": {
-                            "x-examples": {
-                                "example-1": {
-                                    "uuid": "stringstringstringstringstringstring",
-                                    "requestId": "string",
-                                    "created": "2022-08-19T11:22:11.087Z",
-                                    "createdBy": "string",
-                                    "createdByChannelUuid": "stringstringstringstringstringstring",
-                                    "lastModified": "2022-08-19T11:22:11.087Z",
-                                    "lastModifiedBy": "string",
-                                    "lastModifiedByChannelUuid": "stringstringstringstringstringstring",
-                                    "reason": "string",
-                                    "payeeAccountUuid": "stringstringstringstringstringstring",
-                                    "payeeRefInfo": "string",
-                                    "bankRefInfo": "string",
-                                    "comment": "string",
-                                    "payerMobile": "string",
-                                    "paymentUrl": "string",
-                                    "redirectUrl": "string",
-                                    "feeSponsorType": "NONE",
-                                    "amount": 1,
-                                    "gratuityAmount": 0,
-                                    "status": "CANCELLED",
-                                    "transaction": [
-                                        {
-                                            "transactionType": "DEPOSIT",
-                                            "uuid": "stringstringstringstringstringstring"
-                                        }
-                                    ]
-                                }
-                            },
                             "allOf": [
                                 {
                                     "properties": {
@@ -20554,11 +20524,11 @@
                                             ]
                                         },
                                         "amount": {
-                                            "type": "integer",
+                                            "type": "number",
                                             "description": "Amount"
                                         },
                                         "gratuityAmount": {
-                                            "type": "integer",
+                                            "type": "number",
                                             "description": "Gratuity amount"
                                         },
                                         "status": {
@@ -22461,22 +22431,6 @@
                         "in": "body",
                         "name": "body",
                         "schema": {
-                            "x-examples": {
-                                "example-1": {
-                                    "requestId": "string",
-                                    "tokenId": "string",
-                                    "payeeAccountUuid": "stringstringstringstringstringstring",
-                                    "payeeRefInfo": "string",
-                                    "bankRefInfo": "string",
-                                    "payeeSiteRefInfo": "string",
-                                    "comment": "string",
-                                    "payerMobile": "string",
-                                    "redirectUrl": "string",
-                                    "feeSponsorType": "NONE",
-                                    "amount": 1,
-                                    "gratuityAmount": 0
-                                }
-                            },
                             "allOf": [
                                 {
                                     "properties": {
@@ -22546,11 +22500,11 @@
                                             "minLength": 1
                                         },
                                         "amount": {
-                                            "type": "integer",
+                                            "type": "number",
                                             "description": "Amount"
                                         },
                                         "gratuityAmount": {
-                                            "type": "integer",
+                                            "type": "number",
                                             "description": "Gratuity amount"
                                         }
                                     },

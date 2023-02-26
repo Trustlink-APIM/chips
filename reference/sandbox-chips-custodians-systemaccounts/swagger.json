@@ -655,6 +655,19 @@
                                 "amount"
                             ]
                         }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Marketplace API Key",
+                        "name": "marketplaceKeyId",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Version of the API. (Latest version 1.0)",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -1119,6 +1132,19 @@
                                 "amount"
                             ]
                         }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Marketplace API Key",
+                        "name": "marketplaceKeyId",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Version of the API. (Latest version 1.0)",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -1749,6 +1775,19 @@
                                 "amount"
                             ]
                         }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Marketplace API Key",
+                        "name": "marketplaceKeyId",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Version of the API. (Latest version 1.0)",
+                        "name": "version",
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -1759,10 +1798,22 @@
     },
     "definitions": {},
     "basePath": "/sandbox/chips/custodians/systemaccounts",
-    "securityDefinitions": {},
+    "securityDefinitions": {
+        "Marketplace API Key": {
+            "type": "apiKey",
+            "description": "API Key",
+            "name": "marketplaceKeyId"
+        },
+        "in": "header"
+    },
     "tags": [
         {
             "name": "Open Banking Custodians Deposits and Disbursements"
+        }
+    ],
+    "security": [
+        {
+            "Marketplace API Key": []
         }
     ],
     "buildtarget": "stoplight"
