@@ -6701,12 +6701,6 @@
                 "description": "Get the payment request using the token ID",
                 "parameters": [
                     {
-                        "type": "string",
-                        "in": "query",
-                        "name": "tokenId",
-                        "description": "The token identifier allocated to the payment request"
-                    },
-                    {
                         "in": "body",
                         "name": "body",
                         "schema": {
@@ -12891,9 +12885,7 @@
                                 "bankCode": "ABSA",
                                 "bankUuid": "stringstringstringstringstringstring",
                                 "bankRefInfo": "string",
-                                "payerRefInfo": "string",
-                                "email": "string",
-                                "mobileNumber": "string"
+                                "payerRefInfo": "string"
                             }
                         }
                     },
