@@ -9349,12 +9349,6 @@
                     },
                     {
                         "type": "string",
-                        "in": "query",
-                        "name": "version ",
-                        "description": "Version of the API. (Latest version 1.0)"
-                    },
-                    {
-                        "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
@@ -9982,12 +9976,6 @@
                                 "defaultIndicator": true
                             }
                         }
-                    },
-                    {
-                        "type": "string",
-                        "in": "query",
-                        "name": "version",
-                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
@@ -10795,12 +10783,6 @@
                     },
                     {
                         "type": "string",
-                        "in": "query",
-                        "name": "version ",
-                        "description": "Version of the API. (Latest version 1.0)"
-                    },
-                    {
-                        "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
@@ -11581,12 +11563,6 @@
                 "description": "Delete a bank account",
                 "parameters": [
                     {
-                        "type": "string",
-                        "in": "query",
-                        "name": "version ",
-                        "description": "Version of the API. (Latest version 1.0)"
-                    },
-                    {
                         "in": "body",
                         "name": "body",
                         "schema": {
@@ -12312,12 +12288,6 @@
                     },
                     {
                         "type": "string",
-                        "in": "query",
-                        "name": "version ",
-                        "description": "Version of the API. (Latest version 1.0)"
-                    },
-                    {
-                        "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API key"
@@ -12913,22 +12883,19 @@
                         },
                         "x-examples": {
                             "example-1": {
-                                "memberUuid": "string",
-                                "branchCode": "string",
-                                "holderName": "string",
-                                "accountNumber": "string",
-                                "accountType": "string",
-                                "bankCode": "string",
-                                "bankUuid": "string",
-                                "defaultIndicator": true
+                                "memberUuid": "stringstringstringstringstringstring",
+                                "branchCode": "632005",
+                                "holderName": "Mr. A.B. Brown",
+                                "accountNumber": "4041-119-999",
+                                "accountType": "Transmission",
+                                "bankCode": "ABSA",
+                                "bankUuid": "stringstringstringstringstringstring",
+                                "bankRefInfo": "string",
+                                "payerRefInfo": "string",
+                                "email": "string",
+                                "mobileNumber": "string"
                             }
                         }
-                    },
-                    {
-                        "type": "string",
-                        "in": "query",
-                        "name": "version",
-                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",
@@ -13885,12 +13852,6 @@
                     },
                     {
                         "type": "string",
-                        "in": "query",
-                        "name": "version ",
-                        "description": "Version of the API. (Latest version 1.0)"
-                    },
-                    {
-                        "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
@@ -14670,12 +14631,6 @@
                 },
                 "description": "Delete a bank beneficiary",
                 "parameters": [
-                    {
-                        "type": "string",
-                        "in": "query",
-                        "name": "version ",
-                        "description": "Version of the API. (Latest version 1.0)"
-                    },
                     {
                         "in": "body",
                         "name": "body",
@@ -15479,12 +15434,6 @@
                     },
                     {
                         "type": "string",
-                        "in": "query",
-                        "name": "version",
-                        "description": "Version of the API. (Latest version 1.0)"
-                    },
-                    {
-                        "type": "string",
                         "in": "header",
                         "name": "marketplaceKeyId",
                         "description": "Marketplace API Key"
@@ -16108,12 +16057,6 @@
                     "application/json"
                 ],
                 "parameters": [
-                    {
-                        "type": "string",
-                        "in": "query",
-                        "name": "version",
-                        "description": "Version of the API. (Latest version 1.0)"
-                    },
                     {
                         "type": "string",
                         "in": "header",
@@ -17526,12 +17469,6 @@
                                 }
                             ]
                         }
-                    },
-                    {
-                        "type": "string",
-                        "in": "query",
-                        "name": "version",
-                        "description": "Version of the API. (Latest version 1.0)"
                     },
                     {
                         "type": "string",

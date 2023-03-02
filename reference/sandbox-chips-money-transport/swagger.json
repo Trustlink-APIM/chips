@@ -1946,9 +1946,8 @@
                                     "description": "Quantity"
                                 },
                                 "amount": {
-                                    "type": "integer",
-                                    "description": "Amount",
-                                    "minimum": 0
+                                    "type": "number",
+                                    "description": "Amount"
                                 }
                             },
                             "required": [
