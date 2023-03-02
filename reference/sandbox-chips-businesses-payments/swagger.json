@@ -6706,7 +6706,16 @@
                         "schema": {
                             "type": "object",
                             "properties": {}
-                        }
+                        },
+                        "description": ""
+                    },
+                    {
+                        "type": "string",
+                        "in": "query",
+                        "name": "tokenId",
+                        "description": "The unique token used to identify the payment request.",
+                        "minLength": 1,
+                        "maxLength": 10
                     },
                     {
                         "type": "string",
