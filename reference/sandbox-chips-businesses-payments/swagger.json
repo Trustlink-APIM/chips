@@ -12892,7 +12892,6 @@
                                 "accountNumber": "4041-119-999",
                                 "accountType": "Transmission",
                                 "bankCode": "ABSA",
-                                "bankUuid": "stringstringstringstringstringstring",
                                 "bankRefInfo": "string",
                                 "payerRefInfo": "string"
                             }
