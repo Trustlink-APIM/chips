@@ -12869,7 +12869,7 @@
                                 "bankRefInfo": {
                                     "type": "string"
                                 },
-                                "payerRefinfo": {
+                                "payerRefInfo": {
                                     "type": "string"
                                 }
                             },
@@ -12881,7 +12881,7 @@
                                 "accountType",
                                 "bankCode",
                                 "bankRefInfo",
-                                "payerRefinfo"
+                                "payerRefInfo"
                             ]
                         },
                         "x-examples": {
