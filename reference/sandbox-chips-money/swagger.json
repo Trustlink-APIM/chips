@@ -2427,7 +2427,16 @@
                                     "value"
                                 ]
                             }
-                        }
+                        },
+                        "x-examples": [
+                            [
+                                {
+                                    "op": "replace",
+                                    "path": "/dailyLimitAmount",
+                                    "value": 500
+                                }
+                            ]
+                        ]
                     },
                     {
                         "type": "string",

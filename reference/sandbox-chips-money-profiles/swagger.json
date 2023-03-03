@@ -3146,6 +3146,12 @@
                     },
                     {
                         "type": "string",
+                        "in": "header",
+                        "description": "See CHIPS Authorization Methods",
+                        "name": "Authorization"
+                    },
+                    {
+                        "type": "string",
                         "description": "Marketplace API Key",
                         "name": "marketplaceKeyId",
                         "in": "header"
