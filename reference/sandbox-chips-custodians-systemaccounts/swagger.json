@@ -644,7 +644,7 @@
                                     "description": "External reference displayed on the payer's bank statement"
                                 },
                                 "amount": {
-                                    "type": "integer",
+                                    "type": "number",
                                     "description": "Amount"
                                 }
                             },
@@ -1121,7 +1121,7 @@
                                     "description": "External reference displayed on the payer's bank statement"
                                 },
                                 "amount": {
-                                    "type": "integer",
+                                    "type": "number",
                                     "description": "Amount"
                                 }
                             },
