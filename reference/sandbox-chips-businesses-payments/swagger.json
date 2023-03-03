@@ -12861,7 +12861,12 @@
                                     "type": "string"
                                 },
                                 "accountType": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "enum": [
+                                        "CHEQUE",
+                                        "SAVINGS"
+                                    ],
+                                    "example": "CHEQUE"
                                 },
                                 "bankCode": {
                                     "type": "string"
@@ -12890,7 +12895,7 @@
                                 "branchCode": "632005",
                                 "holderName": "Mr. A.B. Brown",
                                 "accountNumber": "4041-119-999",
-                                "accountType": "Transmission",
+                                "accountType": "CHEQUE",
                                 "bankCode": "ABSA",
                                 "bankRefInfo": "string",
                                 "payerRefInfo": "string"
