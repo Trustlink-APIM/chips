@@ -18,7 +18,7 @@
         },
         "description": "Banking Api's on a Custodian System level."
     },
-    "host": "apim-tunnel.trustlinkhosting.com:8465",
+    "host": "apim.trustlinkhosting.com:8165",
     "schemes": [
         "https"
     ],
