@@ -6592,8 +6592,7 @@
                 {
                     "type": "string",
                     "name": "tokenId",
-                    "in": "path",
-                    "required": true
+                    "in": "path"
                 }
             ],
             "get": {
@@ -6697,7 +6696,7 @@
                         }
                     }
                 },
-                "operationId": "get-requests-multi-tokenId",
+                "operationId": "businesses-payments-requests-multi-get",
                 "description": "Get the payment request using the token ID",
                 "parameters": [
                     {
