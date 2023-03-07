@@ -6600,7 +6600,7 @@
                 "summary": "Get Multi Payment Request by Token",
                 "responses": {
                     "200": {
-                        "description": "Payment token exists?",
+                        "description": "Payment token exists",
                         "schema": {
                             "description": "",
                             "type": "object",
@@ -6715,7 +6715,8 @@
                         "name": "tokenId",
                         "description": "The unique token used to identify the payment request.",
                         "minLength": 1,
-                        "maxLength": 10
+                        "maxLength": 10,
+                        "required": true
                     },
                     {
                         "type": "string",
