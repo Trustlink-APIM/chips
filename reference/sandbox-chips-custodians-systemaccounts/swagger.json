@@ -1239,11 +1239,30 @@
                                     "type": "string",
                                     "description": "The reason given for the last update."
                                 },
+                                "amount": {
+                                    "type": "number",
+                                    "description": "Amount"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 60
+                                },
+                                "gratuityAmount": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "description": "Gratuity amount"
+                                },
                                 "payeeAccountUuid": {
                                     "type": "string",
                                     "description": "Payee account identifier (ISO/IEC 9834-8:201)",
                                     "minLength": 36,
                                     "maxLength": 36
+                                },
+                                "payeeMessage": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 120
                                 },
                                 "payeeRefInfo": {
                                     "type": "string",
@@ -1251,50 +1270,75 @@
                                     "minLength": 1,
                                     "maxLength": 36
                                 },
-                                "bankRefInfo": {
-                                    "type": "string",
-                                    "description": "External reference displayed on the payer's bank statement",
-                                    "maxLength": 12,
-                                    "minLength": 1
+                                "payeeSiteName": {
+                                    "type": "string"
                                 },
-                                "comment": {
+                                "payeeSiteRefInfo": {
                                     "type": "string",
-                                    "description": "Comment",
                                     "minLength": 1,
-                                    "maxLength": 120
+                                    "maxLength": 36
                                 },
-                                "payerMobile": {
+                                "payerAccountUuid": {
                                     "type": "string",
-                                    "description": "Mobile number of the payer",
+                                    "minLength": 36,
+                                    "maxLength": 36
+                                },
+                                "payerCategory1": {
+                                    "type": "string",
                                     "minLength": 1,
-                                    "maxLength": 15
+                                    "maxLength": 50
                                 },
-                                "paymentUrl": {
+                                "payerCategory2": {
                                     "type": "string",
-                                    "description": "Payment URL"
+                                    "minLength": 1,
+                                    "maxLength": 50
                                 },
-                                "redirectUrl": {
+                                "payerCategory3": {
                                     "type": "string",
-                                    "description": "Redirect URL"
+                                    "minLength": 1,
+                                    "maxLength": 50
                                 },
-                                "amount": {
-                                    "type": "number",
-                                    "description": "Amount"
+                                "payerRefInfo": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 36
                                 },
-                                "gratuityAmount": {
-                                    "type": "number",
-                                    "minimum": 0,
-                                    "description": "Gratuity amount"
+                                "paymentDate": {
+                                    "type": "string",
+                                    "format": "date"
+                                },
+                                "paymentType": {
+                                    "type": "string",
+                                    "enum": [
+                                        "BULK",
+                                        "CARD",
+                                        "DEFAULT"
+                                    ]
                                 },
                                 "status": {
                                     "type": "string",
-                                    "description": "Status",
+                                    "minLength": 1,
+                                    "maxLength": 20,
                                     "enum": [
+                                        "ACCEPTED",
                                         "CANCELLED",
-                                        "FINALISED",
+                                        "COMPLETED",
+                                        "FAILED",
                                         "PENDING",
-                                        "TIMEOUT"
+                                        "REGISTERED",
+                                        "REJECTED",
+                                        "TRANSFERRED"
                                     ]
+                                },
+                                "systemRefInfo": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 36
+                                },
+                                "tokenId": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 10
                                 },
                                 "transaction": {
                                     "type": "array",
@@ -1340,10 +1384,16 @@
                                 "uuid",
                                 "created",
                                 "lastModified",
-                                "payeeAccountUuid",
-                                "paymentUrl",
                                 "amount",
-                                "status"
+                                "description",
+                                "payeeAccountUuid",
+                                "payeeRefInfo",
+                                "payerAccountUuid",
+                                "payerRefInfo",
+                                "paymentDate",
+                                "paymentType",
+                                "status",
+                                "systemRefInfo"
                             ]
                         }
                     },
@@ -1705,6 +1755,99 @@
                                 }
                             },
                             "properties": {
+                                "description": {
+                                    "type": "string",
+                                    "maxLength": 60,
+                                    "minLength": 1,
+                                    "description": "Description"
+                                },
+                                "amount": {
+                                    "type": "number",
+                                    "description": "Amount",
+                                    "minimum": 0
+                                },
+                                "gratuityAmount": {
+                                    "type": "string",
+                                    "description": "Gratuity amount",
+                                    "minLength": 0
+                                },
+                                "payeeAccountUuid": {
+                                    "type": "string",
+                                    "description": "Payee account identifier (ISO/IEC 9834-8:201)",
+                                    "minLength": 36,
+                                    "maxLength": 36
+                                },
+                                "payeeMessage": {
+                                    "type": "string",
+                                    "description": "Message to payee",
+                                    "maxLength": 120,
+                                    "minLength": 1
+                                },
+                                "payeeRefInfo": {
+                                    "type": "string",
+                                    "description": "Payee Reference\n",
+                                    "maxLength": 36,
+                                    "minLength": 1
+                                },
+                                "payeeSiteName": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 100,
+                                    "description": "Site name"
+                                },
+                                "payeeSiteRefInfo": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 36,
+                                    "description": "External site reference"
+                                },
+                                "payerAccountUuid": {
+                                    "type": "string",
+                                    "description": "Payer account identifier",
+                                    "minLength": 36,
+                                    "maxLength": 36
+                                },
+                                "payerCategory1": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 50,
+                                    "description": "Category 1"
+                                },
+                                "payerCategory2": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 50,
+                                    "description": "Category 2"
+                                },
+                                "payerCategory3": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 50,
+                                    "description": "Category 3"
+                                },
+                                "payerRefInfo": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 36,
+                                    "description": "Payer Reference"
+                                },
+                                "paymentDate": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "description": "Payment Date"
+                                },
+                                "paymentType": {
+                                    "type": "string",
+                                    "description": "Payment type",
+                                    "enum": [
+                                        "BULK",
+                                        "CARD",
+                                        "DEFAULT"
+                                    ],
+                                    "example": "DEFAULT",
+                                    "minLength": 1,
+                                    "maxLength": 36
+                                },
                                 "requestId": {
                                     "type": "string",
                                     "maxLength": 36,
@@ -1716,63 +1859,16 @@
                                     "description": "Token ID",
                                     "minLength": 1,
                                     "maxLength": 10
-                                },
-                                "payeeAccountUuid": {
-                                    "type": "string",
-                                    "description": "Payee account identifier (ISO/IEC 9834-8:201)",
-                                    "minLength": 36,
-                                    "maxLength": 36
-                                },
-                                "payeeRefInfo": {
-                                    "type": "string",
-                                    "description": "External reference to be displayed on the receiver's transaction history",
-                                    "maxLength": 36,
-                                    "minLength": 1
-                                },
-                                "bankRefInfo": {
-                                    "type": "string",
-                                    "maxLength": 12,
-                                    "minLength": 1,
-                                    "description": "External reference displayed on the payer's bank statement"
-                                },
-                                "payeeSiteRefInfo": {
-                                    "type": "string",
-                                    "minLength": 1,
-                                    "maxLength": 36,
-                                    "description": "External site reference"
-                                },
-                                "comment": {
-                                    "type": "string",
-                                    "description": "Comment",
-                                    "minLength": 1,
-                                    "maxLength": 120
-                                },
-                                "payerMobile": {
-                                    "type": "string",
-                                    "description": "Mobile number of payer",
-                                    "minLength": 1,
-                                    "maxLength": 15
-                                },
-                                "redirectUrl": {
-                                    "type": "string",
-                                    "description": "Redirect URL",
-                                    "minLength": 1,
-                                    "maxLength": 100
-                                },
-                                "amount": {
-                                    "type": "number",
-                                    "description": "Amount",
-                                    "minimum": 0
-                                },
-                                "gratuityAmount": {
-                                    "type": "string",
-                                    "description": "Gratuity amount",
-                                    "minLength": 0
                                 }
                             },
                             "required": [
+                                "amount",
                                 "payeeAccountUuid",
-                                "amount"
+                                "payeeRefInfo",
+                                "payerAccountUuid",
+                                "payerRefInfo",
+                                "paymentDate",
+                                "paymentType"
                             ]
                         }
                     },
