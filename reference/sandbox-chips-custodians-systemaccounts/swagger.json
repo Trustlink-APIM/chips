@@ -43,10 +43,10 @@
                                 "Example 1": {
                                     "uuid": "stringstringstringstringstringstring",
                                     "requestId": "string",
-                                    "created": "2023-02-13T10:21:44.042Z",
+                                    "created": "2023-03-23T10:20:33.056Z",
                                     "createdBy": "string",
                                     "createdByChannelUuid": "stringstringstringstringstringstring",
-                                    "lastModified": "2023-02-13T10:21:44.042Z",
+                                    "lastModified": "2023-03-23T10:20:33.056Z",
                                     "lastModifiedBy": "string",
                                     "lastModifiedByChannelUuid": "stringstringstringstringstringstring",
                                     "reason": "string",
@@ -74,19 +74,19 @@
                             "properties": {
                                 "uuid": {
                                     "type": "string",
+                                    "description": "System alloccated UUID.(ISO/IEC 9834-8:201)",
                                     "minLength": 36,
-                                    "maxLength": 36,
-                                    "description": "System alloccated UUID.(ISO/IEC 9834-8:201)"
+                                    "maxLength": 36
                                 },
                                 "requestId": {
                                     "type": "string",
-                                    "maxLength": 36,
                                     "minLength": 1,
                                     "description": "The unique identifier used by the sender of the original request.\nUUID (ISO/IEC 9834-8:201)"
                                 },
                                 "created": {
                                     "type": "string",
-                                    "description": "The date and time when created.\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)"
+                                    "description": "The date and time when created.\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                                    "format": "date-time"
                                 },
                                 "createdBy": {
                                     "type": "string",
@@ -100,7 +100,8 @@
                                 },
                                 "lastModified": {
                                     "type": "string",
-                                    "description": "The date and time of the last update.\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)"
+                                    "description": "The date and time of the last update.\n(ISO8601 yyyy-mm-ddThh:mm:ss.nnnZ)",
+                                    "format": "date-time"
                                 },
                                 "lastModifiedBy": {
                                     "type": "string",
@@ -114,7 +115,7 @@
                                 },
                                 "reason": {
                                     "type": "string",
-                                    "description": "The reason given for the last update."
+                                    "description": "The reason given for the last update.\n\n"
                                 },
                                 "allotDepositType": {
                                     "type": "string",
@@ -122,66 +123,53 @@
                                     "enum": [
                                         "ATM",
                                         "BRANCH",
-                                        "CARDLESS",
                                         "EFT"
                                     ]
                                 },
                                 "payeeAccountUuid": {
                                     "type": "string",
-                                    "description": "Payee account identifier (ISO/IEC 9834-8:201)",
                                     "minLength": 36,
-                                    "maxLength": 36
+                                    "maxLength": 36,
+                                    "description": "Payee account identifier (ISO/IEC 9834-8:201)"
                                 },
                                 "payeeRefInfo": {
                                     "type": "string",
-                                    "description": "External reference to be displayed on the receiver's transaction history",
+                                    "description": "External reference to be displayed on the receiver's transaction history\n\n",
                                     "minLength": 1,
                                     "maxLength": 36
                                 },
                                 "bankRefInfo": {
                                     "type": "string",
                                     "description": "External reference displayed on the payer's bank statement",
-                                    "maxLength": 12,
-                                    "minLength": 1
+                                    "minLength": 1,
+                                    "maxLength": 12
                                 },
                                 "amount": {
-                                    "type": "integer",
-                                    "description": "Amount",
-                                    "minimum": 0
+                                    "type": "number",
+                                    "description": "Amount"
                                 },
                                 "feeData": {
                                     "type": "object",
                                     "properties": {
-                                        "feeSponsorData": {
-                                            "type": "object",
-                                            "description": "Fees, including sponsored, attracted by the transaction",
-                                            "properties": {
-                                                "externalAmount": {
-                                                    "type": "number",
-                                                    "description": "External fee amount",
-                                                    "minimum": 0
-                                                },
-                                                "internalamount": {
-                                                    "type": "number",
-                                                    "description": "Internal fee amount",
-                                                    "minimum": 0
-                                                },
-                                                "vatAmount": {
-                                                    "type": "number",
-                                                    "description": "VAT amount on total fee",
-                                                    "minimum": 0
-                                                },
-                                                "totalamount": {
-                                                    "type": "number",
-                                                    "description": "Total fee amount",
-                                                    "minimum": 0
-                                                },
-                                                "sponsorAmount": {
-                                                    "type": "number",
-                                                    "description": "Sponsored fee amount",
-                                                    "minimum": 0
-                                                }
-                                            }
+                                        "externalAmount": {
+                                            "type": "number",
+                                            "description": "External fee amount"
+                                        },
+                                        "internalAmount": {
+                                            "type": "number",
+                                            "description": "In"
+                                        },
+                                        "vatAmount": {
+                                            "type": "number",
+                                            "description": "VAT amount on total fee"
+                                        },
+                                        "totalAmount": {
+                                            "type": "number",
+                                            "description": "Total fee amount"
+                                        },
+                                        "sponsorAmount": {
+                                            "type": "number",
+                                            "description": "Sponsored fee amount"
                                         }
                                     }
                                 },
@@ -195,38 +183,32 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
-                                            "TransactionEntry": {
-                                                "type": "object",
-                                                "description": "Cash send transactions",
-                                                "properties": {
-                                                    "transactionType": {
-                                                        "type": "string",
-                                                        "description": "Transaction type",
-                                                        "enum": [
-                                                            "DEPOSIT",
-                                                            "FEE",
-                                                            "PAYMENT",
-                                                            "PURCHASE",
-                                                            "RECEIPT",
-                                                            "REFUND",
-                                                            "REVERSAL",
-                                                            "TRANSFER",
-                                                            "WITHDRAWAL"
-                                                        ]
-                                                    },
-                                                    "uuid": {
-                                                        "type": "string",
-                                                        "description": "Transaction UUID (ISO/IEC 9834-8:201)",
-                                                        "minLength": 36,
-                                                        "maxLength": 36
-                                                    }
-                                                },
-                                                "required": [
-                                                    "transactionType",
-                                                    "uuid"
-                                                ]
+                                            "transactionType": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "DEPOSIT",
+                                                    "FEE",
+                                                    "PAYMENT",
+                                                    "PURCHASE",
+                                                    "RECEIPT",
+                                                    "REFUND",
+                                                    "REVERSAL",
+                                                    "TRANSFER",
+                                                    "WITHDRAWAL"
+                                                ],
+                                                "description": "Transaction type"
+                                            },
+                                            "uuid": {
+                                                "type": "string",
+                                                "description": "Transaction UUID (ISO/IEC 9834-8:201)",
+                                                "minLength": 36,
+                                                "maxLength": 36
                                             }
-                                        }
+                                        },
+                                        "required": [
+                                            "transactionType",
+                                            "uuid"
+                                        ]
                                     }
                                 }
                             },
@@ -238,7 +220,39 @@
                                 "payeeAccountUuid",
                                 "amount"
                             ]
-                        }
+                        },
+                        "examples": [
+                            {
+                                "uuid": "stringstringstringstringstringstring",
+                                "requestId": "string",
+                                "created": "2019-08-24T14:15:22Z",
+                                "createdBy": "string",
+                                "createdByChannelUuid": "stringstringstringstringstringstring",
+                                "lastModified": "2019-08-24T14:15:22Z",
+                                "lastModifiedBy": "string",
+                                "lastModifiedByChannelUuid": "stringstringstringstringstringstring",
+                                "reason": "string",
+                                "allotDepositType": "ATM",
+                                "payeeAccountUuid": "stringstringstringstringstringstring",
+                                "payeeRefInfo": "string",
+                                "bankRefInfo": "string",
+                                "amount": 0,
+                                "feeData": {
+                                    "externalAmount": 0,
+                                    "internalAmount": 0,
+                                    "vatAmount": 0,
+                                    "totalAmount": 0,
+                                    "sponsorAmount": 0
+                                },
+                                "systemRefInfo": "string",
+                                "transaction": [
+                                    {
+                                        "transactionType": "DEPOSIT",
+                                        "uuid": "stringstringstringstringstringstring"
+                                    }
+                                ]
+                            }
+                        ]
                     },
                     "400": {
                         "description": "Bad Request",
@@ -590,71 +604,100 @@
                                 "Example 1": {
                                     "requestId": "string",
                                     "allotDepositType": "ATM",
-                                    "payeeAccountUuid": "stringstringstringstringstringstring",
-                                    "payeeRefInfo": "string",
                                     "bankCode": "ABSA",
                                     "bankRefInfo": "string",
-                                    "amount": 1
+                                    "payeeInfo": {
+                                        "description": "string",
+                                        "accountUuid": "stringstringstringstringstringstring",
+                                        "refInfo": "string",
+                                        "amount": 1
+                                    }
                                 }
                             },
                             "properties": {
                                 "requestId": {
                                     "type": "string",
-                                    "maxLength": 36,
+                                    "description": "Request identifier (ISO/IEC 9834-8:201)",
                                     "minLength": 1,
-                                    "description": "Request identifier (ISO/IEC 9834-8:201)"
+                                    "maxLength": 36
                                 },
                                 "allotDepositType": {
                                     "type": "string",
-                                    "description": "Type of deposit at the financial institution",
                                     "enum": [
                                         "ATM",
                                         "BRANCH",
                                         "CARDLESS",
                                         "EFT"
                                     ],
-                                    "example": "ATM"
-                                },
-                                "payeeAccountUuid": {
-                                    "type": "string",
-                                    "description": "Payee account identifier (ISO/IEC 9834-8:201)",
-                                    "minLength": 36,
-                                    "maxLength": 36
-                                },
-                                "payeeRefInfo": {
-                                    "type": "string",
-                                    "description": "External reference to be displayed on the receiver's transaction history",
-                                    "maxLength": 36,
-                                    "minLength": 1
+                                    "description": "Type of deposit at the financial institution"
                                 },
                                 "bankCode": {
                                     "type": "string",
                                     "description": "Bank unique code",
-                                    "maxLength": 30,
                                     "minLength": 1,
-                                    "example": "ABSA",
-                                    "enum": [
-                                        "ABSA"
-                                    ]
+                                    "maxLength": 30,
+                                    "example": "ABSA"
                                 },
                                 "bankRefInfo": {
                                     "type": "string",
-                                    "maxLength": 12,
                                     "minLength": 1,
+                                    "maxLength": 12,
                                     "description": "External reference displayed on the payer's bank statement"
                                 },
-                                "amount": {
-                                    "type": "number",
-                                    "description": "Amount"
+                                "payeeInfo": {
+                                    "type": "object",
+                                    "required": [
+                                        "accountUuid",
+                                        "refInfo",
+                                        "amount"
+                                    ],
+                                    "properties": {
+                                        "description": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "maxLength": 60,
+                                            "description": "Description relevant to the payee"
+                                        },
+                                        "accountUuid": {
+                                            "type": "string",
+                                            "minLength": 36,
+                                            "maxLength": 36,
+                                            "description": "The unique identifier of the involved account\n(ISO/IEC 9834-8:201)"
+                                        },
+                                        "refInfo": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "maxLength": 36,
+                                            "description": "The payee's unique reference"
+                                        },
+                                        "amount": {
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "description": "The amount payable to the payee"
+                                        }
+                                    }
                                 }
                             },
                             "required": [
                                 "allotDepositType",
-                                "payeeAccountUuid",
                                 "bankCode",
-                                "amount"
+                                "payeeInfo"
                             ]
-                        }
+                        },
+                        "x-examples": [
+                            {
+                                "requestId": "string",
+                                "allotDepositType": "ATM",
+                                "bankCode": "ABSA",
+                                "bankRefInfo": "string",
+                                "payeeInfo": {
+                                    "description": "string",
+                                    "accountUuid": "stringstringstringstringstringstring",
+                                    "refInfo": "string",
+                                    "amount": 0
+                                }
+                            }
+                        ]
                     },
                     {
                         "type": "string",
@@ -682,7 +725,7 @@
                 "operationId": "chips-custodians-systemaccounts-deposits-fees-post",
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Feee returned",
                         "schema": {
                             "type": "object",
                             "x-examples": {
@@ -715,7 +758,15 @@
                                     "minimum": 0
                                 }
                             }
-                        }
+                        },
+                        "examples": [
+                            {
+                                "externalAmount": 0,
+                                "internalAmount": 0,
+                                "vatAmount": 0,
+                                "totalAmount": 0
+                            }
+                        ]
                     },
                     "400": {
                         "description": "Bad Request",
@@ -1067,71 +1118,87 @@
                                 "Example 1": {
                                     "requestId": "string",
                                     "allotDepositType": "ATM",
-                                    "payeeAccountUuid": "stringstringstringstringstringstring",
-                                    "payeeRefInfo": "string",
                                     "bankCode": "ABSA",
                                     "bankRefInfo": "string",
-                                    "amount": 1
+                                    "payeeInfo": {
+                                        "description": "string",
+                                        "accountUuid": "stringstringstringstringstringstring",
+                                        "refInfo": "string",
+                                        "amount": 1
+                                    }
                                 }
                             },
                             "properties": {
                                 "requestId": {
                                     "type": "string",
-                                    "maxLength": 36,
+                                    "description": "Request identifier (ISO/IEC 9834-8:201)",
                                     "minLength": 1,
-                                    "description": "Request identifier (ISO/IEC 9834-8:201)"
+                                    "maxLength": 36
                                 },
                                 "allotDepositType": {
                                     "type": "string",
-                                    "description": "Type of deposit at the financial institution",
                                     "enum": [
                                         "ATM",
                                         "BRANCH",
                                         "CARDLESS",
                                         "EFT"
                                     ],
-                                    "example": "ATM"
-                                },
-                                "payeeAccountUuid": {
-                                    "type": "string",
-                                    "description": "Payee account identifier (ISO/IEC 9834-8:201)",
-                                    "minLength": 36,
-                                    "maxLength": 36
-                                },
-                                "payeeRefInfo": {
-                                    "type": "string",
-                                    "description": "External reference to be displayed on the receiver's transaction history",
-                                    "maxLength": 36,
-                                    "minLength": 1
+                                    "description": "Type of deposit at the financial institution"
                                 },
                                 "bankCode": {
                                     "type": "string",
                                     "description": "Bank unique code",
-                                    "maxLength": 30,
                                     "minLength": 1,
-                                    "example": "ABSA",
-                                    "enum": [
-                                        "ABSA"
-                                    ]
+                                    "maxLength": 30,
+                                    "example": "ABSA"
                                 },
                                 "bankRefInfo": {
                                     "type": "string",
-                                    "maxLength": 12,
                                     "minLength": 1,
+                                    "maxLength": 12,
                                     "description": "External reference displayed on the payer's bank statement"
                                 },
-                                "amount": {
-                                    "type": "number",
-                                    "description": "Amount"
+                                "payeeInfo": {
+                                    "type": "object",
+                                    "required": [
+                                        "accountUuid",
+                                        "refInfo",
+                                        "amount"
+                                    ],
+                                    "properties": {
+                                        "description": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "maxLength": 60,
+                                            "description": "Description relevant to the payee"
+                                        },
+                                        "accountUuid": {
+                                            "type": "string",
+                                            "minLength": 36,
+                                            "maxLength": 36,
+                                            "description": "The unique identifier of the involved account\n(ISO/IEC 9834-8:201)"
+                                        },
+                                        "refInfo": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "maxLength": 36,
+                                            "description": "The payee's unique reference"
+                                        },
+                                        "amount": {
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "description": "The amount payable to the payee"
+                                        }
+                                    }
                                 }
                             },
                             "required": [
                                 "allotDepositType",
-                                "payeeAccountUuid",
                                 "bankCode",
-                                "amount"
+                                "payeeInfo"
                             ]
-                        }
+                        },
+                        "description": ""
                     },
                     {
                         "type": "string",
@@ -1395,7 +1462,46 @@
                                 "status",
                                 "systemRefInfo"
                             ]
-                        }
+                        },
+                        "examples": [
+                            {
+                                "uuid": "stringstringstringstringstringstring",
+                                "requestId": "string",
+                                "created": "string",
+                                "createdBy": "string",
+                                "createdByChannelUuid": "stringstringstringstringstringstring",
+                                "lastModified": "string",
+                                "lastModifiedBy": "string",
+                                "lastModifiedByChannelUuid": "stringstringstringstringstringstring",
+                                "reason": "string",
+                                "amount": 0,
+                                "description": "string",
+                                "gratuityAmount": 0,
+                                "payeeAccountUuid": "stringstringstringstringstringstring",
+                                "payeeMessage": "string",
+                                "payeeRefInfo": "string",
+                                "payeeSiteName": "string",
+                                "payeeSiteRefInfo": "string",
+                                "payerAccountUuid": "stringstringstringstringstringstring",
+                                "payerCategory1": "string",
+                                "payerCategory2": "string",
+                                "payerCategory3": "string",
+                                "payerRefInfo": "string",
+                                "paymentDate": "2019-08-24",
+                                "paymentType": "BULK",
+                                "status": "ACCEPTED",
+                                "systemRefInfo": "string",
+                                "tokenId": "string",
+                                "transaction": [
+                                    {
+                                        "TransactionEntry": {
+                                            "transactionType": "DEPOSIT",
+                                            "uuid": "stringstringstringstringstringstring"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
                     },
                     "400": {
                         "description": "Bad Request",
@@ -1870,7 +1976,28 @@
                                 "paymentDate",
                                 "paymentType"
                             ]
-                        }
+                        },
+                        "x-examples": [
+                            {
+                                "description": "string",
+                                "amount": 0,
+                                "gratuityAmount": "string",
+                                "payeeAccountUuid": "stringstringstringstringstringstring",
+                                "payeeMessage": "string",
+                                "payeeRefInfo": "string",
+                                "payeeSiteName": "string",
+                                "payeeSiteRefInfo": "string",
+                                "payerAccountUuid": "stringstringstringstringstringstring",
+                                "payerCategory1": "string",
+                                "payerCategory2": "string",
+                                "payerCategory3": "string",
+                                "payerRefInfo": "string",
+                                "paymentDate": "2019-08-24",
+                                "paymentType": "BULK",
+                                "requestId": "string",
+                                "tokenId": "string"
+                            }
+                        ]
                     },
                     {
                         "type": "string",
