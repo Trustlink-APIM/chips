@@ -1,0 +1,175 @@
+{
+    "swagger": "2.0",
+    "x-stoplight": {
+        "id": "yb5tyhtfc0gb2"
+    },
+    "info": {
+        "title": "Omnea SmartSafe Notification API",
+        "version": "1.0",
+        "description": "Notification API for Payment.",
+        "contact": {
+            "url": "https://marketplace.trustlinkhosting.com",
+            "email": "apisales@trustlink.co.za",
+            "name": "API Sales"
+        },
+        "termsOfService": " https://marketplace.trustlinkhosting.com",
+        "license": {
+            "name": " Apache 2.0 License",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "paths": {
+        "/notifications": {
+            "parameters": [],
+            "post": {
+                "summary": "SmartSafe Payment Notification",
+                "operationId": "chips-smartsafes-notifications-post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "type": "object",
+                            "x-examples": {
+                                "Example 1": {
+                                    "deviceId": "25d1c607-f471-4466-a1de-a22e374c8352",
+                                    "accountUuid": "e99ce169-6a8b-4f3d-8bb4-dd6cdadd74c7",
+                                    "merchantName": "Omnia",
+                                    "siteName": "Glenfield",
+                                    "enabled": true
+                                }
+                            },
+                            "properties": {
+                                "transactionId": {
+                                    "type": "string",
+                                    "example": "87818a09-429f-4881-be5b-4b424a680d97",
+                                    "pattern": "\\S",
+                                    "minLength": 36,
+                                    "maxLength": 36,
+                                    "description": "TransactionId (ISO/IEC 9834-8:201)"
+                                },
+                                "deviceId": {
+                                    "type": "string",
+                                    "pattern": "\\S",
+                                    "description": "The deviceId of the Smartsafe",
+                                    "maxLength": 12,
+                                    "minLength": 0,
+                                    "example": "84592211"
+                                },
+                                "merchantId": {
+                                    "type": "string",
+                                    "example": "2440000",
+                                    "pattern": "\\S",
+                                    "maxLength": 12,
+                                    "description": "The external unique merchant identifier"
+                                },
+                                "deviceReference": {
+                                    "type": "string",
+                                    "pattern": "\\S",
+                                    "description": "Device reference",
+                                    "maxLength": 12,
+                                    "example": "00000000012"
+                                },
+                                "currency": {
+                                    "type": "string",
+                                    "example": "ZAR",
+                                    "pattern": "\\S",
+                                    "maxLength": 12,
+                                    "description": "Currency"
+                                },
+                                "amount": {
+                                    "type": "number",
+                                    "description": "Amount. Pattern: ^\\d{1,33}([.]\\d{1,2})?$",
+                                    "format": "float",
+                                    "minimum": 0
+                                },
+                                "timestamp": {
+                                    "type": "string",
+                                    "description": "Timestamp of the transaction",
+                                    "format": "date-time",
+                                    "example": "2023-03-17T11:29:32.686+02:00"
+                                }
+                            },
+                            "required": [
+                                "transactionId",
+                                "deviceId",
+                                "merchantId",
+                                "deviceReference",
+                                "currency",
+                                "amount",
+                                "timestamp"
+                            ]
+                        },
+                        "description": "SmartSafe input",
+                        "x-examples": [
+                            {
+                                "transactionId": "87818a09-429f-4881-be5b-4b424a680d9",
+                                "deviceId": "25d1c607-f471-4466-a1de-a22e374c8352",
+                                "merchantId": "2440000",
+                                "deviceReference": "00000000012",
+                                "currency": "ZAR",
+                                "amount": 0,
+                                "timestamp": "2023-03-17T11:29:32.686+02:00"
+                            }
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Payment notification handled successfully.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "x-examples": {
+                                "Example 1": {
+                                    "key": "string",
+                                    "code": "string",
+                                    "description": "string",
+                                    "detail": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "x-examples": {
+                                "Example 1": {
+                                    "key": "string",
+                                    "code": "string",
+                                    "description": "string",
+                                    "detail": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Notification of payment",
+                "tags": [
+                    "SmartSafe"
+                ]
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "SmartSafe"
+        }
+    ],
+    "host": "apim-local.trustlinkhosting.com:8165",
+    "basePath": "/sandbox/chips/smartsafes",
+    "schemes": [
+        "https"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "buildtarget": "stoplight"
+}

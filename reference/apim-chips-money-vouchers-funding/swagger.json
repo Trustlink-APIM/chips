@@ -18,7 +18,7 @@
         },
         "description": "\nThe CHIPS Vouchers API are utilised for voucher related transactions.\n"
     },
-    "host": "apim.trustlinkhosting.com:8165",
+    "host": "apim.trustlinkhosting.com:8065",
     "schemes": [
         "https"
     ],
@@ -1588,8 +1588,8 @@
                                 },
                                 "sponsorAmount": {
                                     "type": "number",
-                                    "example": 1.25,
-                                    "description": "The percentage contribution towards the fees (excl VAT)"
+                                    "example": 1,
+                                    "description": "Contribution towards the fees (incl VAT)"
                                 }
                             },
                             "required": [
@@ -3290,8 +3290,8 @@
                                 },
                                 "sponsorAmount": {
                                     "type": "number",
-                                    "description": "The percentage contribution towards the fees (excl VAT)",
-                                    "example": 1.25
+                                    "description": "Contribution towards the fees (incl VAT)",
+                                    "example": 0
                                 },
                                 "subAccountUuid": {
                                     "type": "string",
@@ -3914,7 +3914,7 @@
         }
     },
     "definitions": {},
-    "basePath": "/sandbox/chips/money/vouchers/funding",
+    "basePath": "/apim/chips/money/vouchers/funding",
     "securityDefinitions": {
         "Marketplace API Key": {
             "type": "apiKey",
