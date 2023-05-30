@@ -1588,8 +1588,8 @@
                                 },
                                 "sponsorAmount": {
                                     "type": "number",
-                                    "example": 1,
-                                    "description": "Contribution towards the fees (incl VAT)"
+                                    "example": 1.25,
+                                    "description": "The percentage contribution towards the fees (excl VAT)"
                                 }
                             },
                             "required": [
@@ -3290,8 +3290,8 @@
                                 },
                                 "sponsorAmount": {
                                     "type": "number",
-                                    "description": "Contribution towards the fees (incl VAT)",
-                                    "example": 0
+                                    "description": "The percentage contribution towards the fees (excl VAT)",
+                                    "example": 1.25
                                 },
                                 "subAccountUuid": {
                                     "type": "string",
