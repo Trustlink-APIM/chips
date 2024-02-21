@@ -1,0 +1,127 @@
+{
+  "collapseTableOfContents": false,
+  "items": [
+    {
+      "type": "item",
+      "title": "Welcome to the Omnea Openbanking APIs",
+      "uri": "/docs/01-welcome.md"
+    },
+    {
+      "type": "divider",
+      "title": "APIs for Individuals"
+    },
+    {
+      "type": "item",
+      "title": "Omnea Onboarding",
+      "uri": "/reference/sandbox-chips-register/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "Omnea Authentication via API",
+      "uri": "/reference/sandbox-chips-auth/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "CHIPS Money API",
+      "uri": "/reference/sandbox-chips-money/swagger.json"
+    },
+    {
+      "type": "divider",
+      "title": "APIs for Individuals"
+    },
+
+
+    {
+      "type": "item",
+      "title": "TPN Business Payments API",
+      "uri": "/reference/sandbox-chips-businesses-payments/swagger.json"
+    },
+    
+    {
+      "type": "item",
+      "title": "CHIPS Money Fund Wallet with Card API",
+      "uri": "/reference/sandbox-chips-money-cards-funding/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "CHIPS Money API - Mobile Prepaid Purchases",
+      "uri": "/reference/sandbox-chips-money-prepaid-mobile/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "TPN Money Profiles API",
+      "uri": "/reference/sandbox-chips-money-profiles/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "CHIPS Money API Subscribed Service Intermediary Plugin",
+      "uri": "/reference/sandbox-chips-money-ssi/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "CHIPS Money Integration Utilities",
+      "uri": "/reference/sandbox-chips-money-tools/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "CHIPS Point of Sale: Token Based Payment API",
+      "uri": "/reference/sandbox-chips-pos-payments-tokenapi/swagger.json"
+    },
+    
+    {
+      "type": "item",
+      "title": "CHIPS Business Accounts API",
+      "uri": "/reference/sandbox-chips-businesses-accounts/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "TPN Business Fund Wallet with Card API",
+      "uri": "/reference/sandbox-chips-businesses-cards-funding/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "TPN Business Onboarding API",
+      "uri": "/reference/sandbox-chips-businesses-register/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "Open Banking Custodian System Api’s",
+      "uri": "/reference/sandbox-chips-custodians-systemaccounts/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "TPN Transport API",
+      "uri": "/reference/sandbox-chips-money-transport/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "CHIPS Vouchers API",
+      "uri": "/reference/sandbox-chips-money-vouchers-funding/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "CHIPS Money API - wiCode Transactios",
+      "uri": "/reference/sandbox-chips-money-wicode/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "TPN E-Commerce Service",
+      "uri": "/reference/sandbox-chips-services-ecom/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "Omnea SmartSafe Notification API",
+      "uri": "/reference/sandbox-chips-smartsafes/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "TPN Tools API",
+      "uri": "/reference/sandbox-chips-tools/swagger.json"
+    },
+    {
+      "type": "item",
+      "title": "TPN Business Utilities",
+      "uri": "/reference/sandbox-chips-utils-banks/swagger.json"
+    }
+  ]
+}
